@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSSCP — Grade XII Biology</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#122A46;
+  --navy-deep:#0A1B30;
+  --navy-soft:#274469;
+  --paper:#F6F4EE;
+  --panel:#FFFFFF;
+  --line:#E1DDD1;
+  --ink:#1C2433;
+  --ink-soft:#59627A;
+  --gold:#B9822F;
+  --gold-soft:#F2E4C8;
+  --sage:#3C6E52;
+  --sage-soft:#E1EEE4;
+  --coral:#B14A32;
+  --coral-soft:#F5E1DA;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(10,27,48,.06), 0 6px 20px rgba(10,27,48,.06);
+  --maxw:1120px;
+}
+[data-theme="dark"]{
+  --paper:#0B1626;
+  --panel:#122238;
+  --line:#233852;
+  --ink:#EDEFF3;
+  --ink-soft:#9AA6BC;
+  --gold-soft:#3A2E17;
+  --sage-soft:#12261C;
+  --coral-soft:#2C1712;
+  --navy-soft:#1B3151;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s ease,color .25s ease;
+}
+h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,serif;color:var(--ink);margin:0 0 .4em;line-height:1.2;font-weight:600}
+a{color:inherit}
+button{font-family:inherit}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+img,svg{max-width:100%}
+::selection{background:var(--gold-soft)}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+/* ---------- Header ---------- */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:var(--navy);
+  color:#fff;
+  box-shadow:0 2px 14px rgba(0,0,0,.15);
+}
+.headerbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:var(--maxw);margin:0 auto;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand .mark{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(150deg,var(--gold) 0%, #8a5e1d 100%);
+  display:flex;align-items:center;justify-content:center;font-size:19px;flex:none;
+}
+.brand .txt strong{display:block;font-family:'Source Serif 4',serif;font-size:17px;letter-spacing:.3px}
+.brand .txt span{display:block;font-size:11.5px;color:#B9C6DB;letter-spacing:.2px}
+nav.primary{display:flex;gap:2px;align-items:center}
+nav.primary a{
+  color:#DCE4F0;text-decoration:none;font-size:14.5px;font-weight:500;
+  padding:9px 12px;border-radius:8px;transition:background .15s,color .15s;white-space:nowrap;
+}
+nav.primary a:hover{background:rgba(255,255,255,.08);color:#fff}
+nav.primary a.active{background:rgba(255,255,255,.14);color:#fff}
+.headerbtns{display:flex;gap:8px;align-items:center}
+.iconbtn{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;
+  width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:16px;transition:background .15s;flex:none;
+}
+.iconbtn:hover{background:rgba(255,255,255,.18)}
+.hamburger{display:none}
+#searchToggleBtn{display:flex}
+
+.searchbar{
+  max-width:var(--maxw);margin:0 auto;padding:0 20px 12px;display:none;
+}
+.searchbar.open{display:block}
+.searchbar input{
+  width:100%;padding:11px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);color:#fff;font-size:15px;
+}
+.searchbar input::placeholder{color:#B9C6DB}
+#searchResults{
+  max-width:var(--maxw);margin:0 auto;padding:0 20px 14px;
+}
+.searchresult{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer}
+.searchresult:hover{border-color:var(--gold)}
+.searchresult .tag{font-size:11px;color:var(--gold);font-weight:600}
+
+@media (max-width:880px){
+  nav.primary{display:none}
+  .hamburger{display:flex}
+}
+
+/* mobile drawer */
+#mobileNav{
+  position:fixed;inset:0;background:rgba(8,16,28,.55);z-index:80;display:none;
+}
+#mobileNav.open{display:block}
+#mobileNav .panel{
+  position:absolute;top:0;right:0;width:78%;max-width:320px;height:100%;
+  background:var(--navy-deep);padding:18px;overflow-y:auto;
+}
+#mobileNav a{
+  display:block;color:#E4E9F2;text-decoration:none;padding:13px 10px;border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:16px;
+}
+#mobileNav .close{color:#fff;background:none;border:none;font-size:22px;float:right;cursor:pointer}
+
+/* ---------- Layout helpers ---------- */
+main{min-height:60vh}
+.page{display:none;padding:28px 0 60px}
+.page.active{display:block}
+.crumb{color:var(--ink-soft);font-size:13px;margin-bottom:14px}
+.crumb a{color:var(--gold);text-decoration:none}
+.sectionhead{margin-bottom:22px}
+.sectionhead p{color:var(--ink-soft);margin:6px 0 0;max-width:640px}
+.eyebrow{font-size:12.5px;color:var(--gold);font-weight:600;margin-bottom:4px}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(155deg,var(--navy) 0%,var(--navy-deep) 100%);
+  color:#fff;padding:52px 0 60px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(185,130,47,.25),transparent 70%);
+}
+.hero .container{position:relative}
+.hero h1{color:#fff;font-size:clamp(32px,5vw,46px);margin-bottom:6px}
+.hero .sub{color:#C7D2E6;font-size:17px;max-width:560px}
+.hero .tagline{margin-top:16px;font-size:14px;color:#B9C6DB;letter-spacing:.3px}
+.hero .tagline b{color:var(--gold-soft);font-weight:600}
+.herostats{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap}
+.herostats div{min-width:90px}
+.herostats strong{display:block;font-size:24px;font-family:'Source Serif 4',serif;color:#fff}
+.herostats span{font-size:12.5px;color:#9FB0CC}
+
+/* ---------- Cards ---------- */
+.grid{display:grid;gap:18px}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.grid.cols-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.grid.cols-3,.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.grid.cols-3,.grid.cols-2,.grid.cols-4{grid-template-columns:1fr}}
+
+.topiccard{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);
+  transition:transform .15s ease,border-color .15s ease;display:block;
+}
+.topiccard:hover{transform:translateY(-3px);border-color:var(--gold)}
+.topiccard .ic{font-size:28px;margin-bottom:10px;display:block}
+.topiccard h3{font-size:19px;margin-bottom:6px}
+.topiccard p{color:var(--ink-soft);font-size:14px;margin:0}
+
+.actioncard{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
+  box-shadow:var(--shadow);cursor:pointer;transition:border-color .15s;
+}
+.actioncard:hover{border-color:var(--gold)}
+.actioncard .ic{font-size:24px;flex:none}
+.actioncard h4{margin:0 0 2px;font-size:15.5px}
+.actioncard p{margin:0;font-size:13px;color:var(--ink-soft)}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;
+  padding:11px 18px;border-radius:9px;font-size:14.5px;font-weight:600;cursor:pointer;text-decoration:none;
+  transition:background .15s,transform .1s;
+}
+.btn:hover{background:var(--navy-soft)}
+.btn:active{transform:scale(.98)}
+.btn.gold{background:var(--gold)}
+.btn.gold:hover{background:#a1741f}
+.btn.outline{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+[data-theme="dark"] .btn.outline{color:#fff}
+.btn.outline:hover{border-color:var(--gold)}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn.block{width:100%;justify-content:center}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Badges ---------- */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:20px;white-space:nowrap}
+.badge.marks{background:var(--navy-soft);color:#fff}
+[data-theme="dark"] .badge.marks{background:#233852;color:#DCE4F0}
+.badge.topic{background:var(--sage-soft);color:var(--sage)}
+.badge.source{background:#EDEAE0;color:#6B6252}
+[data-theme="dark"] .badge.source{background:#1B2A3F;color:#9AA6BC}
+.badge.imp-veryimportant{background:var(--coral-soft);color:var(--coral)}
+.badge.imp-important{background:var(--gold-soft);color:#8a5e1d}
+.badge.imp-mustknow{background:var(--sage-soft);color:var(--sage)}
+.badge.imp-practice{background:#EDEAE0;color:#6B6252}
+[data-theme="dark"] .badge.imp-practice{background:#1B2A3F;color:#9AA6BC}
+
+/* ---------- Question cards ---------- */
+.qcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+.qcard .qtop{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;align-items:center}
+.qcard .qsrc{font-size:12px;color:var(--ink-soft);margin-left:auto}
+.qcard .qtext{font-size:15.5px;font-weight:600;margin-bottom:2px;line-height:1.5}
+.qcard .qmeta{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px}
+.qactions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.reveal{display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+.reveal.open{display:block}
+.reveal .lbl{font-size:11.5px;font-weight:700;letter-spacing:.3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.reveal .ans{margin-bottom:10px;font-size:14.5px}
+.reveal .exp{font-size:14px;color:var(--ink-soft)}
+.savebtn{background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px;color:var(--ink-soft)}
+.savebtn.saved{color:var(--gold);border-color:var(--gold)}
+
+/* ---------- Filters ---------- */
+.filterbar{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:20px;box-shadow:var(--shadow)}
+.filterrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.filterrow select, .filterrow input[type=text]{
+  padding:9px 11px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:13.5px;
+}
+.filterrow label{font-size:12px;color:var(--ink-soft);display:block;margin-bottom:4px}
+.filtergroup{display:flex;flex-direction:column}
+.resultcount{font-size:13px;color:var(--ink-soft);margin-bottom:10px}
+.emptystate{text-align:center;padding:50px 20px;color:var(--ink-soft)}
+.emptystate .ic{font-size:34px;display:block;margin-bottom:10px}
+
+/* ---------- Tables ---------- */
+.tablewrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line);margin:16px 0}
+table.cmp{border-collapse:collapse;width:100%;font-size:14px;min-width:480px}
+table.cmp th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-weight:600;font-size:13px}
+table.cmp td{padding:11px 14px;border-top:1px solid var(--line);background:var(--panel)}
+table.cmp tr:nth-child(even) td{background:var(--paper)}
+
+/* ---------- Diagram flow ---------- */
+.flow{display:flex;flex-direction:column;align-items:center;gap:4px;margin:20px 0}
+.flow .step{
+  background:var(--panel);border:1.5px solid var(--navy-soft);border-radius:10px;padding:11px 20px;
+  font-size:14px;font-weight:600;text-align:center;min-width:220px;
+}
+.flow .arrow{color:var(--gold);font-size:18px;line-height:1}
+.flowh{display:flex;align-items:stretch;gap:0;margin:20px 0;flex-wrap:wrap;justify-content:center}
+.flowh .step{background:var(--panel);border:1.5px solid var(--navy-soft);border-radius:10px;padding:12px 16px;font-size:13.5px;font-weight:600;text-align:center;max-width:150px;display:flex;align-items:center}
+.flowh .arrowh{display:flex;align-items:center;color:var(--gold);font-size:18px;padding:0 6px}
+@media(max-width:700px){.flowh{flex-direction:column}.flowh .arrowh{transform:rotate(90deg)}}
+
+.branch{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:18px 0;padding-left:6px}
+.branch .root{font-weight:700;font-size:15px;margin-bottom:4px}
+.branch .leaf{padding-left:26px;position:relative;font-size:14px;padding-top:2px;padding-bottom:2px}
+.branch .leaf::before{content:"├─";position:absolute;left:0;color:var(--gold)}
+
+/* ---------- Accordion (concepts) ---------- */
+.acc{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;background:var(--panel)}
+.acc summary{cursor:pointer;padding:14px 16px;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font-size:19px;color:var(--gold);font-weight:400}
+.acc[open] summary::after{content:"–"}
+.acc .body{padding:0 16px 16px;font-size:14.5px;color:var(--ink-soft)}
+.acc .body p{margin:0 0 10px}
+.acc .body ul{margin:0 0 10px;padding-left:20px}
+.acc .body li{margin-bottom:4px}
+
+/* ---------- Tabs ---------- */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:0}
+.tab{background:none;border:none;padding:10px 16px;font-size:14.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px}
+.tab.active{color:var(--navy);border-bottom-color:var(--gold)}
+[data-theme="dark"] .tab.active{color:#fff}
+
+/* ---------- MCQ ---------- */
+.mcqsetup .grid.cols-4{margin-bottom:16px}
+.countbtn{background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:14px;text-align:center;cursor:pointer;font-weight:700;font-size:17px}
+.countbtn.sel{border-color:var(--gold);background:var(--gold-soft)}
+.mcq-progress{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft)}
+.progressbar{height:7px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:22px}
+.progressbar > div{height:100%;background:var(--gold);transition:width .25s}
+.mcqQ{font-size:18px;font-weight:600;margin-bottom:18px;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.option{
+  border:1.5px solid var(--line);border-radius:11px;padding:13px 16px;cursor:pointer;font-size:15px;
+  background:var(--panel);transition:border-color .12s;display:flex;gap:10px;align-items:flex-start;
+}
+.option:hover{border-color:var(--navy-soft)}
+.option .letter{width:24px;height:24px;border-radius:50%;background:var(--paper);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;flex:none}
+.option.correct{border-color:var(--sage);background:var(--sage-soft)}
+.option.correct .letter{background:var(--sage);color:#fff;border-color:var(--sage)}
+.option.wrong{border-color:var(--coral);background:var(--coral-soft)}
+.option.wrong .letter{background:var(--coral);color:#fff;border-color:var(--coral)}
+.option.disabled{cursor:default}
+.mcqExplain{background:var(--paper);border-left:3px solid var(--gold);padding:12px 14px;border-radius:8px;font-size:14px;margin-bottom:18px;display:none}
+.mcqExplain.show{display:block}
+.mcqnav{display:flex;justify-content:space-between;gap:10px}
+
+/* Result */
+.scorehero{text-align:center;padding:26px 0}
+.scorehero .num{font-size:56px;font-family:'Source Serif 4',serif;font-weight:700;color:var(--navy)}
+[data-theme="dark"] .scorehero .num{color:#fff}
+.scorehero .msg{font-size:16px;color:var(--ink-soft);margin-top:8px;max-width:440px;margin-left:auto;margin-right:auto}
+.statrow{display:flex;justify-content:center;gap:28px;margin:20px 0;flex-wrap:wrap}
+.statrow div{text-align:center}
+.statrow strong{display:block;font-size:22px;font-family:'Source Serif 4',serif}
+.statrow span{font-size:12px;color:var(--ink-soft)}
+.reviewitem{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:var(--panel)}
+.reviewitem .rmeta{font-size:12px;color:var(--ink-soft);margin-bottom:6px}
+.reviewitem .ryour{font-size:13.5px;margin:4px 0}
+.reviewitem .ryour.wrong{color:var(--coral)}
+.reviewitem .ryour.right{color:var(--sage)}
+
+/* ---------- Flashcards ---------- */
+.fcwrap{max-width:520px;margin:0 auto}
+.flashcard{
+  perspective:1200px;height:270px;margin-bottom:18px;cursor:pointer;
+}
+.flashcard .inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flashcard.flipped .inner{transform:rotateY(180deg)}
+.flashcard .face{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;
+  box-shadow:var(--shadow);border:1px solid var(--line);
+}
+.flashcard .front{background:var(--panel);font-size:19px;font-weight:600}
+.flashcard .back{background:var(--navy);color:#fff;transform:rotateY(180deg);font-size:16px}
+.fcnav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fccount{font-size:13px;color:var(--ink-soft)}
+
+/* ---------- Progress ---------- */
+.statcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow)}
+.statcard strong{display:block;font-size:28px;font-family:'Source Serif 4',serif;color:var(--navy)}
+[data-theme="dark"] .statcard strong{color:#fff}
+.statcard span{font-size:12.5px;color:var(--ink-soft)}
+.pbar-outer{background:var(--line);border-radius:8px;height:10px;overflow:hidden}
+.pbar-outer > div{height:100%;background:var(--sage)}
+
+/* ---------- Misc ---------- */
+.tip{background:var(--gold-soft);border-left:3px solid var(--gold);padding:10px 14px;border-radius:8px;font-size:13.5px;margin:12px 0;color:#6B4E17}
+[data-theme="dark"] .tip{color:#E8C989}
+.note{background:var(--sage-soft);border-left:3px solid var(--sage);padding:10px 14px;border-radius:8px;font-size:13.5px;margin:12px 0}
+.divider{border:none;border-top:1px solid var(--line);margin:26px 0}
+.studybar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.studydots{display:flex;gap:6px}
+.studydots span{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.studydots span.on{background:var(--gold)}
+.backtotop{
+  position:fixed;bottom:22px;right:22px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;
+  border:none;font-size:17px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);display:none;z-index:40;
+}
+.backtotop.show{display:block}
+footer.site{background:var(--navy-deep);color:#B9C6DB;padding:34px 0;margin-top:40px;font-size:13px}
+footer.site .container{display:flex;flex-direction:column;gap:10px}
+footer.site a{color:#E8C989;text-decoration:none}
+footer.site .fnote{max-width:720px;line-height:1.6}
+.small{font-size:12.5px;color:var(--ink-soft)}
+h2.pagetitle{font-size:26px}
+.repeatchip{display:inline-block;background:var(--coral-soft);color:var(--coral);font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="headerbar">
+    <a href="#" class="brand" data-nav="home">
+      <span class="mark">🧬</span>
+      <span class="txt"><strong>DSSCP</strong><span>Grade XII Biology</span></span>
+    </a>
+    <nav class="primary" id="primaryNav">
+      <a href="#" data-nav="home">Home</a>
+      <a href="#" data-nav="learn">Learn</a>
+      <a href="#" data-nav="questions">Questions</a>
+      <a href="#" data-nav="mcq">MCQ Test</a>
+      <a href="#" data-nav="important">Important</a>
+      <a href="#" data-nav="progress">Progress</a>
+    </nav>
+    <div class="headerbtns">
+      <button class="iconbtn" id="searchToggleBtn" title="Search" aria-label="Search">🔍</button>
+      <button class="iconbtn" id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="iconbtn hamburger" id="hamBtn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+  <div class="searchbar" id="searchbar">
+    <input type="text" id="globalSearch" placeholder="Search questions, concepts, keywords (e.g. allograft, Hepatitis B)...">
+  </div>
+  <div id="searchResults"></div>
+</header>
+
+<div id="mobileNav">
+  <div class="panel">
+    <button class="close" id="mobileClose">✕</button>
+    <div style="clear:both"></div>
+    <a href="#" data-nav="home">Home</a>
+    <a href="#" data-nav="learn">Learn</a>
+    <a href="#" data-nav="questions">Questions</a>
+    <a href="#" data-nav="mcq">MCQ Test</a>
+    <a href="#" data-nav="important">Important</a>
+    <a href="#" data-nav="flashcards">Flashcards</a>
+    <a href="#" data-nav="revision">Revision</a>
+    <a href="#" data-nav="progress">Progress</a>
+    <a href="#" data-nav="saved">Saved Questions</a>
+  </div>
+</div>
+
+<main id="mainArea"></main>
+
+<button class="backtotop" id="backTop">↑</button>
+
+<footer class="site">
+  <div class="container">
+    <div><strong style="color:#fff">DSSCP</strong> — Applied Biology exam preparation for Grade XII NEB students.</div>
+    <div class="fnote">Question-source note: Past-question labels are used only where the year, set or question number could be verified against the supplied question-bank material or syllabus. Questions without a verifiable NEB year/set are labelled "NEB-aligned Practice" or "User-provided Question Bank" and must not be read as official past questions.</div>
+    <div class="small">Sources: Curriculum Development Centre (CDC) Biology syllabus, Grade XII; user-supplied Asmita's Question Bank pages; publicly available NEB model question sets. This is an independent student study tool and is not affiliated with NEB.</div>
+  </div>
+</footer>
+
+<script>
+// ===================== DATA: QUESTIONS =====================
+const QUESTIONS = [
+// ---------------- VACCINES ----------------
+{id:1,topic:"Vaccines",marks:1,type:"MCQ",source:"NEB Past Question",year:"2083",label:"2083 — Q.No.17",question:"Which vaccine is prepared using DNA-recombinant technology and contains only a specific antigen, reducing adverse reactions?",answer:"Hepatitis B vaccine.",explanation:"Recombinant DNA technology is used to insert the gene for Hepatitis B surface antigen (HBsAg) into yeast cells, which then produce the antigen alone. Since only the antigen (not the whole pathogen) is used, adverse reactions are reduced.",importance:"very-important",tags:["recombinant vaccine","hepatitis b","second generation vaccine"]},
+{id:2,topic:"Vaccines",marks:1,type:"MCQ",source:"NEB Past Question",year:"2081",label:"2081 — Set A — Q.No.16",question:"Which vaccine is prepared by destroying the virulent (disease-causing) property of the pathogen while keeping it alive?",answer:"Live attenuated vaccine (e.g. BCG).",explanation:"In a live attenuated vaccine, the pathogen is weakened (attenuated) so it loses its virulence but is still alive, allowing it to stimulate a strong and long-lasting immune response without causing the disease.",importance:"important",tags:["live attenuated vaccine","bcg","vaccine types"]},
+{id:3,topic:"Vaccines",marks:1,type:"MCQ",source:"User-provided Asmita's Question Bank",year:"",label:"Q.No.12",question:"Vaccines are generally administered in the human body in order to ______.",answer:"Prevent future bacterial and viral infections.",explanation:"Vaccines work by exposing the immune system to a harmless form/part of a pathogen so that memory cells are formed, giving protection against future infection by that pathogen.",importance:"very-important",tags:["vaccine purpose","immunity"]},
+{id:4,topic:"Vaccines",marks:1,type:"MCQ",source:"User-provided Asmita's Question Bank",year:"",label:"Q.No.13",question:"Which of the following are second-generation vaccines?",answer:"Vaccine against Hepatitis B.",explanation:"Second-generation vaccines are made using genetic engineering/recombinant DNA technology to produce a specific antigen — the Hepatitis B vaccine is the classic Grade XII example. Small pox and Salk's polio vaccines are first-generation (whole pathogen) vaccines.",importance:"very-important",tags:["second generation vaccine","hepatitis b"]},
+{id:5,topic:"Vaccines",marks:4,type:"Short Answer",source:"NEB Past Question",year:"2081",label:"2081 — Set B — Q.No.19 OR — [2+2]",question:"How are vaccines useful to prevent diseases? Write about their various types.",answer:"Usefulness: Vaccines contain a weakened, killed or partial form of a pathogen (antigen). When introduced into the body, they stimulate the immune system to produce antibodies and memory cells without causing the actual disease. On later exposure to the real pathogen, the memory cells allow a fast, strong secondary immune response, preventing or reducing the disease.\n\nTypes:\n1. Live attenuated vaccine — weakened but living pathogen (e.g. BCG, OPV)\n2. Inactivated/killed vaccine — pathogen killed by heat/chemicals (e.g. Salk's polio vaccine)\n3. Toxoid vaccine — inactivated bacterial toxin (e.g. TT, DPT)\n4. Subunit/recombinant vaccine — only a specific antigen produced by recombinant DNA technology (e.g. Hepatitis B vaccine)",explanation:"Exam tip: for [2+2] questions, give roughly two clear points on usefulness and two on types, naming at least three to four types with one example each.",importance:"very-important",tags:["vaccine types","uses of vaccine"]},
+{id:6,topic:"Vaccines",marks:4,type:"Short Answer",source:"NEB Past Question",year:"2076",label:"2076 — GIE Set A — Q.No.2g",question:"Give a brief account of vaccines.",answer:"A vaccine is a biological preparation containing a weakened, killed pathogen or a specific antigen derived from a pathogen. When administered, it stimulates the immune system to produce antibodies and memory cells against that pathogen without causing the disease itself. This gives active, artificially-acquired immunity. Vaccines are broadly grouped into first-generation (whole pathogen — live attenuated or inactivated) and second-generation (recombinant/subunit, e.g. Hepatitis B vaccine) types. Vaccination has helped control or eliminate diseases such as smallpox, polio and tetanus.",explanation:"Exam tip: structure the answer as definition → mechanism → generations/types → importance.",importance:"important",tags:["vaccine overview","immunity"]},
+{id:7,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB Past Question",year:"2075",label:"2075 — Set A — Q.No.2",question:"Write about vaccines and their types.",answer:"A vaccine is a preparation of antigenic material used to stimulate active immunity against a specific disease. Types include live attenuated, inactivated/killed, toxoid, and subunit/recombinant vaccines (see full list under Key Concepts).",explanation:"Keep this to 2 clear points if marked for 2: a short definition, then a list of types.",importance:"important",tags:["vaccine types"]},
+{id:8,topic:"Vaccines",marks:8,type:"Long Answer",source:"NEB Past Question",year:"2080",label:"2080 — Set R — Q.No.22 — [1+1+2+2]",question:"Explain the causative agents and modes of infection of Hepatitis-B and Tuberculosis. List the vaccines used for both the diseases.",answer:"Hepatitis B — Causative agent: Hepatitis B virus (HBV). Mode of infection: contact with infected blood/body fluids, from mother to child, unsafe injections. Vaccine: recombinant Hepatitis B vaccine (produced using recombinant DNA technology, contains HBsAg antigen only).\n\nTuberculosis — Causative agent: Mycobacterium tuberculosis (a bacterium). Mode of infection: airborne droplets from an infected person's cough/sneeze. Vaccine: BCG (Bacillus Calmette–Guérin) — a live attenuated vaccine.",explanation:"This question spans both Microbial Diseases and Vaccines — only the vaccine portion is detailed here since it falls in this topic's scope.",importance:"very-important",tags:["hepatitis b","tuberculosis","bcg","recombinant vaccine"]},
+{id:9,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define vaccine.",answer:"A vaccine is a biological preparation containing a weakened, killed pathogen or a specific antigen that, when introduced into the body, stimulates the immune system to develop protective immunity against that disease.",explanation:"This is a foundational one-mark definitional question, commonly the basis for longer questions.",importance:"must-know",tags:["vaccine definition"]},
+{id:10,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define antigen.",answer:"An antigen is any foreign substance (e.g. part of a pathogen) that is capable of triggering an immune response, including the production of specific antibodies, when it enters the body.",explanation:"Antigens carry epitopes recognised by immune cells and antibodies.",importance:"must-know",tags:["antigen","immunology"]},
+{id:11,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define antibody.",answer:"An antibody is a Y-shaped protein (immunoglobulin) produced by B-lymphocytes/plasma cells in response to a specific antigen, which binds to that antigen and helps neutralise or remove it.",explanation:"Antibodies are specific — each recognises a particular antigen shape.",importance:"must-know",tags:["antibody","immunology"]},
+{id:12,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Differentiate between active immunity and passive immunity.",answer:"Active immunity: the body's own immune system produces antibodies after exposure to an antigen (via infection or vaccination); it develops slowly but is long-lasting with memory cells.\nPassive immunity: ready-made antibodies are transferred into the body from an outside source (e.g. mother to foetus, or antiserum injection); it acts immediately but is short-lived with no memory cells formed.",explanation:"A very common 'difference between' short question — remember the memory-cell distinction as the key differentiator.",importance:"very-important",tags:["active immunity","passive immunity","difference"]},
+{id:13,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What is a live attenuated vaccine? Give one example.",answer:"A vaccine made from a pathogen whose virulence has been weakened (attenuated) but which is still living, so it can multiply mildly and produce strong, long-lasting immunity. Example: BCG vaccine (against tuberculosis).",explanation:"Because the pathogen is alive (though weak), attenuated vaccines usually give the strongest and most durable immunity among vaccine types.",importance:"important",tags:["live attenuated vaccine","bcg"]},
+{id:14,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What is an inactivated (killed) vaccine? Give one example.",answer:"A vaccine prepared from a pathogen that has been killed by heat or chemicals so it cannot cause disease but its antigens can still stimulate immunity. Example: Salk's polio vaccine.",explanation:"Killed vaccines are generally safer for immunocompromised people but often need booster doses.",importance:"important",tags:["inactivated vaccine","killed vaccine"]},
+{id:15,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What is a toxoid vaccine? Give one example.",answer:"A vaccine made from a bacterial toxin that has been chemically inactivated so it is no longer harmful but still stimulates antibody production against the toxin. Example: Tetanus Toxoid (TT).",explanation:"Used for diseases caused mainly by bacterial toxins rather than the bacteria itself, e.g. tetanus, diphtheria.",importance:"important",tags:["toxoid vaccine","tetanus"]},
+{id:16,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What is a subunit (recombinant) vaccine? Give one example.",answer:"A vaccine that uses only a specific antigenic component (e.g. a surface protein) of the pathogen, often produced by recombinant DNA technology, rather than the whole organism. Example: Hepatitis B vaccine.",explanation:"Because only part of the pathogen is used, these vaccines tend to cause fewer adverse reactions.",importance:"very-important",tags:["subunit vaccine","recombinant vaccine","hepatitis b"]},
+{id:17,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Why does the recombinant Hepatitis B vaccine cause fewer adverse reactions than older whole-pathogen vaccines?",answer:"Because it is produced using recombinant DNA technology, it contains only the Hepatitis B surface antigen (HBsAg) and none of the live or dead viral material. Since the body is exposed only to the specific antigen needed to trigger immunity, there is much less material that could cause unwanted reactions.",explanation:"This links directly to the frequently-repeated 2083 Q.17-type question.",importance:"very-important",tags:["hepatitis b","recombinant vaccine","adverse reaction"]},
+{id:18,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"State two advantages and two limitations of vaccination.",answer:"Advantages: (1) Prevents serious infectious diseases and reduces mortality; (2) Provides long-term, often life-long, immunity through memory cells.\nLimitations: (1) Some vaccines can cause mild adverse reactions (fever, soreness); (2) A few vaccines require multiple doses/boosters and may not give 100% protection against all strains.",explanation:"Exam tip: always give a balanced answer with clearly separated advantage/limitation points.",importance:"important",tags:["advantages of vaccine","limitations of vaccine"]},
+{id:19,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Differentiate between a vaccine and an antiserum (serum used for passive immunization).",answer:"Vaccine: contains an antigen (weakened pathogen/toxoid/specific protein); triggers the body to make its own antibodies; gives slow-onset but long-lasting active immunity.\nAntiserum: contains ready-made antibodies; does not require the body to produce its own antibodies; gives immediate but short-lived passive immunity, used in emergencies (e.g. snake-bite antiserum, ATS).",explanation:"A classic difference-type question — remember 'vaccine = antigen in, antibody made by body' vs 'antiserum = antibody in, ready-made'.",importance:"very-important",tags:["vaccine vs antiserum","difference"]},
+{id:20,topic:"Vaccines",marks:4,type:"Short Answer",source:"NEB Model/Practice",year:"",label:"NEB Model/Practice Question",question:"Describe how vaccination produces immunity in the human body.",answer:"1. A vaccine containing an antigen (weakened/killed pathogen or specific protein) is introduced into the body.\n2. Antigen-presenting cells process and display the antigen to lymphocytes.\n3. B-lymphocytes are activated and differentiate into plasma cells that secrete specific antibodies against the antigen; some become memory B-cells.\n4. T-lymphocytes assist the response and some become memory T-cells.\n5. On future exposure to the real pathogen, memory cells trigger a much faster and stronger secondary immune response, destroying the pathogen before disease develops.",explanation:"Use the simple flow diagram in the Learn section to memorise this sequence for 4-mark answers.",importance:"important",tags:["mechanism of immunity","vaccination process"]},
+// ---------------- ORGAN & TISSUE TRANSPLANTATION ----------------
+{id:21,topic:"Organ Transplantation",marks:1,type:"MCQ",source:"NEB Past Question",year:"2082",label:"2082 — Q.No.15",question:"Most organ transplantations have a rejection issue. Which of the following organ transplants has no/the least rejection problem?",answer:"Cornea transplant.",explanation:"The cornea has no blood vessels (avascular) and limited access to immune cells, so it is described as 'immune-privileged' — rejection is much less common than in vascularised organs like kidney or heart, though it is not literally impossible.",importance:"very-important",tags:["cornea transplant","organ rejection"]},
+{id:22,topic:"Organ Transplantation",marks:1,type:"MCQ",source:"NEB Past Question",year:"2079",label:"2079 — Set A — Q.No.13",question:"In organ transplantation, a healthy organ is donated to a needy person. What is the type of transplantation between two genetically different persons?",answer:"Allograft.",explanation:"An allograft is a transplant between two genetically different individuals of the same species — the most common form of human organ transplantation (e.g. kidney donor to unrelated recipient).",importance:"very-important",tags:["allograft","graft types"]},
+{id:23,topic:"Organ Transplantation",marks:1,type:"MCQ",source:"NEB Past Question",year:"2079",label:"2079 — Set N — Q.No.14",question:"When organ transplantation occurs between two genetically identical individuals, what type of transplantation is it?",answer:"Isograft.",explanation:"An isograft is transplantation between genetically identical individuals, such as identical (monozygotic) twins. Because the tissues are genetically identical, rejection risk is minimal.",importance:"very-important",tags:["isograft","graft types"]},
+{id:24,topic:"Organ Transplantation",marks:1,type:"MCQ",source:"User-provided Asmita's Question Bank",year:"",label:"Q.No.11",question:"Grafting of tissue or organ between two genetically different individuals of the same species is called what?",answer:"Allograft.",explanation:"Same concept as the 2079 Set A question above — allograft is the most frequently repeated graft-type question.",importance:"very-important",tags:["allograft","graft types"]},
+{id:25,topic:"Organ Transplantation",marks:4,type:"Short Answer",source:"NEB Past Question",year:"2083",label:"2083 — Q.No.19 OR — [2+2]",question:"Discuss the advantages and disadvantages of organ transplantation.",answer:"Advantages:\n1. A damaged or failed organ can be replaced, saving or significantly extending the patient's life.\n2. It restores normal physiological function and greatly improves the patient's quality of life.\n\nDisadvantages:\n1. The recipient's immune system may recognise the graft as foreign and reject it, sometimes despite treatment.\n2. Lifelong immunosuppressive therapy is often needed, which increases susceptibility to infections and other complications; donor organs are also scarce and surgery carries risk.",explanation:"Exam tip: since this is [2+2], write two clear points for each side rather than one long paragraph.",importance:"very-important",tags:["advantages of transplantation","disadvantages of transplantation"]},
+{id:26,topic:"Organ Transplantation",marks:4,type:"Short Answer",source:"NEB Past Question",year:"2080",label:"2080 — GIE Set A — Q.No.19 OR — [4]",question:"Describe the various types of organ transplantation.",answer:"1. Autograft — tissue is transferred from one part of an individual's body to another part of the same individual (e.g. skin graft from thigh to burnt area). No rejection since donor and recipient are the same person.\n2. Isograft — transplant between genetically identical individuals, e.g. identical twins. Very low rejection risk.\n3. Allograft — transplant between two genetically different individuals of the same species, e.g. unrelated kidney donor to recipient. Most common human transplant type; rejection risk is significant.\n4. Xenograft (heterograft) — transplant between individuals of different species, e.g. pig heart valve to human. Highest rejection risk; used in limited situations.",explanation:"Structure this as a numbered list with a one-line definition and example for each type — ideal for a 4-mark answer.",importance:"very-important",tags:["graft types","autograft","isograft","allograft","xenograft"]},
+{id:27,topic:"Organ Transplantation",marks:4,type:"Short Answer",source:"NEB Past Question",year:"2080",label:"2080 — Set R — Q.No.18 OR — [1+2+1]",question:"Define allograft. What methods are used to prevent rejection of a transplanted organ? Why is cornea transplantation easier?",answer:"Allograft (1): A transplant of tissue or organ between two genetically different individuals of the same species.\n\nMethods to prevent rejection (2):\n1. Tissue/HLA (blood and tissue) matching between donor and recipient before surgery.\n2. Use of immunosuppressive drugs to suppress the recipient's immune response against the graft.\n\nWhy cornea transplantation is easier (1): The cornea is avascular (has no blood supply) and is in an immune-privileged site, so it has much less contact with the immune system's cells and antibodies — this makes rejection considerably less likely than in vascularised organs, although not entirely impossible.",explanation:"This combined question tests three separate concepts — allocate roughly 1, 2 and 1 marks worth of content as shown.",importance:"very-important",tags:["allograft","rejection prevention","cornea transplant","immunosuppressive drugs"]},
+{id:28,topic:"Organ Transplantation",marks:4,type:"Short Answer",source:"NEB Past Question",year:"2074",label:"2074 — Set B — Q.No.2e",question:"Define organ transplantation and discuss its different types.",answer:"Organ transplantation is the surgical procedure of removing an organ from a donor and placing it into a recipient, to replace a damaged or missing organ. Types: autograft, isograft, allograft and xenograft (see full definitions under Key Concepts / graft classification diagram).",explanation:"Combine a one-line definition with the four-type classification for full marks.",importance:"important",tags:["organ transplantation definition","graft types"]},
+{id:29,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB Past Question",year:"2070",label:"2070 — Set C — Q.No.2e",question:"Discuss the benefit/significance of organ transplantation.",answer:"Organ transplantation replaces a failed or severely damaged organ (such as kidney, liver or heart) with a healthy one, which can save the patient's life, restore normal organ function, and significantly improve their overall quality of life and life expectancy.",explanation:"Keep this concise — 2 to 3 benefit points are sufficient for a 2-mark answer.",importance:"important",tags:["benefits of transplantation"]},
+{id:30,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"User-provided Asmita's Question Bank",year:"",label:"User-provided Asmita's Question Bank",question:"Give a brief account of organ transplantation.",answer:"Organ transplantation is the medical procedure of transferring a healthy organ or tissue from a donor to a recipient whose own organ has failed or is diseased. Based on the genetic relationship between donor and recipient, it is classified as autograft, isograft, allograft or xenograft. Success depends on tissue matching and control of immune rejection, often using immunosuppressive drugs.",explanation:"A general overview question — cover definition, classification and the rejection issue briefly.",importance:"important",tags:["organ transplantation overview"]},
+{id:31,topic:"Organ Transplantation",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define autograft.",answer:"An autograft is the transplantation of tissue from one part of an individual's body to another part of the same individual's body.",explanation:"Since donor and recipient are the same person, there is no genetic difference and therefore no rejection risk.",importance:"must-know",tags:["autograft"]},
+{id:32,topic:"Organ Transplantation",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define xenograft (heterograft).",answer:"A xenograft (or heterograft) is the transplantation of tissue or an organ between individuals of two different species.",explanation:"Xenografts carry the highest risk of immune rejection because donor and recipient tissues are the most genetically different.",importance:"must-know",tags:["xenograft","heterograft"]},
+{id:33,topic:"Organ Transplantation",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What is a graft?",answer:"A graft is the tissue or organ that is transplanted from a donor site to a recipient site during transplantation surgery.",explanation:"The term 'graft' is used generally, with autograft/isograft/allograft/xenograft describing the genetic relationship between donor and recipient.",importance:"must-know",tags:["graft definition"]},
+{id:34,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Why does organ rejection occur after transplantation?",answer:"Rejection occurs because the recipient's immune system recognises molecules on the donor tissue (mainly MHC/HLA antigens) as 'foreign' since the donor is genetically different from the recipient. This triggers an immune response — involving T-lymphocytes and antibodies — that attacks and can destroy the transplanted tissue.",explanation:"The more genetically different the donor is from the recipient, the greater the rejection risk (lowest in autograft, highest in xenograft).",importance:"very-important",tags:["organ rejection","immune response"]},
+{id:35,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What role do immunosuppressive drugs play in transplantation?",answer:"Immunosuppressive drugs reduce the activity of the recipient's immune system so that it does not strongly attack and reject the transplanted organ. They are usually taken for a long period (often lifelong) after transplantation, though they also increase the patient's risk of infections.",explanation:"Pair this with tissue matching as the two main strategies to reduce rejection.",importance:"important",tags:["immunosuppressive drugs","rejection prevention"]},
+{id:36,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Why is tissue/blood-group matching important before organ transplantation?",answer:"Matching the donor's and recipient's blood group and tissue (HLA) type as closely as possible reduces the genetic difference the immune system detects, lowering the chance and severity of graft rejection and improving the long-term success of the transplant.",explanation:"Closer genetic matching (as in isografts between identical twins) gives the best outcomes.",importance:"important",tags:["tissue matching","hla matching"]},
+{id:37,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Differentiate between autograft and isograft.",answer:"Autograft: tissue is transplanted within the same individual (from one body part to another); donor and recipient are the same person.\nIsograft: tissue is transplanted between two different but genetically identical individuals (e.g. identical twins); donor and recipient are different persons but genetically the same.",explanation:"Both carry effectively no rejection risk, but the key difference is 'same individual' vs 'different but identical individuals'.",importance:"very-important",tags:["autograft","isograft","difference"]},
+{id:38,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Differentiate between allograft and xenograft.",answer:"Allograft: transplant between two genetically different individuals of the same species (e.g. human to human); moderate-to-high rejection risk, most common in clinical practice.\nXenograft: transplant between individuals of different species (e.g. pig to human); highest rejection risk, used only in limited situations such as heart valve replacement.",explanation:"Remember: allograft = same species, different genes; xenograft = different species altogether.",importance:"very-important",tags:["allograft","xenograft","difference"]},
+{id:39,topic:"Organ Transplantation",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Name two organs/tissues commonly transplanted in humans.",answer:"Kidney and cornea (other accepted examples: liver, heart, bone marrow, skin).",explanation:"Kidney transplantation is the most common solid-organ transplant worldwide; cornea transplantation is the most common tissue transplant.",importance:"must-know",tags:["commonly transplanted organs"]},
+{id:40,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"State two ethical or social considerations related to organ transplantation.",answer:"1. Ensuring fair and transparent allocation of scarce donor organs to patients in need, rather than favouring wealth or status.\n2. Preventing illegal organ trade/trafficking and ensuring donors (or their families, in case of deceased donation) give informed, voluntary consent.",explanation:"Ethics questions are less common in Grade 12 exams but occasionally appear as discussion points.",importance:"practice",tags:["ethics","organ donation"]},
+{id:41,topic:"Organ Transplantation",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define tissue transplantation.",answer:"Tissue transplantation is the transfer of living tissue (such as skin, bone, or cornea) from a donor site to a recipient site, either within the same individual or between different individuals, to replace damaged or lost tissue.",explanation:"Tissue transplantation is a broader/related term to organ transplantation — tissues like skin and cornea are the most commonly transplanted.",importance:"must-know",tags:["tissue transplantation definition"]},
+// ---------------- TRANSGENIC ANIMALS ----------------
+{id:42,topic:"Transgenic Animals",marks:1,type:"MCQ",source:"User-provided Asmita's Question Bank",year:"",label:"Q.No.10",question:"The result of In-vitro fertilization (IVF) is the production of:",answer:"Test-tube baby.",explanation:"IVF is fertilization that occurs outside the body under controlled laboratory conditions, and the resulting embryo is transferred into the uterus — the offspring born this way is called a 'test-tube baby'. IVF does NOT involve inserting a foreign gene, so it is not the same as producing a transgenic animal (which requires deliberate introduction of a foreign gene into the genome).",importance:"important",tags:["ivf","test tube baby","transgenic vs ivf"]},
+{id:43,topic:"Transgenic Animals",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define a transgenic animal.",answer:"A transgenic animal is an animal into whose genome a foreign gene (from another species or a modified gene) has been deliberately introduced using genetic engineering techniques, so that the animal expresses a new trait.",explanation:"The key word is 'deliberately' — the foreign gene is inserted by scientists, not acquired naturally.",importance:"very-important",tags:["transgenic animal definition"]},
+{id:44,topic:"Transgenic Animals",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Define GMO (Genetically Modified Organism).",answer:"A GMO is any organism whose genetic material (DNA) has been altered using genetic engineering techniques in a way that does not occur naturally through mating or recombination.",explanation:"A transgenic animal is one specific kind of GMO — an animal carrying a foreign gene.",importance:"very-important",tags:["gmo definition"]},
+{id:45,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Differentiate between a GMO and a transgenic animal.",answer:"GMO: a broad term for ANY organism (plant, animal, or microbe) whose genome has been artificially altered by genetic engineering — this may include gene deletion, mutation, or addition.\nTransgenic animal: a narrower term specifically for an ANIMAL that carries a gene transferred from a different species (or an engineered gene) in its genome.",explanation:"Every transgenic animal is a GMO, but not every GMO is a transgenic animal (e.g. a genetically modified crop is a GMO but not an animal).",importance:"important",tags:["gmo","transgenic animal","difference"]},
+{id:46,topic:"Transgenic Animals",marks:4,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Describe the basic steps involved in producing a transgenic animal.",answer:"1. Isolation of the desired gene from a donor organism using restriction enzymes.\n2. Insertion of the isolated gene into a suitable vector or directly into a fertilised egg/embryonic cell (e.g. by microinjection).\n3. Introduction of the modified embryonic cell/egg into the reproductive tract of a surrogate/host animal.\n4. Development of the embryo, with integration and expression of the foreign gene in the offspring's cells.\n5. Screening of offspring to confirm the foreign gene has been successfully incorporated — the confirmed animal is the transgenic animal.",explanation:"Keep the explanation at Grade 12 level — a simple five-step flow is enough; deep molecular cloning detail is not required.",importance:"very-important",tags:["transgenic animal production","gene transfer"]},
+{id:47,topic:"Transgenic Animals",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Give two examples of transgenic animals.",answer:"Transgenic mice (widely used in disease and drug research) and transgenic cows (engineered to produce medically useful proteins in their milk).",explanation:"Other accepted examples: transgenic pigs (for organ research), transgenic goats (for pharmaceutical proteins).",importance:"must-know",tags:["transgenic animal examples"]},
+{id:48,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"How are transgenic animals used in the production of pharmaceuticals?",answer:"Transgenic animals (such as goats or cows) can be genetically engineered to carry a human gene for a useful protein (e.g. a hormone or clotting factor) so that the protein is secreted into their milk. This milk-derived protein can then be extracted and purified for use as a medicine, providing a large and renewable production source.",explanation:"This application is sometimes called 'pharming' (pharmaceutical + farming), though Grade 12 students only need the basic concept.",importance:"important",tags:["transgenic animal applications","pharmaceuticals"]},
+{id:49,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"How are transgenic animals useful in vaccine safety testing?",answer:"Transgenic animals can be engineered to carry human genes or receptors that make them respond to a pathogen or vaccine in a way similar to humans. This allows scientists to test the safety and effectiveness of new vaccines on these animals before human trials, reducing risk to human volunteers.",explanation:"This links transgenic animals back to the Vaccines topic as an application area.",importance:"important",tags:["transgenic animal applications","vaccine safety testing"]},
+{id:50,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"How are transgenic animals used in toxicity/chemical safety testing?",answer:"Transgenic animals engineered to be sensitive to particular chemicals, drugs, or carcinogens are used to test how those substances affect living tissue, helping researchers assess the safety of new drugs, cosmetics, or industrial chemicals before they are used by or released to humans.",explanation:"This reduces reliance on non-representative testing methods and helps predict human response more accurately.",importance:"important",tags:["transgenic animal applications","toxicity testing"]},
+{id:51,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"How do transgenic animals help in disease research and the study of gene function?",answer:"By inserting, disabling, or modifying a specific gene in an animal (e.g. transgenic mice), scientists can observe the resulting changes in the animal's development, physiology or susceptibility to disease. This helps researchers understand what that gene normally does and how diseases such as cancer or genetic disorders develop, which supports the search for treatments.",explanation:"Transgenic mice are the most widely used model animal for this purpose in Grade 12 syllabus context.",importance:"important",tags:["transgenic animal applications","disease research","gene function"]},
+{id:52,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"State two advantages and two limitations of producing transgenic animals.",answer:"Advantages: (1) Enables large-scale, renewable production of valuable biological products such as medicines; (2) Provides useful animal models for studying disease and gene function.\nLimitations: (1) The technique is technically difficult, costly and has a low success rate; (2) It raises ethical concerns about animal welfare and safety of released organisms into the environment.",explanation:"Balance advantages with limitations, as with organ transplantation-type advantage/disadvantage questions.",importance:"important",tags:["advantages","limitations","transgenic animals"]},
+{id:53,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"State two ethical concerns associated with transgenic animals.",answer:"1. Concerns about the welfare and suffering of animals that are genetically altered or used in repeated experiments.\n2. Concerns about unknown long-term effects if transgenic animals or their genes were to spread into wild populations or ecosystems.",explanation:"Ethical-concerns questions test awareness rather than deep technical knowledge.",importance:"practice",tags:["ethics","transgenic animals"]},
+{id:54,topic:"Transgenic Animals",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"What is meant by a 'foreign gene' in the context of transgenic animals?",answer:"A foreign gene is a gene taken from a different species (or an artificially engineered gene) that is deliberately inserted into the genome of a host animal, giving the resulting transgenic animal a new inheritable trait.",explanation:"The presence of a foreign gene is what defines an animal as 'transgenic'.",importance:"must-know",tags:["foreign gene","gene transfer"]},
+{id:55,topic:"Transgenic Animals",marks:4,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Give an account of transgenic animals, including their definition, production and applications.",answer:"Definition: A transgenic animal is one whose genome has been deliberately altered to carry a foreign gene using genetic engineering.\n\nProduction (brief): the desired gene is isolated, inserted into a fertilised egg or embryonic cell, and introduced into a host/surrogate animal, where it integrates and is expressed in the offspring.\n\nApplications: production of pharmaceuticals (e.g. proteins in milk), disease and gene-function research (e.g. transgenic mice), vaccine safety testing, and toxicity/chemical safety testing.",explanation:"A good 'combine everything' style answer for an 8-mark question if the full essay-style version is asked.",importance:"important",tags:["transgenic animal overview"]},
+{id:56,topic:"Transgenic Animals",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Why are transgenic mice particularly popular as research animals?",answer:"Transgenic mice reproduce quickly, are small and inexpensive to maintain, and share many genes and physiological processes with humans — making them convenient and informative models for studying gene function and human diseases.",explanation:"Practical/biological reasons make mice the most common transgenic research animal.",importance:"practice",tags:["transgenic mice"]},
+{id:57,topic:"Transgenic Animals",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Give one example of a useful product obtained from a transgenic cow.",answer:"A medically useful human protein (such as a clotting factor or hormone) secreted into the cow's milk, which can then be extracted and purified for pharmaceutical use.",explanation:"This is the classic 'pharming' example for transgenic cows/goats.",importance:"practice",tags:["transgenic cow","pharmaceuticals"]},
+{id:58,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB Model/Practice",year:"",label:"NEB Model/Practice Question",question:"List any four important vaccines used against human diseases and the disease each protects against.",answer:"1. BCG — Tuberculosis\n2. OPV (Oral Polio Vaccine) — Poliomyelitis\n3. DPT — Diphtheria, Pertussis (whooping cough), Tetanus\n4. Recombinant Hepatitis B vaccine — Hepatitis B",explanation:"Knowing these common vaccine–disease pairs helps with both MCQs and short-answer recall questions.",importance:"must-know",tags:["important vaccines","vaccine examples"]},
+{id:59,topic:"Organ Transplantation",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"Who is a 'donor' and who is a 'recipient' in organ transplantation?",answer:"The donor is the person who provides (gives) the healthy organ or tissue; the recipient is the person who receives the transplanted organ or tissue.",explanation:"Basic terminology often tested as a one-mark definitional MCQ or fill-in-the-blank.",importance:"must-know",tags:["donor","recipient"]},
+{id:60,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB-aligned Practice",year:"",label:"NEB-aligned Practice Question",question:"State one limitation/adverse effect that can occur after vaccination.",answer:"Mild fever, soreness or swelling at the injection site (rare serious allergic reactions can also occur, though uncommon).",explanation:"Most vaccine adverse effects are mild and temporary; serious reactions are rare, which is part of why vaccines are considered safe and effective.",importance:"practice",tags:["vaccine adverse reaction"]}
+];
+
+// ===================== DATA: MCQ BANK =====================
+const MCQS = [
+// ---- VACCINES (22) ----
+{id:1,topic:"Vaccines",difficulty:"Easy",q:"What is a vaccine?",options:["A drug that cures an existing infection","A preparation that stimulates immunity against a specific disease","A surgical procedure","An antibiotic"],correct:1,explain:"A vaccine is a biological preparation (antigen) that trains the immune system to protect against a specific disease, without causing the disease itself."},
+{id:2,topic:"Vaccines",difficulty:"Easy",q:"Which vaccine is used against tuberculosis?",options:["OPV","DPT","BCG","TT"],correct:2,explain:"BCG (Bacillus Calmette–Guérin) is the live attenuated vaccine used against tuberculosis."},
+{id:3,topic:"Vaccines",difficulty:"Easy",q:"Which of these is an example of a second-generation (recombinant) vaccine?",options:["Small pox vaccine","Salk's polio vaccine","Hepatitis B vaccine","BCG vaccine"],correct:2,explain:"The Hepatitis B vaccine is produced using recombinant DNA technology and is the classic example of a second-generation vaccine in the Grade 12 syllabus."},
+{id:4,topic:"Vaccines",difficulty:"Easy",q:"An antigen is best described as:",options:["A protein that destroys pathogens","A foreign substance that triggers an immune response","A type of white blood cell","A weakened virus only"],correct:1,explain:"An antigen is any substance the immune system recognises as foreign, triggering antibody production and other immune responses."},
+{id:5,topic:"Vaccines",difficulty:"Easy",q:"Antibodies are produced by:",options:["Red blood cells","B-lymphocytes (plasma cells)","Platelets","Skin cells"],correct:1,explain:"B-lymphocytes differentiate into plasma cells, which secrete antibodies specific to the antigen encountered."},
+{id:6,topic:"Vaccines",difficulty:"Medium",q:"Which type of vaccine uses a pathogen that is alive but has lost its disease-causing ability?",options:["Inactivated vaccine","Toxoid vaccine","Live attenuated vaccine","Subunit vaccine"],correct:2,explain:"A live attenuated vaccine contains a weakened but living pathogen — e.g. BCG, OPV."},
+{id:7,topic:"Vaccines",difficulty:"Medium",q:"Tetanus Toxoid (TT) vaccine is an example of which vaccine type?",options:["Live attenuated","Toxoid","Recombinant","Inactivated whole pathogen"],correct:1,explain:"TT is prepared from a chemically inactivated bacterial toxin, making it a toxoid vaccine."},
+{id:8,topic:"Vaccines",difficulty:"Medium",q:"Why does the recombinant Hepatitis B vaccine cause fewer adverse reactions?",options:["It contains a live weakened virus","It contains only a specific viral antigen, not the whole pathogen","It is given only once in a lifetime","It contains antibodies directly"],correct:1,explain:"Because only the HBsAg antigen is produced and used, there is far less foreign material to trigger unwanted reactions."},
+{id:9,topic:"Vaccines",difficulty:"Medium",q:"Which best describes active immunity?",options:["Ready-made antibodies are injected into the body","The body's own immune system produces antibodies after antigen exposure","Immunity passed from mother to foetus only","Immunity that lasts only a few weeks"],correct:1,explain:"Active immunity develops when the body's own immune system responds to an antigen (via infection or vaccination) and produces memory cells."},
+{id:10,topic:"Vaccines",difficulty:"Medium",q:"Passive immunity differs from active immunity mainly because it:",options:["Lasts much longer","Involves memory cell formation","Involves transfer of ready-made antibodies from an outside source","Only works against viruses"],correct:2,explain:"In passive immunity, antibodies are given directly (e.g. antiserum) rather than being produced by the recipient's own immune system, so protection is immediate but short-lived."},
+{id:11,topic:"Vaccines",difficulty:"Medium",q:"Salk's polio vaccine is an example of:",options:["Live attenuated vaccine","Inactivated (killed) vaccine","Toxoid vaccine","Recombinant vaccine"],correct:1,explain:"Salk's polio vaccine uses a chemically killed (inactivated) poliovirus."},
+{id:12,topic:"Vaccines",difficulty:"Medium",q:"The main purpose of vaccination is to:",options:["Cure an ongoing infection","Diagnose a disease","Prevent future bacterial and viral infections","Replace damaged tissue"],correct:2,explain:"Vaccination primes the immune system so future exposure to the real pathogen is prevented or minimised, not to treat an existing infection."},
+{id:13,topic:"Vaccines",difficulty:"Hard",q:"A vaccine prepared entirely from a specific antigen using recombinant DNA technology is classified as:",options:["First-generation vaccine","Second-generation vaccine","Toxoid vaccine","Whole-cell vaccine"],correct:1,explain:"Vaccines made using genetic engineering to produce a single antigen (e.g. Hepatitis B vaccine) are termed second-generation vaccines."},
+{id:14,topic:"Vaccines",difficulty:"Hard",q:"Which cells are responsible for the fast secondary immune response after re-exposure to a pathogen?",options:["Red blood cells","Memory cells (B and T lymphocytes)","Platelets","Epithelial cells"],correct:1,explain:"Memory cells formed after first exposure (or vaccination) allow a much faster, stronger response on re-exposure."},
+{id:15,topic:"Vaccines",difficulty:"Hard",q:"Which of the following is NOT a limitation of vaccination?",options:["Possible mild adverse reactions","Some vaccines need booster doses","Vaccines provide zero protection against any disease","Not all vaccines give 100% protection"],correct:2,explain:"Vaccines are not 100% risk-free or always fully protective, but claiming they provide 'zero protection' is false — they significantly reduce disease risk."},
+{id:16,topic:"Vaccines",difficulty:"Hard",q:"An antiserum used for passive immunization differs from a vaccine in that it contains:",options:["A live pathogen","Ready-made antibodies rather than antigen","Only a toxoid","Memory cells"],correct:1,explain:"Antiserum supplies antibodies directly; a vaccine supplies antigen so the body makes its own antibodies."},
+{id:17,topic:"Vaccines",difficulty:"Easy",q:"Which vaccine type is prepared from an inactivated bacterial toxin?",options:["Live attenuated","Toxoid","Subunit","Inactivated whole-cell"],correct:1,explain:"Toxoid vaccines (e.g. TT) are made from chemically inactivated toxins, not whole pathogens."},
+{id:18,topic:"Vaccines",difficulty:"Medium",q:"DPT vaccine protects against:",options:["Diphtheria, Pertussis, Tetanus","Diphtheria, Polio, Tuberculosis","Dengue, Pertussis, Typhoid","Diphtheria, Pneumonia, Tetanus"],correct:0,explain:"DPT stands for Diphtheria, Pertussis (whooping cough) and Tetanus."},
+{id:19,topic:"Vaccines",difficulty:"Easy",q:"OPV stands for:",options:["Oral Pertussis Vaccine","Oral Polio Vaccine","Organ Preservation Vaccine","Outer Protein Vaccine"],correct:1,explain:"OPV (Oral Polio Vaccine) is a live attenuated vaccine given orally against poliomyelitis."},
+{id:20,topic:"Vaccines",difficulty:"Medium",q:"Which of these best distinguishes a subunit vaccine from a whole-pathogen vaccine?",options:["It uses only a specific antigenic part of the pathogen","It uses the entire live pathogen","It never requires a booster","It cannot be produced using genetic engineering"],correct:0,explain:"Subunit vaccines use only a specific antigen/protein, unlike whole-pathogen (live attenuated or inactivated) vaccines."},
+{id:21,topic:"Vaccines",difficulty:"Hard",q:"Why is the Hepatitis B vaccine described as a 'second-generation' vaccine while BCG is 'first-generation'?",options:["Hepatitis B vaccine was discovered before BCG","BCG uses whole pathogen technology while Hepatitis B vaccine uses recombinant antigen technology","BCG is injected while Hepatitis B vaccine is oral","There is no real difference between them"],correct:1,explain:"First-generation vaccines use whole (live or killed) pathogens; second-generation vaccines use genetically engineered specific antigens."},
+{id:22,topic:"Vaccines",difficulty:"Medium",q:"A newborn receiving antibodies through the mother's breast milk is an example of:",options:["Active natural immunity","Passive natural immunity","Active artificial immunity","Passive artificial immunity"],correct:1,explain:"Antibodies transferred naturally from mother to infant (via placenta or breast milk) is passive natural immunity."},
+// ---- ORGAN TRANSPLANTATION (22) ----
+{id:23,topic:"Organ Transplantation",difficulty:"Easy",q:"A transplant between two genetically identical individuals is called:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:1,explain:"Isograft = transplant between genetically identical individuals, such as identical twins."},
+{id:24,topic:"Organ Transplantation",difficulty:"Easy",q:"A transplant between two genetically different individuals of the same species is called:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:2,explain:"Allograft = transplant between genetically different individuals of the same species — the most common human transplant type."},
+{id:25,topic:"Organ Transplantation",difficulty:"Easy",q:"A transplant from one part of a person's body to another part of the same person is called:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:0,explain:"Autograft = tissue moved from one site to another within the same individual, e.g. a skin graft."},
+{id:26,topic:"Organ Transplantation",difficulty:"Easy",q:"A transplant between two different species is called:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:3,explain:"Xenograft (heterograft) = transplant between individuals of different species."},
+{id:27,topic:"Organ Transplantation",difficulty:"Medium",q:"Which organ transplant has comparatively the least rejection problem?",options:["Kidney","Heart","Cornea","Liver"],correct:2,explain:"The cornea is avascular and immune-privileged, so rejection is much less common than in vascularised organs."},
+{id:28,topic:"Organ Transplantation",difficulty:"Medium",q:"Organ rejection occurs mainly because:",options:["The donor organ is too small","The recipient's immune system recognises the graft as foreign","The surgery was performed incorrectly","The organ stops functioning naturally with age"],correct:1,explain:"Rejection is an immune response against antigens on the donor tissue that differ from the recipient's own antigens."},
+{id:29,topic:"Organ Transplantation",difficulty:"Medium",q:"Which of the following helps reduce the chance of organ rejection?",options:["Using unmatched donor tissue","Immunosuppressive drugs","Avoiding all medication after surgery","Removing the recipient's white blood cells permanently"],correct:1,explain:"Immunosuppressive drugs reduce the recipient's immune response against the graft, lowering rejection risk."},
+{id:30,topic:"Organ Transplantation",difficulty:"Medium",q:"Tissue/HLA matching before transplantation is done to:",options:["Increase the surgery cost","Reduce genetic difference detected by the immune system","Speed up the surgical procedure only","Avoid the need for a donor"],correct:1,explain:"Close matching lowers the antigenic difference between donor and recipient tissue, reducing rejection risk."},
+{id:31,topic:"Organ Transplantation",difficulty:"Easy",q:"The person who provides an organ for transplantation is called the:",options:["Recipient","Donor","Surgeon","Host"],correct:1,explain:"The donor gives the organ; the recipient receives it."},
+{id:32,topic:"Organ Transplantation",difficulty:"Medium",q:"Which of the following graft types carries the HIGHEST risk of rejection?",options:["Autograft","Isograft","Allograft","Xenograft"],correct:3,explain:"Xenograft, between different species, involves the greatest genetic difference and thus the highest rejection risk."},
+{id:33,topic:"Organ Transplantation",difficulty:"Medium",q:"Which of the following graft types carries essentially NO rejection risk?",options:["Autograft","Allograft","Xenograft","Heterograft"],correct:0,explain:"In an autograft, donor and recipient are the same individual, so there is no genetic mismatch."},
+{id:34,topic:"Organ Transplantation",difficulty:"Hard",q:"A pig heart valve used in a human patient is an example of:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:3,explain:"Because the donor (pig) and recipient (human) are different species, this is a xenograft."},
+{id:35,topic:"Organ Transplantation",difficulty:"Hard",q:"Identical twin kidney donation is an example of:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:1,explain:"Identical twins are genetically identical, so a transplant between them is an isograft."},
+{id:36,topic:"Organ Transplantation",difficulty:"Hard",q:"Which statement about cornea transplantation is most accurate?",options:["Rejection is completely impossible","Rejection risk is comparatively lower because the cornea is avascular and immune-privileged","Cornea transplants always fail","The cornea requires the same matching as kidney transplants"],correct:1,explain:"Rejection is less likely, not impossible, due to the cornea's avascular, immune-privileged nature."},
+{id:37,topic:"Organ Transplantation",difficulty:"Medium",q:"Which is a disadvantage of organ transplantation?",options:["It always cures the patient with no risk","Lifelong immunosuppressive therapy may be needed, increasing infection risk","It requires no donor organ","It never involves surgery"],correct:1,explain:"A key disadvantage is the need for ongoing immunosuppression, which raises infection susceptibility."},
+{id:38,topic:"Organ Transplantation",difficulty:"Easy",q:"A skin graft taken from a burn patient's own thigh to cover a burnt area on their arm is an example of:",options:["Autograft","Isograft","Allograft","Xenograft"],correct:0,explain:"Since donor and recipient are the same person, this is an autograft."},
+{id:39,topic:"Organ Transplantation",difficulty:"Medium",q:"Which of these is the most commonly transplanted solid organ in humans?",options:["Kidney","Pancreas","Lung","Spleen"],correct:0,explain:"The kidney is the most frequently transplanted solid organ worldwide."},
+{id:40,topic:"Organ Transplantation",difficulty:"Medium",q:"What is a major advantage of organ transplantation?",options:["It eliminates the need for any medical follow-up","It can save or significantly extend a patient's life","It guarantees no side effects","It is required for every illness"],correct:1,explain:"Replacing a failed organ with a healthy one can save the patient's life and greatly improve function."},
+{id:41,topic:"Organ Transplantation",difficulty:"Hard",q:"'Heterograft' is another name for which type of graft?",options:["Autograft","Isograft","Allograft","Xenograft"],correct:3,explain:"Heterograft and xenograft both refer to transplantation between different species."},
+{id:42,topic:"Organ Transplantation",difficulty:"Medium",q:"Which of the following is NOT typically a method used to reduce transplant rejection?",options:["Tissue/HLA matching","Immunosuppressive drugs","Randomly selecting any available donor without matching","Careful donor-recipient compatibility screening"],correct:2,explain:"Randomly selecting an unmatched donor increases, rather than reduces, rejection risk."},
+{id:43,topic:"Organ Transplantation",difficulty:"Easy",q:"Tissue transplantation most commonly refers to the transfer of tissues such as:",options:["Skin and cornea","Blood plasma only","Bone marrow gas exchange","Muscle contraction signals"],correct:0,explain:"Skin and cornea are among the most commonly transplanted tissues."},
+{id:44,topic:"Organ Transplantation",difficulty:"Hard",q:"Why might immunosuppressive drugs, despite preventing rejection, be considered a drawback?",options:["They cure the underlying disease completely","They increase the patient's risk of infections","They are always free of cost","They eliminate the need for any donor matching"],correct:1,explain:"By suppressing the immune system generally, these drugs also reduce the body's ability to fight infections."},
+// ---- TRANSGENIC ANIMALS (22) ----
+{id:45,topic:"Transgenic Animals",difficulty:"Easy",q:"A transgenic animal is an animal that:",options:["Has been selectively bred over generations","Carries a foreign gene deliberately inserted into its genome","Has been cloned from another animal","Was produced through IVF only"],correct:1,explain:"A transgenic animal's genome has been deliberately altered to carry a gene from another organism."},
+{id:46,topic:"Transgenic Animals",difficulty:"Easy",q:"GMO stands for:",options:["Genetically Modified Organism","General Medical Organism","Gene Mapping Outcome","Genetic Mutation Origin"],correct:0,explain:"GMO = Genetically Modified Organism, any organism whose DNA has been artificially altered."},
+{id:47,topic:"Transgenic Animals",difficulty:"Easy",q:"Which of these is a commonly used transgenic research animal?",options:["Transgenic mice","Wild deer","Ordinary house cats","Untouched farm chickens"],correct:0,explain:"Transgenic mice are the most widely used animal model in genetic and disease research."},
+{id:48,topic:"Transgenic Animals",difficulty:"Medium",q:"The result of In-vitro fertilization (IVF) is the production of a:",options:["Hybrid animal","Transgenic animal","Test-tube baby","Cloned animal"],correct:2,explain:"IVF produces a 'test-tube baby' — fertilization occurs outside the body, but no foreign gene is inserted, so it is NOT a transgenic animal."},
+{id:49,topic:"Transgenic Animals",difficulty:"Medium",q:"Which statement correctly distinguishes IVF from transgenic animal production?",options:["They are exactly the same process","IVF involves fertilization outside the body; transgenic animal production involves inserting a foreign gene","IVF always produces transgenic offspring","Transgenic animals can only be produced through IVF"],correct:1,explain:"IVF is about where fertilization happens; making a transgenic animal is about deliberately adding a foreign gene — the two concepts are unrelated procedures."},
+{id:50,topic:"Transgenic Animals",difficulty:"Medium",q:"A transgenic cow engineered to produce a human protein in its milk is an example of using transgenic animals for:",options:["Toxicity testing","Pharmaceutical (protein) production","Vaccine testing only","Ethical research bans"],correct:1,explain:"This is the 'pharming' application — producing medically useful proteins via transgenic animal milk."},
+{id:51,topic:"Transgenic Animals",difficulty:"Medium",q:"Transgenic mice are especially useful in research because they:",options:["Are very large and slow to reproduce","Reproduce quickly, are inexpensive, and share many genes with humans","Cannot carry any foreign gene","Have no similarity to human physiology"],correct:1,explain:"These practical and biological features make mice the most common transgenic model organism."},
+{id:52,topic:"Transgenic Animals",difficulty:"Hard",q:"Which of the following best describes the first step in producing a transgenic animal?",options:["Introducing the finished animal into the wild","Isolating the desired gene from a donor organism","Immediately breeding two normal animals","Randomly selecting an adult animal for injection"],correct:1,explain:"Gene isolation is the first step before insertion into a vector/embryonic cell and introduction into a host animal."},
+{id:53,topic:"Transgenic Animals",difficulty:"Medium",q:"Transgenic animals are useful for vaccine safety testing because they can be engineered to:",options:["Be completely immune to all disease","Respond to a pathogen/vaccine similarly to humans","Never require any testing","Replace the need for vaccines altogether"],correct:1,explain:"Engineering animals to mimic human-like responses allows safer preliminary testing before human trials."},
+{id:54,topic:"Transgenic Animals",difficulty:"Medium",q:"Which of the following is a limitation of producing transgenic animals?",options:["It is simple, fast and always successful","It is technically difficult, costly, and has a low success rate","It requires no gene isolation","It cannot be used for any research"],correct:1,explain:"Producing transgenic animals is technically demanding, expensive, and inefficient in terms of success rate."},
+{id:55,topic:"Transgenic Animals",difficulty:"Hard",q:"An ethical concern specifically associated with transgenic animals is:",options:["They cost nothing to produce","Potential animal welfare issues and unknown ecological effects if released","They are identical to normal animals in every way","There are no concerns at all"],correct:1,explain:"Welfare of genetically altered animals and possible ecological impact are commonly cited ethical concerns."},
+{id:56,topic:"Transgenic Animals",difficulty:"Easy",q:"Every transgenic animal is:",options:["A GMO","A hybrid animal","A cloned animal","A test-tube baby"],correct:0,explain:"Since its genome has been artificially altered, a transgenic animal is always a type of GMO."},
+{id:57,topic:"Transgenic Animals",difficulty:"Medium",q:"Which of these is NOT typically an application of transgenic animals?",options:["Production of pharmaceuticals","Disease/gene-function research","Toxicity testing","Curing the common cold instantly in humans"],correct:3,explain:"Transgenic animals are research and production tools; they are not a direct instant cure for human illness."},
+{id:58,topic:"Transgenic Animals",difficulty:"Medium",q:"A 'foreign gene' in a transgenic animal refers to a gene that:",options:["Is naturally present in that species only","Has been deliberately introduced from another species or engineered source","Cannot be inherited by offspring","Is always harmful to the animal"],correct:1,explain:"The defining feature of a transgenic animal is the deliberate insertion of a gene not naturally present in that individual/species."},
+{id:59,topic:"Transgenic Animals",difficulty:"Hard",q:"Which best explains why not every GMO is a transgenic animal?",options:["GMOs can only be plants","GMO is a broader category that also includes genetically modified plants and microbes, not just animals","Transgenic animals are not genetically modified","There is no relationship between the two terms"],correct:1,explain:"Transgenic animal is a specific type of GMO limited to animals carrying a foreign gene; GMOs also include modified plants and microorganisms."},
+{id:60,topic:"Transgenic Animals",difficulty:"Medium",q:"Which application uses transgenic animals to assess how safe a new drug or chemical is?",options:["Toxicity/chemical safety testing","Organ transplantation","Vaccination scheduling","Blood typing"],correct:0,explain:"Transgenic animals sensitive to certain substances are used to predict human safety responses to new drugs/chemicals."},
+{id:61,topic:"Transgenic Animals",difficulty:"Easy",q:"Which of these is an example product obtained using a transgenic animal?",options:["A human clotting factor secreted in milk","An antibiotic grown in soil","A synthetic plastic","A mined mineral"],correct:0,explain:"Transgenic goats/cows can secrete human therapeutic proteins, such as clotting factors, in their milk."},
+{id:62,topic:"Transgenic Animals",difficulty:"Medium",q:"Studying gene function by inserting or disabling a specific gene in an animal is an example of using transgenic animals for:",options:["Vaccine manufacturing only","Disease and gene-function research","Organ transplantation matching","Passive immunity transfer"],correct:1,explain:"Observing how an animal changes when a gene is added or disabled reveals what that gene normally does."},
+{id:63,topic:"Transgenic Animals",difficulty:"Hard",q:"Why is it scientifically incorrect to call IVF-produced offspring 'transgenic animals'?",options:["IVF offspring never survive","IVF does not involve introducing a foreign gene into the genome","Transgenic animals cannot reproduce via IVF","IVF is identical to gene cloning"],correct:1,explain:"IVF only changes WHERE fertilization occurs, not the genome itself — no foreign gene is added, so the offspring is not transgenic."},
+{id:64,topic:"Transgenic Animals",difficulty:"Easy",q:"Which term describes an animal whose genome contains a gene transferred from a different species?",options:["Hybrid animal","Transgenic animal","Wild-type animal","Cross-bred animal"],correct:1,explain:"By definition, a transgenic animal carries a gene transferred from another species or source."},
+{id:65,topic:"Transgenic Animals",difficulty:"Medium",q:"The introduction of a modified embryonic cell/egg into a surrogate/host animal is a step in:",options:["Vaccine production","Transgenic animal production","Organ transplantation","Passive immunization"],correct:1,explain:"This is one of the key steps in the standard process for producing a transgenic animal."},
+{id:66,topic:"Transgenic Animals",difficulty:"Hard",q:"Which of the following animals is genetically engineered mainly for organ/tissue research relevant to xenotransplantation?",options:["Transgenic pigs","Ordinary house sparrows","Wild elephants","Untouched garden snails"],correct:0,explain:"Transgenic pigs are engineered in some research contexts to study organ compatibility for possible xenotransplantation."}
+];
+
+// ===================== DATA: FLASHCARDS =====================
+const FLASHCARDS = [
+// Vaccines
+{id:1,topic:"Vaccines",front:"What is a vaccine?",back:"A preparation containing an antigen (weakened/killed pathogen or specific protein) that stimulates active immunity against a disease."},
+{id:2,topic:"Vaccines",front:"What is an antigen?",back:"Any foreign substance capable of triggering an immune response, including antibody production."},
+{id:3,topic:"Vaccines",front:"What is an antibody?",back:"A protein (immunoglobulin) produced by plasma cells that binds specifically to an antigen."},
+{id:4,topic:"Vaccines",front:"Live attenuated vaccine — definition + example",back:"Contains a weakened but living pathogen. Example: BCG (tuberculosis)."},
+{id:5,topic:"Vaccines",front:"Inactivated (killed) vaccine — definition + example",back:"Contains a pathogen killed by heat/chemicals. Example: Salk's polio vaccine."},
+{id:6,topic:"Vaccines",front:"Toxoid vaccine — definition + example",back:"Contains a chemically inactivated bacterial toxin. Example: Tetanus Toxoid (TT)."},
+{id:7,topic:"Vaccines",front:"Subunit/recombinant vaccine — definition + example",back:"Contains only a specific antigen, often made by recombinant DNA technology. Example: Hepatitis B vaccine."},
+{id:8,topic:"Vaccines",front:"Active immunity vs passive immunity",back:"Active: body makes its own antibodies (slow onset, long-lasting, memory formed). Passive: ready-made antibodies given from outside (fast, short-lived, no memory)."},
+{id:9,topic:"Vaccines",front:"Vaccine vs antiserum",back:"Vaccine = antigen given, body makes antibodies (active immunity). Antiserum = ready-made antibodies given directly (passive immunity)."},
+{id:10,topic:"Vaccines",front:"Why is the Hepatitis B vaccine called a second-generation vaccine?",back:"Because it is produced by recombinant DNA technology and contains only the specific HBsAg antigen, not the whole pathogen."},
+{id:11,topic:"Vaccines",front:"What are memory cells?",back:"Long-lived B and T lymphocytes formed after first antigen exposure that enable a fast, strong response on re-exposure."},
+{id:12,topic:"Vaccines",front:"BCG vaccine protects against...",back:"Tuberculosis (TB)."},
+// Organ Transplantation
+{id:13,topic:"Organ Transplantation",front:"Autograft",back:"Transplant from one part of an individual's body to another part of the same individual."},
+{id:14,topic:"Organ Transplantation",front:"Isograft",back:"Transplant between two genetically identical individuals (e.g. identical twins)."},
+{id:15,topic:"Organ Transplantation",front:"Allograft",back:"Transplant between two genetically different individuals of the same species."},
+{id:16,topic:"Organ Transplantation",front:"Xenograft (heterograft)",back:"Transplant between individuals of two different species."},
+{id:17,topic:"Organ Transplantation",front:"Which graft type has essentially no rejection risk?",back:"Autograft — donor and recipient are the same person."},
+{id:18,topic:"Organ Transplantation",front:"Which graft type has the highest rejection risk?",back:"Xenograft — donor and recipient are different species."},
+{id:19,topic:"Organ Transplantation",front:"Why does organ rejection occur?",back:"The recipient's immune system recognises donor tissue antigens (MHC/HLA) as foreign and attacks the graft."},
+{id:20,topic:"Organ Transplantation",front:"Two ways to reduce transplant rejection",back:"Tissue/HLA matching between donor and recipient, and use of immunosuppressive drugs."},
+{id:21,topic:"Organ Transplantation",front:"Why is cornea transplantation comparatively easier?",back:"The cornea is avascular (no blood supply) and immune-privileged, so it has less contact with immune cells — rejection risk is lower (not zero)."},
+{id:22,topic:"Organ Transplantation",front:"Donor vs Recipient",back:"Donor = person who gives the organ. Recipient = person who receives the organ."},
+{id:23,topic:"Organ Transplantation",front:"One advantage of organ transplantation",back:"It can save or significantly extend a patient's life by replacing a failed organ."},
+{id:24,topic:"Organ Transplantation",front:"One disadvantage of organ transplantation",back:"Risk of organ rejection, and lifelong immunosuppressive therapy may be needed, raising infection risk."},
+{id:25,topic:"Organ Transplantation",front:"Most commonly transplanted solid organ in humans",back:"Kidney."},
+// Transgenic Animals
+{id:26,topic:"Transgenic Animals",front:"Transgenic animal — definition",back:"An animal whose genome carries a gene deliberately introduced from another species or an engineered source."},
+{id:27,topic:"Transgenic Animals",front:"GMO — definition",back:"Any organism whose genome has been artificially altered using genetic engineering."},
+{id:28,topic:"Transgenic Animals",front:"GMO vs transgenic animal",back:"GMO is a broad term for any genetically engineered organism (plant, animal or microbe); a transgenic animal is specifically an animal carrying a foreign gene."},
+{id:29,topic:"Transgenic Animals",front:"Give two examples of transgenic animals",back:"Transgenic mice (research) and transgenic cows (produce medical proteins in milk)."},
+{id:30,topic:"Transgenic Animals",front:"IVF vs transgenic animal production",back:"IVF = fertilization outside the body, resulting in a 'test-tube baby' — no foreign gene involved. Transgenic animal production = deliberate insertion of a foreign gene into the genome."},
+{id:31,topic:"Transgenic Animals",front:"What is a 'foreign gene'?",back:"A gene taken from another species (or engineered) and deliberately inserted into a host animal's genome."},
+{id:32,topic:"Transgenic Animals",front:"One application of transgenic animals",back:"Production of pharmaceuticals — e.g. human proteins secreted in a transgenic cow/goat's milk."},
+{id:33,topic:"Transgenic Animals",front:"Why are transgenic mice commonly used in research?",back:"They reproduce quickly, are inexpensive, and share many genes/physiological processes with humans."},
+{id:34,topic:"Transgenic Animals",front:"One limitation of producing transgenic animals",back:"The technique is technically difficult, costly, and has a low success rate."},
+{id:35,topic:"Transgenic Animals",front:"First step in producing a transgenic animal",back:"Isolating the desired gene from a donor organism."}
+];
+
+// ===================== EXTRA ADVANCED CONTENT (merged from uploaded Applied Zoology reference) =====================
+QUESTIONS.push(
+{id:61,topic:"Vaccines",marks:1,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"Define vaccine and vaccination.",answer:"Vaccine: a biological preparation containing antigenic proteins, weakened (attenuated) live pathogens, or inactivated microorganisms, given orally or by injection to stimulate immune memory and antibody production.\nVaccination: the administrative process of introducing such a preparation into the body to induce active immunity against a specific disease.",explanation:"A precise textbook-level definition — useful for 1-mark 'define' questions.",importance:"very-important",tags:["vaccine definition","vaccination"]},
+{id:62,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"Explain the historical contribution of Edward Jenner and Louis Pasteur to immunology.",answer:"Edward Jenner (1796): observed that milkmaids exposed to cowpox did not catch smallpox; he inoculated a boy with cowpox fluid and showed it protected against smallpox — the foundation of vaccination.\nLouis Pasteur (1885): coined the term 'vaccine' (from Latin vacca = cow, honouring Jenner) and developed the first rabies and anthrax vaccines using pathogen attenuation.",explanation:"A frequently useful 'history of immunology' answer for 2-mark questions.",importance:"important",tags:["jenner","pasteur","history of vaccination"]},
+{id:63,topic:"Vaccines",marks:2,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"Differentiate between natural and artificial active/passive immunity with one example each.",answer:"Natural active: acquired by actually recovering from an infection (e.g. lifelong immunity after chickenpox).\nArtificial active: induced by vaccination (e.g. BCG, MMR).\nNatural passive: maternal antibodies crossing the placenta (IgG) or passed through colostrum/breast milk (IgA).\nArtificial passive: injection of a ready-made antiserum, e.g. anti-tetanus serum (ATS) or snake-bite antivenin.",explanation:"An advanced sub-classification of active/passive immunity, useful for higher-order 'differentiate' questions.",importance:"very-important",tags:["active immunity","passive immunity","antiserum"]},
+{id:64,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"What is Cyclosporine A? State its role in organ transplantation.",answer:"Cyclosporine A is an immunosuppressive drug obtained from the soil fungus Tolypocladium inflatum. It blocks the calcineurin pathway inside T-lymphocytes, preventing interleukin-2 (IL-2) production, which in turn suppresses T-cell activation and reduces the chance of allograft rejection.",explanation:"Other immunosuppressants used similarly include Tacrolimus, corticosteroids and Azathioprine.",importance:"very-important",tags:["cyclosporine a","immunosuppressive drug","rejection prevention"]},
+{id:65,topic:"Organ Transplantation",marks:2,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"Why is corneal grafting highly successful in humans without heavy immunosuppressant use?",answer:"The cornea is an immunologically privileged site because it is completely avascular (has no blood or lymphatic vessels), so the immune cells and antibodies responsible for rejection cannot easily reach the graft. A blood–aqueous barrier and immune-tolerance-promoting factors (such as TGF-β) in the aqueous humor further reduce rejection risk.",explanation:"Corneal transplants achieve very high success rates compared to vascularised organ transplants for this reason.",importance:"very-important",tags:["cornea transplant","immune privilege","avascular"]},
+{id:66,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"Describe the landmark 1982 transgenic mouse experiment by Palmiter and Brinster.",answer:"In December 1982, Richard Palmiter and Ralph Brinster fused the human growth hormone (hGH) gene with the promoter of the mouse metallothionein-1 (MT-1) gene and microinjected this construct into fertilised mouse zygotes. The resulting transgenic mice expressed elevated growth hormone and grew to almost double the size of normal control mice — the first widely cited transgenic animal experiment.",explanation:"This is the most frequently cited historical transgenic-animal example in Applied Biology.",importance:"very-important",tags:["palmiter and brinster","transgenic mice","growth hormone gene"]},
+{id:67,topic:"Transgenic Animals",marks:2,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology",question:"What is 'Rosie' the transgenic cow? What was special about her milk?",answer:"Rosie (1997) was the first transgenic cow produced by inserting the human gene for alpha-lactalbumin into the bovine genome. Her milk contained about 2.4 g/L of human alpha-lactalbumin, making it more nutritionally complete for human infants compared with ordinary cow milk.",explanation:"A concrete, memorable example of transgenic-animal 'biopharming' for milk-based protein production.",importance:"very-important",tags:["rosie cow","transgenic cow","biopharming"]},
+{id:68,topic:"Transgenic Animals",marks:4,type:"Short Answer",source:"NEB Textbook — Applied Biology",year:"",label:"NEB Textbook — Applied Biology — [1+3]",question:"Define transgenesis. Describe three methods used to introduce a foreign gene into animal embryos.",answer:"Transgenesis (1): the technique of introducing a functional foreign gene (transgene) into an animal's genome using recombinant DNA technology.\n\nMethods (3):\n1. DNA microinjection — the foreign DNA is injected directly into the pronucleus of a fertilised single-cell zygote using a fine glass needle; the zygote is then implanted into a surrogate mother.\n2. Retroviral vector transfer — a replication-deficient retrovirus carrying the transgene infects early embryonic cells so the gene integrates into the host genome.\n3. Embryonic stem (ES) cell method — the foreign gene is introduced into cultured embryonic stem cells (e.g. by electroporation); cells confirmed to carry the gene are injected into a host blastocyst to produce transgenic offspring.",explanation:"This mirrors, at Grade 12 depth, the simplified 'isolation → insertion → introduction → integration' flow used for the basic transgenic-animal production question.",importance:"very-important",tags:["transgenesis","dna microinjection","gene transfer methods"]}
+);
+
+MCQS.push(
+{id:67,topic:"Vaccines",difficulty:"Hard",q:"Who coined the term 'Vaccine' (from Latin vacca, meaning cow) in 1885?",options:["Edward Jenner","Louis Pasteur","Alexander Fleming","Robert Koch"],correct:1,explain:"Louis Pasteur coined the term 'vaccine' in honour of Jenner's cowpox work, and developed the rabies and anthrax vaccines."},
+{id:68,topic:"Vaccines",difficulty:"Hard",q:"Recombinant Hepatitis B vaccine antigen (HBsAg) is typically expressed in which host cells?",options:["Escherichia coli","Saccharomyces cerevisiae (yeast)","Bacillus subtilis","Human liver cells directly"],correct:1,explain:"HBsAg for the recombinant Hepatitis B vaccine is commonly expressed in yeast (Saccharomyces cerevisiae) cells engineered with the viral gene."},
+{id:69,topic:"Vaccines",difficulty:"Medium",q:"Anti-tetanus serum (ATS) given after a wound provides which type of immunity?",options:["Natural active","Natural passive","Artificial passive","Artificial active"],correct:2,explain:"ATS supplies ready-made antibodies from an external source, giving immediate but short-lived artificial passive immunity."},
+{id:70,topic:"Transgenic Animals",difficulty:"Hard",q:"In the 1982 Palmiter–Brinster experiment, the human growth hormone gene was fused with the promoter of which mouse gene?",options:["Insulin gene","Metallothionein-1 (MT-1) gene","Haemoglobin gene","Lactalbumin gene"],correct:1,explain:"The hGH gene was fused with the mouse metallothionein-1 (MT-1) promoter and microinjected into mouse zygotes."},
+{id:71,topic:"Transgenic Animals",difficulty:"Medium",q:"The transgenic cow 'Rosie' produced milk enriched with which human protein?",options:["Insulin","Alpha-lactalbumin","Growth hormone","Clotting factor IX"],correct:1,explain:"Rosie's milk contained about 2.4 g/L of human alpha-lactalbumin."},
+{id:72,topic:"Transgenic Animals",difficulty:"Medium",q:"Transgenic salmon carrying an extra growth hormone gene typically reach approximately what size compared to normal fish?",options:["Half the size","The same size","About double the size","Ten times the size"],correct:2,explain:"Growth-hormone transgenic fish can grow to roughly double the size of non-transgenic fish."},
+{id:73,topic:"Organ Transplantation",difficulty:"Medium",q:"A graft transferred between genetically identical monozygotic twins is termed:",options:["Autograft","Isograft (syngeneic graft)","Allograft","Xenograft"],correct:1,explain:"Isograft (syngeneic graft) occurs between genetically identical individuals such as identical twins."},
+{id:74,topic:"Organ Transplantation",difficulty:"Hard",q:"Cyclosporine A, an immunosuppressive drug used to prevent transplant rejection, is naturally obtained from which organism?",options:["A soil bacterium","The soil fungus Tolypocladium inflatum","A marine sponge","A genetically modified yeast"],correct:1,explain:"Cyclosporine A is derived from the soil fungus Tolypocladium inflatum and blocks T-cell activation."},
+{id:75,topic:"Organ Transplantation",difficulty:"Medium",q:"Corneal transplants are unusually successful mainly because the cornea is:",options:["Rich in blood vessels","Completely avascular (no blood/lymph vessels)","Made of bone tissue","Located outside the immune system's reach entirely with zero rejection ever"],correct:1,explain:"Because the cornea lacks blood and lymphatic vessels, immune cells have very limited access to it, greatly lowering (not eliminating) rejection risk."},
+{id:76,topic:"Vaccines",difficulty:"Medium",q:"Which of the following best describes a toxoid vaccine?",options:["A live weakened pathogen","A bacterial exotoxin inactivated with formalin, used to trigger antitoxin antibodies","A pure antigen made by recombinant DNA technology only","Ready-made antibodies injected into the body"],correct:1,explain:"Toxoid vaccines are made by formalin-treating a bacterial exotoxin so it is no longer toxic but still stimulates antitoxin antibody production, e.g. Tetanus Toxoid."}
+);
+
+FLASHCARDS.push(
+{id:36,topic:"Vaccines",front:"Who discovered smallpox vaccination, and how?",back:"Edward Jenner (1796) — inoculated a boy with cowpox fluid from milkmaids' lesions and showed it protected against smallpox."},
+{id:37,topic:"Vaccines",front:"Who coined the term 'vaccine' and when?",back:"Louis Pasteur, in 1885 — from Latin 'vacca' (cow), honouring Jenner's work; also developed the rabies and anthrax vaccines."},
+{id:38,topic:"Vaccines",front:"Natural passive immunity — example",back:"Maternal IgG crossing the placenta, or IgA passed through breast milk/colostrum to a newborn."},
+{id:39,topic:"Vaccines",front:"Artificial passive immunity — example",back:"Injection of a ready-made antiserum, e.g. anti-tetanus serum (ATS) or snake-bite antivenin."},
+{id:40,topic:"Organ Transplantation",front:"What is Cyclosporine A and where does it come from?",back:"An immunosuppressive drug from the soil fungus Tolypocladium inflatum; blocks IL-2 production and T-cell activation to prevent rejection."},
+{id:41,topic:"Organ Transplantation",front:"Why is the cornea 'immunologically privileged'?",back:"It is completely avascular (no blood/lymph vessels), so immune cells and antibodies have very limited access to attack the graft."},
+{id:42,topic:"Transgenic Animals",front:"What did Palmiter & Brinster achieve in 1982?",back:"Created the first widely-cited transgenic 'super mice' by fusing the human growth hormone gene with a mouse MT-1 promoter — mice grew to nearly double normal size."},
+{id:43,topic:"Transgenic Animals",front:"Who was 'Rosie' and why is she significant?",back:"Rosie (1997) was the first transgenic cow, engineered to secrete human alpha-lactalbumin (~2.4 g/L) in her milk."},
+{id:44,topic:"Transgenic Animals",front:"Three methods of introducing a foreign gene into an animal embryo",back:"DNA microinjection into the zygote pronucleus; retroviral vector transfer into early embryonic cells; embryonic stem (ES) cell method via cultured stem cells."},
+{id:45,topic:"Transgenic Animals",front:"How much bigger do growth-hormone transgenic fish typically grow?",back:"Roughly double (2×) the size of normal, non-transgenic fish."}
+);
+
+// ===================== APP STATE & UTILITIES =====================
+const IMP_META = {
+  "very-important":{label:"VERY IMPORTANT",icon:"🔥",cls:"imp-veryimportant"},
+  "important":{label:"IMPORTANT",icon:"⭐",cls:"imp-important"},
+  "must-know":{label:"MUST KNOW",icon:"📘",cls:"imp-mustknow"},
+  "practice":{label:"PRACTICE",icon:"📝",cls:"imp-practice"}
+};
+const TOPIC_ICON = {"Vaccines":"🧪","Organ Transplantation":"🫀","Transgenic Animals":"🧬"};
+const SOURCE_LIST = ["All","NEB Past Question","User-provided Asmita's Question Bank","NEB Textbook — Applied Biology","NEB Model/Practice","NEB-aligned Practice"];
+
+function loadState(){
+  return {
+    theme: localStorage.getItem('dsscp_theme') || 'light',
+    bookmarks: JSON.parse(localStorage.getItem('dsscp_bookmarks')||'[]'),
+    learned: JSON.parse(localStorage.getItem('dsscp_learned')||'[]'),
+    stats: JSON.parse(localStorage.getItem('dsscp_stats')||'{"tests":0,"scores":[],"correctTotal":0,"wrongTotal":0}'),
+    wrong: JSON.parse(localStorage.getItem('dsscp_wrong')||'[]')
+  };
+}
+let STATE = loadState();
+function persist(key,val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function nl2br(s){ return (s||'').replace(/\n/g,'<br>'); }
+
+let currentPage = 'home';
+let mcqSession = null; // {items, idx, answers, topic, difficulty}
+let flashIndex = 0, flashFilterTopic = 'All', flashOrder = [];
+
+// ===================== NAVIGATION =====================
+function navigate(page){
+  currentPage = page;
+  document.querySelectorAll('#primaryNav a, #mobileNav a').forEach(a=>{
+    a.classList.toggle('active', a.dataset.nav===page);
+  });
+  document.getElementById('mobileNav').classList.remove('open');
+  closeSearch();
+  const renderers = {
+    home:renderHome, learn:renderLearn, questions:renderQuestions, mcq:renderMCQHome,
+    important:renderImportant, flashcards:renderFlashcards, revision:renderRevision,
+    progress:renderProgress, saved:renderSaved
+  };
+  document.getElementById('mainArea').innerHTML = `<div class="page active" id="pageWrap">${renderers[page] ? renderers[page]() : renderHome()}</div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+  afterRender(page);
+}
+document.addEventListener('click', e=>{
+  const nav = e.target.closest('[data-nav]');
+  if(nav){ e.preventDefault(); navigate(nav.dataset.nav); }
+});
+document.getElementById('hamBtn').addEventListener('click', ()=>document.getElementById('mobileNav').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', ()=>document.getElementById('mobileNav').classList.remove('open'));
+document.getElementById('mobileNav').addEventListener('click', e=>{ if(e.target.id==='mobileNav') e.target.classList.remove('open'); });
+
+// theme
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', STATE.theme==='dark' ? 'dark':'light');
+  document.getElementById('themeBtn').textContent = STATE.theme==='dark' ? '☀️' : '🌙';
+}
+document.getElementById('themeBtn').addEventListener('click', ()=>{
+  STATE.theme = STATE.theme==='dark' ? 'light' : 'dark';
+  localStorage.setItem('dsscp_theme', STATE.theme);
+  applyTheme();
+});
+
+// search
+function closeSearch(){ document.getElementById('searchbar').classList.remove('open'); document.getElementById('searchResults').innerHTML=''; }
+document.getElementById('searchToggleBtn').addEventListener('click', ()=>{
+  const sb = document.getElementById('searchbar');
+  sb.classList.toggle('open');
+  if(sb.classList.contains('open')) document.getElementById('globalSearch').focus();
+  else closeSearch();
+});
+document.getElementById('globalSearch').addEventListener('input', e=>{
+  const term = e.target.value.trim().toLowerCase();
+  const box = document.getElementById('searchResults');
+  if(term.length<2){ box.innerHTML=''; return; }
+  const qMatches = QUESTIONS.filter(q => q.question.toLowerCase().includes(term) || q.answer.toLowerCase().includes(term) || (q.tags||[]).some(t=>t.toLowerCase().includes(term)) || q.topic.toLowerCase().includes(term)).slice(0,8);
+  if(qMatches.length===0){ box.innerHTML = `<div class="searchresult">No matches found for "${escapeHtml(e.target.value)}". Try a different keyword.</div>`; return; }
+  box.innerHTML = qMatches.map(q=>`<div class="searchresult" data-goto="${q.id}"><span class="tag">${q.topic}</span> — ${escapeHtml(q.question.slice(0,90))}${q.question.length>90?'…':''}</div>`).join('');
+});
+document.getElementById('searchResults').addEventListener('click', e=>{
+  const r = e.target.closest('[data-goto]');
+  if(r){ navigate('questions'); setTimeout(()=>{ document.getElementById('qSearchInput').value=document.getElementById('globalSearch').value; filterQuestions(); const el=document.getElementById('q-'+r.dataset.goto); if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.style.borderColor='var(--gold)'; } },50); }
+});
+
+// back to top
+window.addEventListener('scroll', ()=>{
+  document.getElementById('backTop').classList.toggle('show', window.scrollY>400);
+});
+document.getElementById('backTop').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+function afterRender(page){
+  if(page==='questions') filterQuestions();
+  if(page==='important') renderImportantList();
+  if(page==='flashcards') showFlashcard();
+  if(page==='progress') updateProgressUI();
+  if(page==='learn') switchLearnTab(learnTopic);
+}
+
+// ===================== HOME PAGE =====================
+function renderHome(){
+  const vacQ = QUESTIONS.filter(q=>q.topic==='Vaccines');
+  const orgQ = QUESTIONS.filter(q=>q.topic==='Organ Transplantation');
+  const trnQ = QUESTIONS.filter(q=>q.topic==='Transgenic Animals');
+  const userImg = QUESTIONS.filter(q=>q.source==="User-provided Asmita's Question Bank");
+  return `
+  <div class="hero">
+    <div class="container">
+      <div class="eyebrow" style="color:#F2D9A8">DSSCP</div>
+      <h1>Grade XII Biology</h1>
+      <div class="sub">Applied Biology • NEB Exam Preparation — Vaccines, Organ &amp; Tissue Transplantation, and Transgenic Animals, built for board-exam recall.</div>
+      <div class="tagline"><b>Learn</b> · <b>Practice</b> · <b>Test</b> · <b>Improve</b></div>
+      <div class="herostats">
+        <div><strong>${QUESTIONS.length}+</strong><span>Exam questions</span></div>
+        <div><strong>${MCQS.length}+</strong><span>Practice MCQs</span></div>
+        <div><strong>${FLASHCARDS.length}+</strong><span>Flashcards</span></div>
+        <div><strong>3</strong><span>Core topics</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="sectionhead" style="margin-top:30px">
+      <h2 class="pagetitle">Choose a topic</h2>
+      <p>Each topic covers key concepts, exam-style questions, MCQs and flashcards drawn from the NEB syllabus and your supplied question bank.</p>
+    </div>
+    <div class="grid cols-3">
+      <a class="topiccard" href="#" data-nav="learn" onclick="setTimeout(()=>switchLearnTab('Vaccines'),60)">
+        <span class="ic">🧪</span><h3>Vaccines</h3>
+        <p>Antigen &amp; antibody, immunity, vaccine types, Hepatitis B recombinant vaccine, history of vaccination.</p>
+      </a>
+      <a class="topiccard" href="#" data-nav="learn" onclick="setTimeout(()=>switchLearnTab('Organ Transplantation'),60)">
+        <span class="ic">🫀</span><h3>Organ Transplantation</h3>
+        <p>Grafts — autograft, isograft, allograft, xenograft — rejection, immunosuppression, corneal transplant.</p>
+      </a>
+      <a class="topiccard" href="#" data-nav="learn" onclick="setTimeout(()=>switchLearnTab('Transgenic Animals'),60)">
+        <span class="ic">🧬</span><h3>Transgenic Animals</h3>
+        <p>GMOs, foreign gene transfer, Palmiter &amp; Brinster mice, Rosie the cow, applications and ethics.</p>
+      </a>
+    </div>
+
+    <hr class="divider">
+    <div class="sectionhead">
+      <h2 class="pagetitle">Jump in</h2>
+    </div>
+    <div class="grid cols-4">
+      <div class="actioncard" data-nav="important"><span class="ic">🔥</span><div><h4>Most Important Questions</h4><p>High-yield, repeated concepts</p></div></div>
+      <div class="actioncard" data-nav="revision"><span class="ic">📚</span><div><h4>Quick Revision</h4><p>1-hour high-yield summary</p></div></div>
+      <div class="actioncard" data-nav="mcq"><span class="ic">📝</span><div><h4>Start MCQ Test</h4><p>Timed practice with instant feedback</p></div></div>
+      <div class="actioncard" data-nav="progress"><span class="ic">📊</span><div><h4>Your Progress</h4><p>Track tests, scores &amp; study streaks</p></div></div>
+    </div>
+
+    <hr class="divider">
+    <div class="sectionhead">
+      <div class="eyebrow">📕 FROM YOUR QUESTION BANK</div>
+      <h2 class="pagetitle">Important questions extracted from the Asmita's Grade XII Question Bank pages you provided</h2>
+      <p>${userImg.length} questions below are taken directly from your supplied pages and are clearly source-labelled.</p>
+    </div>
+    <div class="grid cols-3">
+      ${userImg.slice(0,6).map(q=>buildMiniCard(q)).join('')}
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <button class="btn outline" onclick="navigate('questions'); setTimeout(()=>{document.getElementById('fSource').value=\"User-provided Asmita's Question Bank\"; filterQuestions();},80)">View All Questions From My Question Bank</button>
+    </div>
+
+    <hr class="divider">
+    <div class="grid cols-3">
+      <div class="panel"><strong>${vacQ.length}</strong> Vaccine questions<div class="small">plus ${MCQS.filter(m=>m.topic==='Vaccines').length} MCQs</div></div>
+      <div class="panel"><strong>${orgQ.length}</strong> Organ Transplantation questions<div class="small">plus ${MCQS.filter(m=>m.topic==='Organ Transplantation').length} MCQs</div></div>
+      <div class="panel"><strong>${trnQ.length}</strong> Transgenic Animal questions<div class="small">plus ${MCQS.filter(m=>m.topic==='Transgenic Animals').length} MCQs</div></div>
+    </div>
+  </div>`;
+}
+function buildMiniCard(q){
+  const imp = IMP_META[q.importance];
+  return `<div class="qcard" style="margin-bottom:0">
+    <div class="qtop"><span class="badge marks">${q.marks} MARK${q.marks>1?'S':''}</span><span class="badge ${imp.cls}">${imp.icon} ${imp.label}</span></div>
+    <div class="qtext">${escapeHtml(q.question)}</div>
+    <div class="qmeta">${escapeHtml(q.label||q.source)}</div>
+  </div>`;
+}
+
+// ===================== LEARN PAGE =====================
+let learnTopic = 'Vaccines';
+let studyMode = false, studyIdx = 0;
+const STUDY_CARDS = {
+  "Vaccines":[
+    {t:"Definition",b:"A vaccine is a biological preparation containing an antigen (weakened/killed pathogen or specific protein) that stimulates active immunity against a disease, without causing the disease itself."},
+    {t:"Antigen vs Antibody",b:"Antigen: a foreign substance that triggers an immune response (comes from outside). Antibody: a Y-shaped protein made by plasma cells that binds specifically to an antigen (made inside the body)."},
+    {t:"Active vs Passive Immunity",b:"Active immunity: the body makes its own antibodies (slow but long-lasting, memory formed) — natural (infection) or artificial (vaccine). Passive immunity: ready-made antibodies are given directly (fast but short-lived, no memory) — natural (mother to child) or artificial (antiserum, e.g. ATS)."},
+    {t:"Four Vaccine Types",b:"Live attenuated (weakened live pathogen, e.g. BCG), Inactivated/killed (dead pathogen, e.g. Salk's polio vaccine), Toxoid (inactivated toxin, e.g. Tetanus Toxoid), Subunit/Recombinant (specific antigen via genetic engineering, e.g. Hepatitis B vaccine)."},
+    {t:"Recombinant Hepatitis B Vaccine",b:"Made using recombinant DNA technology: the HBsAg gene is inserted into yeast (Saccharomyces cerevisiae) cells, which then produce the antigen alone — giving strong immunity with fewer adverse reactions than whole-pathogen vaccines."},
+    {t:"History — Jenner & Pasteur",b:"Edward Jenner (1796) showed cowpox exposure protects against smallpox — the first vaccination. Louis Pasteur (1885) coined the word 'vaccine' and developed the rabies and anthrax vaccines using attenuation."},
+    {t:"Important Questions",b:"Review: 2083 Q.17 (Hepatitis B recombinant vaccine), 2081 Set B Q.19 (uses & types), and the difference between active and passive immunity — these are the most frequently repeated concepts."}
+  ],
+  "Organ Transplantation":[
+    {t:"Definition",b:"Organ transplantation is the surgical transfer of a viable tissue or organ from a donor to a recipient (or from one site to another in the same individual) to replace a damaged or failed organ."},
+    {t:"Four Graft Types",b:"Autograft: same individual, zero rejection. Isograft: genetically identical individuals (identical twins), zero/near-zero rejection. Allograft: same species, genetically different, high rejection risk. Xenograft: different species, highest rejection risk."},
+    {t:"Why Rejection Happens",b:"The recipient's immune system recognises MHC/HLA antigens on donor tissue as foreign, and cytotoxic T-cells attack the graft — this is called graft rejection."},
+    {t:"Preventing Rejection",b:"Tissue/HLA matching between donor and recipient, plus immunosuppressive drugs such as Cyclosporine A (from the fungus Tolypocladium inflatum), which blocks T-cell activation."},
+    {t:"Cornea — the Easy Case",b:"The cornea is avascular (no blood/lymph vessels) and immune-privileged, so immune cells rarely reach it — rejection risk is much lower than in vascularised organs, though not impossible."},
+    {t:"Advantages & Disadvantages",b:"Advantages: saves/extends life, restores organ function. Disadvantages: rejection risk, need for lifelong immunosuppression (raises infection risk), scarcity of donor organs."},
+    {t:"Important Questions",b:"Review: allograft vs isograft definitions (2079 Set A/N), advantages/disadvantages (2083 Q.19), and why cornea transplantation is easier (2080 Set R Q.18) — these are the most frequently repeated concepts."}
+  ],
+  "Transgenic Animals":[
+    {t:"GMO vs Transgenic Animal",b:"GMO: any organism (plant, animal or microbe) whose genome has been altered by genetic engineering. Transgenic animal: specifically an animal carrying a gene deliberately transferred from another species."},
+    {t:"Basic Production Steps",b:"1) Isolate the desired gene. 2) Insert it into a vector/embryo. 3) Introduce into a host/surrogate animal. 4) The gene integrates and is expressed. 5) Screen offspring to confirm — result: a transgenic animal."},
+    {t:"Gene Transfer Methods",b:"DNA microinjection (into the zygote's pronucleus), retroviral vector transfer (virus carries the gene into embryo cells), and the embryonic stem (ES) cell method (gene added to cultured stem cells, then injected into a blastocyst)."},
+    {t:"Key Examples",b:"Palmiter & Brinster's 1982 'super mice' (human growth hormone gene, grew ~2×), Rosie the transgenic cow (1997, human alpha-lactalbumin in milk), transgenic fish (grow ~2× size), transgenic mice (disease/cancer research)."},
+    {t:"Applications",b:"Production of pharmaceuticals (proteins in milk), disease and gene-function research, vaccine safety testing, and toxicity/chemical safety testing."},
+    {t:"IVF is NOT Transgenesis",b:"In-vitro fertilization (IVF) just means fertilization happens outside the body, producing a 'test-tube baby' — no foreign gene is added. A transgenic animal specifically requires deliberate insertion of a foreign gene."},
+    {t:"Important Questions",b:"Review: definition of transgenic animal, GMO vs transgenic animal, production steps, and the IVF-vs-transgenic distinction (based on the supplied question bank's IVF MCQ) — these are the most frequently tested concepts."}
+  ]
+};
+
+function renderLearn(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Learn</div>
+    <div class="sectionhead">
+      <h2 class="pagetitle">Learn — Key Concepts</h2>
+      <p>Grade 12 NEB-level theory notes for all three Applied Biology topics, with diagrams, comparison tables and exam-style structuring.</p>
+    </div>
+    <div class="tabs" id="learnTabs">
+      <button class="tab" data-t="Vaccines">🧪 Vaccines</button>
+      <button class="tab" data-t="Organ Transplantation">🫀 Organ Transplantation</button>
+      <button class="tab" data-t="Transgenic Animals">🧬 Transgenic Animals</button>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+      <button class="btn gold sm" onclick="enterStudyMode()">▶ Study Mode</button>
+    </div>
+    <div id="learnBody"></div>
+  </div>`;
+}
+function switchLearnTab(t){
+  learnTopic = t; studyMode=false;
+  document.querySelectorAll('#learnTabs .tab').forEach(b=>b.classList.toggle('active', b.dataset.t===t));
+  document.getElementById('learnBody').innerHTML = studyMode ? renderStudyMode() : learnContent(t);
+}
+document.addEventListener('click', e=>{
+  const tb = e.target.closest('#learnTabs .tab');
+  if(tb) switchLearnTab(tb.dataset.t);
+});
+function enterStudyMode(){ studyMode=true; studyIdx=0; document.getElementById('learnBody').innerHTML = renderStudyMode(); }
+function exitStudyMode(){ studyMode=false; document.getElementById('learnBody').innerHTML = learnContent(learnTopic); }
+function renderStudyMode(){
+  const cards = STUDY_CARDS[learnTopic];
+  const c = cards[studyIdx];
+  const learnedKey = learnTopic+'::'+c.t;
+  const isLearned = STATE.learned.includes(learnedKey);
+  return `
+  <div class="panel">
+    <div class="studybar">
+      <div class="eyebrow">${TOPIC_ICON[learnTopic]} ${learnTopic} — Study Mode</div>
+      <button class="btn outline sm" onclick="exitStudyMode()">✕ Exit</button>
+    </div>
+    <div class="studydots">${cards.map((_,i)=>`<span class="${i===studyIdx?'on':''}"></span>`).join('')}</div>
+    <h3 style="margin-top:16px">${c.t}</h3>
+    <p style="font-size:15.5px;line-height:1.7">${c.b}</p>
+    <div class="mcqnav" style="margin-top:20px">
+      <button class="btn outline" ${studyIdx===0?'disabled':''} onclick="studyIdx--;document.getElementById('learnBody').innerHTML=renderStudyMode()">← Previous</button>
+      <button class="btn ${isLearned?'gold':'outline'}" onclick="toggleLearned('${learnedKey}')">${isLearned?'✓ Learned':'Mark as Learned'}</button>
+      <button class="btn" ${studyIdx===cards.length-1?'disabled':''} onclick="studyIdx++;document.getElementById('learnBody').innerHTML=renderStudyMode()">Next →</button>
+    </div>
+  </div>`;
+}
+function toggleLearned(key){
+  const i = STATE.learned.indexOf(key);
+  if(i>-1) STATE.learned.splice(i,1); else STATE.learned.push(key);
+  persist('dsscp_learned', STATE.learned);
+  document.getElementById('learnBody').innerHTML = renderStudyMode();
+}
+
+function learnContent(t){
+  if(t==='Vaccines') return vaccineTheory();
+  if(t==='Organ Transplantation') return transplantTheory();
+  return transgenicTheory();
+}
+
+function vaccineTheory(){
+return `
+<details class="acc" open><summary>1. What is a vaccine? Antigen &amp; Antibody</summary><div class="body">
+<p><strong>Vaccine:</strong> a biological preparation containing an antigen — a weakened (attenuated) pathogen, a killed pathogen, or a specific protein — administered orally or by injection to stimulate the immune system and build protective immunity against a disease.</p>
+<p><strong>Antigen:</strong> any foreign substance capable of triggering an immune response. <strong>Antibody:</strong> a Y-shaped immunoglobulin protein made by plasma cells (differentiated B-lymphocytes) that binds specifically to an antigen.</p>
+<div class="tablewrap"><table class="cmp"><thead><tr><th>Criteria</th><th>Antigen</th><th>Antibody</th></tr></thead><tbody>
+<tr><td>Origin</td><td>Foreign — enters from outside the body</td><td>Made inside the body by plasma cells</td></tr>
+<tr><td>Chemical nature</td><td>Protein, polysaccharide or glycoprotein</td><td>Always a protein (immunoglobulin)</td></tr>
+<tr><td>Function</td><td>Triggers the immune response</td><td>Neutralises / removes the antigen</td></tr>
+</tbody></table></div>
+</div></details>
+
+<details class="acc"><summary>2. How vaccination produces immunity</summary><div class="body">
+<div class="flow">
+<div class="step">Vaccine (antigen) enters the body</div><div class="arrow">↓</div>
+<div class="step">Antigen-presenting cells display the antigen</div><div class="arrow">↓</div>
+<div class="step">B &amp; T lymphocytes are activated</div><div class="arrow">↓</div>
+<div class="step">Antibodies + memory cells are produced</div><div class="arrow">↓</div>
+<div class="step">Faster, stronger response on future exposure</div><div class="arrow">↓</div>
+<div class="step">Protection from disease</div>
+</div>
+</div></details>
+
+<details class="acc"><summary>3. Active immunity vs Passive immunity</summary><div class="body">
+<p><strong>Active immunity:</strong> the body's own immune system produces antibodies and memory cells after antigen exposure. Slower onset, but long-lasting.</p>
+<ul><li><em>Natural active:</em> recovering from an actual infection (e.g. chickenpox)</li><li><em>Artificial active:</em> induced by vaccination (e.g. BCG, MMR)</li></ul>
+<p><strong>Passive immunity:</strong> ready-made antibodies are transferred into the body from an external source. Immediate but short-lived — no memory cells form.</p>
+<ul><li><em>Natural passive:</em> maternal IgG (placenta) or IgA (breast milk/colostrum) to infant</li><li><em>Artificial passive:</em> antiserum injection, e.g. Anti-Tetanus Serum (ATS), snake-bite antivenin</li></ul>
+<div class="tip">Exam tip: the key differentiator examiners look for is <strong>memory cell formation</strong> — active immunity forms memory cells, passive immunity does not.</div>
+</div></details>
+
+<details class="acc"><summary>4. Types/classes of vaccines</summary><div class="body">
+<div class="tablewrap"><table class="cmp"><thead><tr><th>Vaccine Type</th><th>Basic Idea</th><th>Example</th></tr></thead><tbody>
+<tr><td>Live attenuated</td><td>Weakened but living pathogen</td><td>BCG, OPV, MMR</td></tr>
+<tr><td>Inactivated / killed</td><td>Pathogen killed by heat/chemicals</td><td>Salk's polio vaccine, Rabies vaccine</td></tr>
+<tr><td>Toxoid</td><td>Inactivated bacterial toxin</td><td>Tetanus Toxoid (TT), Diphtheria toxoid</td></tr>
+<tr><td>Subunit / Recombinant</td><td>Only a specific antigen, made via recombinant DNA technology</td><td>Hepatitis B vaccine (HBsAg expressed in yeast)</td></tr>
+</tbody></table></div>
+<p><strong>First-generation vaccines</strong> use the whole pathogen (live attenuated or killed). <strong>Second-generation vaccines</strong> use only a specific antigen produced by genetic engineering — the Hepatitis B vaccine is the standard Grade 12 example.</p>
+</div></details>
+
+<details class="acc"><summary>5. Recombinant Hepatitis B vaccine (frequently repeated topic)</summary><div class="body">
+<p>The gene for the Hepatitis B surface antigen (HBsAg) is isolated and inserted into yeast cells (<em>Saccharomyces cerevisiae</em>), which then express and produce the antigen alone — with no live or dead viral material involved. Because the body is exposed only to this specific antigen, adverse reactions are considerably reduced compared with older whole-pathogen vaccines.</p>
+<div class="repeatchip">Repeated in the supplied question-bank material (2083 Q.17)</div>
+</div></details>
+
+<details class="acc"><summary>6. History of vaccination — Jenner &amp; Pasteur</summary><div class="body">
+<p><strong>Edward Jenner (1796):</strong> noticed that milkmaids infected with cowpox did not catch smallpox. He inoculated a boy with cowpox fluid and showed this protected against smallpox — the foundation of modern vaccination.</p>
+<p><strong>Louis Pasteur (1885):</strong> coined the term <em>vaccine</em> (from Latin <em>vacca</em> = cow, honouring Jenner) and developed the first rabies and anthrax vaccines using pathogen attenuation.</p>
+</div></details>
+
+<details class="acc"><summary>7. Advantages, limitations &amp; difference from antiserum</summary><div class="body">
+<p><strong>Advantages:</strong> prevents serious infectious disease and reduces mortality; gives long-lasting (often lifelong) protection through memory cells.</p>
+<p><strong>Limitations:</strong> possible mild adverse reactions (fever, soreness); some vaccines need booster doses; no vaccine gives 100% protection.</p>
+<div class="tablewrap"><table class="cmp"><thead><tr><th></th><th>Vaccine</th><th>Antiserum</th></tr></thead><tbody>
+<tr><td>Contains</td><td>Antigen</td><td>Ready-made antibodies</td></tr>
+<tr><td>Immunity type</td><td>Active</td><td>Passive</td></tr>
+<tr><td>Onset</td><td>Slow</td><td>Immediate</td></tr>
+<tr><td>Duration</td><td>Long-lasting</td><td>Short-lived</td></tr>
+</tbody></table></div>
+</div></details>
+`;
+}
+
+function transplantTheory(){
+return `
+<details class="acc" open><summary>1. What is organ / tissue transplantation?</summary><div class="body">
+<p><strong>Organ transplantation:</strong> the surgical transfer of a healthy organ from a donor to a recipient whose own organ has failed or is diseased. <strong>Tissue transplantation:</strong> the transfer of living tissue (e.g. skin, bone, cornea) in the same way.</p>
+<p>The <strong>donor</strong> gives the organ/tissue; the <strong>recipient</strong> receives it; the transferred organ/tissue itself is called the <strong>graft</strong>.</p>
+</div></details>
+
+<details class="acc" open><summary>2. Graft classification — Autograft, Isograft, Allograft, Xenograft</summary><div class="body">
+<div class="branch">
+<div class="root">GRAFT</div>
+<div class="leaf"><strong>Autograft</strong> — same individual (e.g. skin from thigh to burn area). Zero rejection risk.</div>
+<div class="leaf"><strong>Isograft</strong> — genetically identical individuals (identical twins). Very low rejection risk.</div>
+<div class="leaf"><strong>Allograft</strong> — same species, genetically different individuals (e.g. unrelated kidney donor). High rejection risk.</div>
+<div class="leaf"><strong>Xenograft (heterograft)</strong> — different species (e.g. pig valve to human). Highest rejection risk.</div>
+</div>
+<div class="tablewrap"><table class="cmp"><thead><tr><th>Graft</th><th>Donor / Recipient</th><th>Genetic relation</th></tr></thead><tbody>
+<tr><td>Autograft</td><td>Same individual</td><td>Identical</td></tr>
+<tr><td>Isograft</td><td>Genetically identical individuals</td><td>Identical</td></tr>
+<tr><td>Allograft</td><td>Same species, genetically different</td><td>Different</td></tr>
+<tr><td>Xenograft</td><td>Different species</td><td>Different species</td></tr>
+</tbody></table></div>
+</div></details>
+
+<details class="acc"><summary>3. Why does organ rejection occur?</summary><div class="body">
+<p>The recipient's immune system detects donor-tissue surface markers (MHC/HLA antigens) as foreign because they differ from the recipient's own. Cytotoxic T-lymphocytes (and antibodies) attack the graft, causing inflammation and tissue damage — this is <strong>graft rejection</strong>. The more genetically different the donor is from the recipient, the higher the rejection risk (lowest in autograft, highest in xenograft).</p>
+</div></details>
+
+<details class="acc"><summary>4. Preventing / reducing rejection</summary><div class="body">
+<ul>
+<li><strong>Tissue / HLA (blood and tissue) matching</strong> between donor and recipient before surgery.</li>
+<li><strong>Immunosuppressive drugs</strong> — suppress the recipient's immune response against the graft. <strong>Cyclosporine A</strong> (from the soil fungus <em>Tolypocladium inflatum</em>) blocks the calcineurin pathway and interleukin-2 (IL-2) production, preventing T-cell activation. Other drugs: Tacrolimus, corticosteroids, Azathioprine.</li>
+</ul>
+<div class="tip">Note: immunosuppressive drugs reduce rejection but also increase the patient's risk of infections — always mention this trade-off in advantage/disadvantage answers.</div>
+</div></details>
+
+<details class="acc"><summary>5. Why is corneal transplantation comparatively easier?</summary><div class="body">
+<p>The cornea is an <strong>immunologically privileged site</strong> because:</p>
+<ol>
+<li>It is completely <strong>avascular</strong> — no blood or lymphatic vessels — so immune cells and antibodies have very limited access to it.</li>
+<li>A blood–aqueous barrier limits immune-cell migration into the eye's anterior chamber.</li>
+<li>Immune-tolerance-promoting factors (such as TGF-β) are present in the aqueous humor.</li>
+</ol>
+<div class="tip">Important: rejection risk is <strong>lower</strong>, not literally zero — never write that corneal transplants "never" reject.</div>
+</div></details>
+
+<details class="acc"><summary>6. Advantages, disadvantages &amp; ethical considerations</summary><div class="body">
+<p><strong>Advantages:</strong> replaces a failed/damaged organ, saving or extending life; restores physiological function and quality of life.</p>
+<p><strong>Disadvantages:</strong> risk of rejection; need for lifelong immunosuppressive therapy (raises infection risk); scarcity of donor organs; surgical risk.</p>
+<p><strong>Ethical/social considerations:</strong> fair allocation of scarce organs; preventing illegal organ trade; informed, voluntary donor consent.</p>
+</div></details>
+`;
+}
+
+function transgenicTheory(){
+return `
+<details class="acc" open><summary>1. GMO and Transgenic Animal — definitions</summary><div class="body">
+<p><strong>GMO (Genetically Modified Organism):</strong> any organism — plant, animal or microbe — whose genetic material has been artificially altered using genetic engineering.</p>
+<p><strong>Transgenic animal:</strong> an animal whose genome has been deliberately modified to carry a foreign gene (a gene transferred from another species, or an engineered gene), so that it expresses a new inheritable trait. Every transgenic animal is a GMO, but not every GMO is a transgenic animal (e.g. a modified crop is a GMO but not an animal).</p>
+</div></details>
+
+<details class="acc" open><summary>2. How is a transgenic animal produced?</summary><div class="body">
+<div class="flow">
+<div class="step">Desired gene identified</div><div class="arrow">↓</div>
+<div class="step">Isolation of the gene</div><div class="arrow">↓</div>
+<div class="step">Insertion into a vector / embryonic cell</div><div class="arrow">↓</div>
+<div class="step">Introduction into a host/surrogate animal</div><div class="arrow">↓</div>
+<div class="step">Integration &amp; expression of the gene</div><div class="arrow">↓</div>
+<div class="step">Transgenic animal (confirmed by screening offspring)</div>
+</div>
+<p><strong>Gene transfer methods used in practice:</strong></p>
+<ul>
+<li><strong>DNA microinjection</strong> — the foreign DNA is injected directly into the pronucleus of a fertilised zygote using a fine glass needle; the zygote is implanted into a surrogate mother.</li>
+<li><strong>Retroviral vector transfer</strong> — a modified, replication-deficient retrovirus carrying the gene infects early embryonic cells so the gene integrates into the host genome.</li>
+<li><strong>Embryonic stem (ES) cell method</strong> — the gene is introduced into cultured stem cells (e.g. by electroporation); confirmed cells are injected into a host blastocyst.</li>
+</ul>
+<div class="tip">Grade 12 level: the simple 5-step flow above is normally sufficient for a 4-mark answer; the three named methods are useful extra detail for higher-order questions.</div>
+</div></details>
+
+<details class="acc"><summary>3. Key examples</summary><div class="body">
+<div class="tablewrap"><table class="cmp"><thead><tr><th>Transgenic Animal</th><th>Modification</th><th>Application / Result</th></tr></thead><tbody>
+<tr><td>"Super mice" (Palmiter &amp; Brinster, 1982)</td><td>Human growth hormone gene + mouse MT-1 promoter</td><td>Grew to nearly double the normal size — the first landmark transgenic-animal experiment</td></tr>
+<tr><td>Rosie the cow (1997)</td><td>Human alpha-lactalbumin gene</td><td>Milk enriched with ~2.4 g/L human alpha-lactalbumin, more nutritionally complete for infants</td></tr>
+<tr><td>Transgenic sheep/goats</td><td>Human therapeutic protein genes</td><td>Secrete proteins such as clotting factors in milk ("biopharming")</td></tr>
+<tr><td>Transgenic fish (e.g. salmon)</td><td>Growth hormone gene</td><td>Grow to roughly double the normal body size</td></tr>
+<tr><td>Transgenic mice</td><td>Disease-related genes</td><td>Used as disease models (cancer research) and for vaccine safety testing</td></tr>
+</tbody></table></div>
+</div></details>
+
+<details class="acc"><summary>4. Applications of transgenic animals</summary><div class="body">
+<ul>
+<li><strong>Production of pharmaceuticals</strong> — useful proteins (e.g. hormones, clotting factors) produced in milk.</li>
+<li><strong>Disease &amp; gene-function research</strong> — studying what a gene does by adding, disabling or modifying it in an animal model.</li>
+<li><strong>Vaccine safety testing</strong> — animals engineered to respond like humans allow safer preliminary testing before human trials.</li>
+<li><strong>Toxicity / chemical safety testing</strong> — predicting how new drugs or chemicals affect living tissue.</li>
+</ul>
+</div></details>
+
+<details class="acc"><summary>5. Transgenic animal vs IVF — do not confuse these!</summary><div class="body">
+<p><strong>IVF (In-vitro fertilization):</strong> fertilization occurs outside the body under controlled laboratory conditions; the resulting embryo is transferred into the uterus. The offspring is called a <strong>"test-tube baby."</strong> No foreign gene is added — IVF is <em>not</em> the same as producing a transgenic animal.</p>
+<p><strong>Transgenic animal production</strong> specifically requires the deliberate insertion of a foreign gene into the genome.</p>
+<div class="tip">This distinction is the basis of a supplied question-bank MCQ: "The result of IVF is the production of..." — the correct answer is <strong>test-tube baby</strong>, not transgenic animal.</div>
+</div></details>
+
+<details class="acc"><summary>6. Advantages, limitations &amp; ethical concerns</summary><div class="body">
+<p><strong>Advantages:</strong> large-scale renewable production of valuable biological products; useful research models for disease and gene function.</p>
+<p><strong>Limitations:</strong> technically difficult, costly, low success rate.</p>
+<p><strong>Ethical concerns:</strong> animal welfare during genetic alteration/experiments; unknown long-term ecological effects if genes spread to wild populations.</p>
+</div></details>
+`;
+}
+
+// ===================== QUESTIONS PAGE =====================
+function renderQuestions(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Questions</div>
+    <div class="sectionhead">
+      <h2 class="pagetitle">Question Bank</h2>
+      <p>Search and filter across all ${QUESTIONS.length} questions by topic, marks, source and importance.</p>
+    </div>
+    <div class="filterbar">
+      <input type="text" id="qSearchInput" placeholder="Search questions..." style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:14px" oninput="filterQuestions()">
+      <div class="filterrow">
+        <div class="filtergroup"><label>Topic</label><select id="fTopic" onchange="filterQuestions()">
+          <option>All</option><option>Vaccines</option><option>Organ Transplantation</option><option>Transgenic Animals</option>
+        </select></div>
+        <div class="filtergroup"><label>Marks</label><select id="fMarks" onchange="filterQuestions()">
+          <option>All</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>8</option>
+        </select></div>
+        <div class="filtergroup"><label>Source</label><select id="fSource" onchange="filterQuestions()">
+          ${SOURCE_LIST.map(s=>`<option>${s}</option>`).join('')}
+        </select></div>
+        <div class="filtergroup"><label>Importance</label><select id="fImportance" onchange="filterQuestions()">
+          <option>All</option><option value="very-important">Very Important</option><option value="important">Important</option><option value="must-know">Must Know</option><option value="practice">Practice</option>
+        </select></div>
+      </div>
+    </div>
+    <div class="resultcount" id="qCount"></div>
+    <div id="qList"></div>
+  </div>`;
+}
+function filterQuestions(){
+  const term = (document.getElementById('qSearchInput')?.value||'').toLowerCase();
+  const topic = document.getElementById('fTopic')?.value||'All';
+  const marks = document.getElementById('fMarks')?.value||'All';
+  const source = document.getElementById('fSource')?.value||'All';
+  const imp = document.getElementById('fImportance')?.value||'All';
+  const results = QUESTIONS.filter(q=>{
+    if(topic!=='All' && q.topic!==topic) return false;
+    if(marks!=='All' && String(q.marks)!==marks) return false;
+    if(source!=='All' && q.source!==source) return false;
+    if(imp!=='All' && q.importance!==imp) return false;
+    if(term){
+      const hay = (q.question+' '+q.answer+' '+(q.tags||[]).join(' ')+' '+q.topic).toLowerCase();
+      if(!hay.includes(term)) return false;
+    }
+    return true;
+  });
+  document.getElementById('qCount').textContent = `${results.length} question${results.length!==1?'s':''} found`;
+  const list = document.getElementById('qList');
+  if(results.length===0){
+    list.innerHTML = `<div class="emptystate"><span class="ic">🔍</span>No questions match your filters.<br>Try clearing a filter or searching a different keyword.</div>`;
+    return;
+  }
+  list.innerHTML = results.map(buildQCard).join('');
+}
+function buildQCard(q){
+  const imp = IMP_META[q.importance];
+  const saved = STATE.bookmarks.includes(q.id);
+  return `<div class="qcard" id="q-${q.id}">
+    <div class="qtop">
+      <span class="badge ${imp.cls}">${imp.icon} ${imp.label}</span>
+      <span class="badge marks">${q.marks} MARK${q.marks>1?'S':''}</span>
+      <span class="badge topic">${TOPIC_ICON[q.topic]} ${q.topic.toUpperCase()}</span>
+      <span class="qsrc">${escapeHtml(q.label||q.source)}</span>
+    </div>
+    <div class="qtext">${escapeHtml(q.question)}</div>
+    <div class="qmeta">${escapeHtml(q.source)}${q.type?' · '+q.type:''}</div>
+    <div class="qactions">
+      <button class="btn sm outline" id="revealbtn-${q.id}" onclick="toggleReveal(${q.id})">▼ Show Answer</button>
+      <button class="savebtn ${saved?'saved':''}" id="save-${q.id}" onclick="toggleSave(${q.id})">${saved?'★ Saved':'☆ Save'}</button>
+    </div>
+    <div class="reveal" id="reveal-${q.id}">
+      <div class="lbl">Answer</div>
+      <div class="ans">${nl2br(escapeHtml(q.answer))}</div>
+      <div class="lbl">Explanation</div>
+      <div class="exp">${nl2br(escapeHtml(q.explanation))}</div>
+      ${answerStrategy(q.marks)}
+    </div>
+  </div>`;
+}
+function answerStrategy(marks){
+  let s='';
+  if(marks===1) s='Definition / single fact / MCQ answer.';
+  else if(marks===2) s='Definition + one explanation, or two clear points.';
+  else if(marks===4) s='Usually 4 meaningful points, or a structured explanation with sub-points.';
+  else if(marks>=5) s='Detailed structured answer with clear sections, explanation and examples.';
+  else s='Structure clearly with definition, explanation and example.';
+  return `<div class="tip">📌 Answer strategy (${marks} mark${marks>1?'s':''}): ${s}</div>`;
+}
+function toggleReveal(id){
+  const el = document.getElementById('reveal-'+id);
+  const open = el.classList.toggle('open');
+  const btn = document.getElementById('revealbtn-'+id);
+  if(btn) btn.textContent = open ? '▲ Hide Answer' : '▼ Show Answer';
+}
+function toggleSave(id){
+  const i = STATE.bookmarks.indexOf(id);
+  if(i>-1) STATE.bookmarks.splice(i,1); else STATE.bookmarks.push(id);
+  persist('dsscp_bookmarks', STATE.bookmarks);
+  const btn = document.getElementById('save-'+id);
+  if(btn){ btn.classList.toggle('saved'); btn.textContent = btn.classList.contains('saved') ? '★ Saved' : '☆ Save'; }
+}
+
+// ===================== IMPORTANT PAGE =====================
+function renderImportant(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Important</div>
+    <div class="sectionhead">
+      <h2 class="pagetitle">🔥 Most Important Questions</h2>
+      <p>Ranked by recurrence in the supplied question-bank material, appearance across NEB papers, and syllabus relevance. Importance does not guarantee a question will appear on your exam.</p>
+    </div>
+    <div class="filterbar">
+      <div class="filterrow">
+        <div class="filtergroup"><label>Topic</label><select id="iTopic" onchange="renderImportantList()">
+          <option>All</option><option>Vaccines</option><option>Organ Transplantation</option><option>Transgenic Animals</option>
+        </select></div>
+        <div class="filtergroup"><label>Marks</label><select id="iMarks" onchange="renderImportantList()">
+          <option>All</option><option>1</option><option>2</option><option>4</option><option>8</option>
+        </select></div>
+        <div class="filtergroup"><label>Source</label><select id="iSource" onchange="renderImportantList()">
+          ${SOURCE_LIST.map(s=>`<option>${s}</option>`).join('')}
+        </select></div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-imp="very-important" onclick="setImpTab(this)">🔥 Very Important</button>
+      <button class="tab" data-imp="important" onclick="setImpTab(this)">⭐ Important</button>
+      <button class="tab" data-imp="must-know" onclick="setImpTab(this)">📘 Must Know</button>
+    </div>
+    <div id="impList"></div>
+  </div>`;
+}
+let impTab = 'very-important';
+function setImpTab(btn){
+  document.querySelectorAll('.tabs .tab[data-imp]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  impTab = btn.dataset.imp;
+  renderImportantList();
+}
+const REPEATED_CONCEPTS = {
+  "allograft": [22,24],
+  "isograft": [23],
+  "cornea": [21,65],
+  "hepatitis b": [1,17,61],
+  "second-generation vaccine": [4]
+};
+function renderImportantList(){
+  const topic = document.getElementById('iTopic')?.value||'All';
+  const marks = document.getElementById('iMarks')?.value||'All';
+  const source = document.getElementById('iSource')?.value||'All';
+  let results = QUESTIONS.filter(q=>q.importance===impTab);
+  if(topic!=='All') results = results.filter(q=>q.topic===topic);
+  if(marks!=='All') results = results.filter(q=>String(q.marks)===marks);
+  if(source!=='All') results = results.filter(q=>q.source===source);
+  const box = document.getElementById('impList');
+  if(!box) return;
+  if(results.length===0){ box.innerHTML = `<div class="emptystate"><span class="ic">🔍</span>No questions match these filters.</div>`; return; }
+  box.innerHTML = results.map(buildQCard).join('');
+}
+
+// ===================== FLASHCARDS PAGE =====================
+function renderFlashcards(){
+  flashOrder = FLASHCARDS.map(f=>f.id);
+  flashIndex = 0;
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Flashcards</div>
+    <div class="sectionhead"><h2 class="pagetitle">🎴 Flashcards</h2><p>Tap a card to flip it. ${FLASHCARDS.length} cards covering definitions, differences and key facts.</p></div>
+    <div class="filterbar"><div class="filterrow">
+      <div class="filtergroup"><label>Topic</label><select id="fcTopic" onchange="setFlashFilter()">
+        <option>All</option><option>Vaccines</option><option>Organ Transplantation</option><option>Transgenic Animals</option>
+      </select></div>
+    </div></div>
+    <div class="fcwrap">
+      <div class="flashcard" id="flashcardEl" onclick="flipCard()">
+        <div class="inner">
+          <div class="face front" id="fcFront"></div>
+          <div class="face back" id="fcBack"></div>
+        </div>
+      </div>
+      <div class="fcnav">
+        <button class="btn outline" onclick="prevCard()">← Previous</button>
+        <span class="fccount" id="fcCount"></span>
+        <button class="btn" onclick="nextCard()">Next →</button>
+      </div>
+    </div>
+  </div>`;
+}
+function setFlashFilter(){
+  flashFilterTopic = document.getElementById('fcTopic').value;
+  flashOrder = FLASHCARDS.filter(f=>flashFilterTopic==='All'||f.topic===flashFilterTopic).map(f=>f.id);
+  flashIndex = 0;
+  showFlashcard();
+}
+function showFlashcard(){
+  if(!flashOrder.length) flashOrder = FLASHCARDS.map(f=>f.id);
+  const card = FLASHCARDS.find(f=>f.id===flashOrder[flashIndex]);
+  const el = document.getElementById('flashcardEl');
+  if(!el || !card) return;
+  el.classList.remove('flipped');
+  document.getElementById('fcFront').innerHTML = `<div><div class="eyebrow">${TOPIC_ICON[card.topic]} ${card.topic}</div>${escapeHtml(card.front)}</div>`;
+  document.getElementById('fcBack').innerHTML = escapeHtml(card.back);
+  document.getElementById('fcCount').textContent = `Card ${flashIndex+1} / ${flashOrder.length}`;
+}
+function flipCard(){ document.getElementById('flashcardEl').classList.toggle('flipped'); }
+function nextCard(){ flashIndex = (flashIndex+1) % flashOrder.length; showFlashcard(); }
+function prevCard(){ flashIndex = (flashIndex-1+flashOrder.length) % flashOrder.length; showFlashcard(); }
+
+// ===================== REVISION PAGE =====================
+function renderRevision(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Revision</div>
+    <div class="sectionhead"><h2 class="pagetitle">📚 1-Hour Revision</h2><p>Only the highest-yield concepts — for the day before your exam.</p></div>
+
+    <div class="grid cols-3">
+      <div class="panel">
+        <h3>🧪 Vaccines</h3>
+        <ul style="padding-left:18px;font-size:14px;line-height:1.9">
+          <li>Definition of vaccine, antigen, antibody</li>
+          <li>Four vaccine types + one example each</li>
+          <li>Recombinant Hepatitis B vaccine (HBsAg in yeast)</li>
+          <li>Active vs passive immunity (memory cells!)</li>
+          <li>Vaccine mechanism: antigen → antibody + memory</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>🫀 Organ Transplantation</h3>
+        <ul style="padding-left:18px;font-size:14px;line-height:1.9">
+          <li>Autograft / Isograft / Allograft / Xenograft</li>
+          <li>Why rejection occurs (MHC/HLA antigens)</li>
+          <li>Tissue matching + immunosuppressants (Cyclosporine A)</li>
+          <li>Cornea = avascular, immune-privileged</li>
+          <li>Advantages vs disadvantages</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>🧬 Transgenic Animals</h3>
+        <ul style="padding-left:18px;font-size:14px;line-height:1.9">
+          <li>GMO vs transgenic animal</li>
+          <li>Foreign gene + basic production steps</li>
+          <li>Examples: super mice, Rosie the cow</li>
+          <li>Applications: pharma, research, vaccine/toxicity testing</li>
+          <li>IVF ≠ transgenic animal production</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <h2 class="pagetitle">Comparison Tables</h2>
+    <h3>Graft Types</h3>
+    <div class="tablewrap"><table class="cmp"><thead><tr><th>Graft</th><th>Donor/Recipient</th><th>Genetic relation</th></tr></thead><tbody>
+    <tr><td>Autograft</td><td>Same individual</td><td>Identical</td></tr>
+    <tr><td>Isograft</td><td>Genetically identical individuals</td><td>Identical</td></tr>
+    <tr><td>Allograft</td><td>Same species, genetically different</td><td>Different</td></tr>
+    <tr><td>Xenograft</td><td>Different species</td><td>Different species</td></tr>
+    </tbody></table></div>
+
+    <h3>Vaccine Types</h3>
+    <div class="tablewrap"><table class="cmp"><thead><tr><th>Vaccine Type</th><th>Basic idea</th><th>Example</th></tr></thead><tbody>
+    <tr><td>Live attenuated</td><td>Weakened pathogen</td><td>BCG, OPV</td></tr>
+    <tr><td>Inactivated</td><td>Killed pathogen</td><td>Salk's polio vaccine</td></tr>
+    <tr><td>Toxoid</td><td>Inactivated toxin</td><td>Tetanus Toxoid</td></tr>
+    <tr><td>Recombinant</td><td>Specific antigen via recombinant DNA</td><td>Hepatitis B</td></tr>
+    </tbody></table></div>
+
+    <hr class="divider">
+    <h2 class="pagetitle">Difference Between...</h2>
+    <div class="acc" style="padding:0"><div class="body" style="padding:16px">
+    <h4>Vaccine vs Antiserum</h4>
+    <p>Vaccine gives antigen → body makes its own antibodies (active). Antiserum gives ready-made antibodies directly (passive).</p>
+    <h4>Active vs Passive Immunity</h4>
+    <p>Active: body makes antibodies, slow but long-lasting, memory formed. Passive: antibodies given directly, fast but short-lived, no memory.</p>
+    <h4>Autograft vs Isograft</h4>
+    <p>Autograft: same individual. Isograft: different but genetically identical individuals (twins). Both ~zero rejection.</p>
+    <h4>Allograft vs Xenograft</h4>
+    <p>Allograft: same species, genetically different. Xenograft: different species entirely. Xenograft has higher rejection risk.</p>
+    <h4>GMO vs Transgenic Animal</h4>
+    <p>GMO is any genetically engineered organism (plant/animal/microbe). Transgenic animal is specifically an animal carrying a foreign gene.</p>
+    <h4>Organ vs Tissue Transplantation</h4>
+    <p>Organ transplantation transfers a whole functional organ (e.g. kidney). Tissue transplantation transfers living tissue (e.g. skin, cornea) — a broader, related process.</p>
+    <h4>Live Attenuated vs Inactivated Vaccine</h4>
+    <p>Live attenuated: weakened but living pathogen, strong/long immunity (e.g. BCG). Inactivated: pathogen killed, safer for the immunocompromised but often needs boosters (e.g. Salk's polio vaccine).</p>
+    </div></div>
+  </div>`;
+}
+
+// ===================== PROGRESS PAGE =====================
+function renderProgress(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Progress</div>
+    <div class="sectionhead"><h2 class="pagetitle">📊 Your Progress</h2><p>Tracked locally on this device using your browser's storage.</p></div>
+    <div class="grid cols-4" id="progStats"></div>
+    <hr class="divider">
+    <div class="panel">
+      <h3>Topic mastery (concepts marked learned in Study Mode)</h3>
+      <div id="masteryBars"></div>
+    </div>
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn outline" onclick="navigate('saved')">★ View Saved Questions</button>
+      <button class="btn outline" onclick="reviewMistakes()">🔁 Review My Mistakes</button>
+      <button class="btn" style="background:var(--coral)" onclick="resetProgress()">Reset Progress</button>
+    </div>
+  </div>`;
+}
+function updateProgressUI(){
+  const box = document.getElementById('progStats');
+  if(!box) return;
+  const scores = STATE.stats.scores||[];
+  const best = scores.length? Math.max(...scores):0;
+  const avg = scores.length? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):0;
+  box.innerHTML = `
+    <div class="statcard"><strong>${STATE.learned.length}</strong><span>Concepts studied</span></div>
+    <div class="statcard"><strong>${STATE.stats.tests||0}</strong><span>Tests completed</span></div>
+    <div class="statcard"><strong>${best}%</strong><span>Best score</span></div>
+    <div class="statcard"><strong>${avg}%</strong><span>Average score</span></div>
+  `;
+  const bars = document.getElementById('masteryBars');
+  if(bars){
+    bars.innerHTML = Object.keys(STUDY_CARDS).map(t=>{
+      const total = STUDY_CARDS[t].length;
+      const done = STATE.learned.filter(k=>k.startsWith(t+'::')).length;
+      const pct = Math.round(done/total*100);
+      return `<div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:4px"><span>${TOPIC_ICON[t]} ${t}</span><span>${done}/${total}</span></div><div class="pbar-outer"><div style="width:${pct}%"></div></div></div>`;
+    }).join('');
+  }
+}
+function resetProgress(){
+  if(!confirm('Reset all saved progress (study progress, test scores, bookmarks and wrong-answer history)? This cannot be undone.')) return;
+  localStorage.removeItem('dsscp_learned'); localStorage.removeItem('dsscp_stats');
+  localStorage.removeItem('dsscp_bookmarks'); localStorage.removeItem('dsscp_wrong');
+  STATE = loadState();
+  navigate('progress');
+}
+function reviewMistakes(){
+  navigate('saved');
+  setTimeout(()=>{ document.getElementById('savedModeWrong')?.click(); },50);
+}
+
+// ===================== SAVED PAGE =====================
+function renderSaved(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / Saved</div>
+    <div class="sectionhead"><h2 class="pagetitle">★ Saved Questions</h2><p>Questions you bookmarked, plus questions you've answered incorrectly in MCQ tests.</p></div>
+    <div class="tabs">
+      <button class="tab active" onclick="setSavedTab('saved',this)">★ Bookmarked</button>
+      <button class="tab" id="savedModeWrong" onclick="setSavedTab('wrong',this)">✗ Wrong Answers</button>
+    </div>
+    <div id="savedList"></div>
+  </div>`;
+}
+function setSavedTab(mode,btn){
+  document.querySelectorAll('.tabs .tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const box = document.getElementById('savedList');
+  if(mode==='saved'){
+    const items = QUESTIONS.filter(q=>STATE.bookmarks.includes(q.id));
+    box.innerHTML = items.length ? items.map(buildQCard).join('') : `<div class="emptystate"><span class="ic">☆</span>No saved questions yet. Tap "Save" on any question card to bookmark it here.</div>`;
+  } else {
+    const items = STATE.wrong.map(id=>MCQS.find(m=>m.id===id)).filter(Boolean);
+    if(!items.length){ box.innerHTML = `<div class="emptystate"><span class="ic">✓</span>No wrong answers recorded — nice work! Take an MCQ test to build this list.</div>`; return; }
+    box.innerHTML = `<div style="margin-bottom:14px"><button class="btn gold" onclick="startWrongPractice()">Practice Wrong Questions</button></div>` +
+      items.map(m=>`<div class="qcard"><div class="qtop"><span class="badge topic">${TOPIC_ICON[m.topic]} ${m.topic.toUpperCase()}</span><span class="badge marks">${m.difficulty}</span></div><div class="qtext">${escapeHtml(m.q)}</div><div class="qmeta">Correct answer: ${escapeHtml(m.options[m.correct])}</div><div class="tip">${escapeHtml(m.explain)}</div></div>`).join('');
+  }
+}
+document.addEventListener('DOMContentLoaded', ()=>{});
+
+// ===================== MCQ TEST SYSTEM =====================
+function renderMCQHome(){
+  return `
+  <div class="container">
+    <div class="crumb"><a href="#" data-nav="home">Home</a> / MCQ Test</div>
+    <div class="sectionhead"><h2 class="pagetitle">📝 MCQ Test</h2><p>Choose your settings and start a timed self-test. ${MCQS.length} questions available across all three topics.</p></div>
+    <div class="panel mcqsetup">
+      <h3>Topic</h3>
+      <div class="grid cols-4" id="mcqTopicSel">
+        ${["All","Vaccines","Organ Transplantation","Transgenic Animals"].map((t,i)=>`<div class="countbtn ${i===0?'sel':''}" data-topic="${t}" onclick="pickMcqOpt('mcqTopicSel',this)">${t==='All'?'All Topics':(TOPIC_ICON[t]||'')+' '+t}</div>`).join('')}
+      </div>
+      <h3>Difficulty</h3>
+      <div class="grid cols-4" id="mcqDiffSel">
+        ${["All","Easy","Medium","Hard"].map((d,i)=>`<div class="countbtn ${i===0?'sel':''}" data-diff="${d}" onclick="pickMcqOpt('mcqDiffSel',this)">${d}</div>`).join('')}
+      </div>
+      <h3>Number of Questions</h3>
+      <div class="grid cols-4" id="mcqCountSel">
+        ${[10,20,30,50].map((n,i)=>`<div class="countbtn ${i===0?'sel':''}" data-n="${n}" onclick="pickMcqOpt('mcqCountSel',this)">${n}</div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+        <button class="btn gold block" onclick="startMcq()">🚀 Start Test</button>
+        <button class="btn outline block" onclick="startMcq(true)">🎲 Random Test</button>
+      </div>
+    </div>
+  </div>`;
+}
+function pickMcqOpt(groupId, el){
+  document.querySelectorAll('#'+groupId+' .countbtn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function shuffleArr(a){ const arr=a.slice(); for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
+
+function startMcq(random){
+  let topic='All', diff='All', n=10;
+  if(!random){
+    topic = document.querySelector('#mcqTopicSel .sel')?.dataset.topic || 'All';
+    diff = document.querySelector('#mcqDiffSel .sel')?.dataset.diff || 'All';
+    n = parseInt(document.querySelector('#mcqCountSel .sel')?.dataset.n || '10');
+  } else { n = 20; }
+  let pool = MCQS.filter(m=> (topic==='All'||m.topic===topic) && (diff==='All'||m.difficulty===diff));
+  if(pool.length===0) pool = MCQS.slice();
+  pool = shuffleArr(pool).slice(0, Math.min(n, pool.length));
+  mcqSession = { items: pool, idx:0, answers: new Array(pool.length).fill(null), topic, diff };
+  renderMcqRunner();
+}
+function renderMcqRunner(){
+  document.getElementById('pageWrap').innerHTML = mcqQuestionHtml();
+}
+function mcqQuestionHtml(){
+  const s = mcqSession;
+  const q = s.items[s.idx];
+  const pct = Math.round(((s.idx)/s.items.length)*100);
+  const answered = s.answers[s.idx]!==null;
+  return `
+  <div class="container" style="max-width:720px">
+    <div class="mcq-progress"><span>Question ${s.idx+1} of ${s.items.length}</span><span class="badge topic">${TOPIC_ICON[q.topic]} ${q.topic}</span></div>
+    <div class="progressbar"><div style="width:${pct}%"></div></div>
+    <div class="mcqQ">${escapeHtml(q.q)}</div>
+    <div class="options" id="mcqOptions">
+      ${q.options.map((opt,i)=>`<div class="option ${answered?'disabled':''} ${answered && i===q.correct?'correct':''} ${answered && i===s.answers[s.idx] && i!==q.correct?'wrong':''}" onclick="${answered?'':'answerMcq('+i+')'}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${escapeHtml(opt)}</span></div>`).join('')}
+    </div>
+    <div class="mcqExplain ${answered?'show':''}" id="mcqExplain">💡 <strong>Explanation:</strong> ${escapeHtml(q.explain)}</div>
+    <div class="mcqnav">
+      <button class="btn outline" onclick="exitMcq()">✕ Exit Test</button>
+      <button class="btn gold" id="mcqNextBtn" ${answered?'':'disabled'} onclick="nextMcq()">${s.idx===s.items.length-1?'Finish Test':'Next →'}</button>
+    </div>
+  </div>`;
+}
+function answerMcq(i){
+  const s = mcqSession;
+  s.answers[s.idx] = i;
+  document.getElementById('pageWrap').innerHTML = mcqQuestionHtml();
+}
+function nextMcq(){
+  const s = mcqSession;
+  if(s.idx < s.items.length-1){ s.idx++; renderMcqRunner(); }
+  else finishMcq();
+}
+function exitMcq(){ mcqSession=null; navigate('mcq'); }
+function finishMcq(){
+  const s = mcqSession;
+  let correct=0;
+  const wrongIds=[];
+  s.items.forEach((q,i)=>{ if(s.answers[i]===q.correct) correct++; else wrongIds.push(q.id); });
+  const total = s.items.length;
+  const pct = Math.round((correct/total)*100);
+  STATE.stats.tests = (STATE.stats.tests||0)+1;
+  STATE.stats.scores = STATE.stats.scores||[];
+  STATE.stats.scores.push(pct);
+  STATE.stats.correctTotal = (STATE.stats.correctTotal||0)+correct;
+  STATE.stats.wrongTotal = (STATE.stats.wrongTotal||0)+(total-correct);
+  persist('dsscp_stats', STATE.stats);
+  wrongIds.forEach(id=>{ if(!STATE.wrong.includes(id)) STATE.wrong.push(id); });
+  persist('dsscp_wrong', STATE.wrong);
+  document.getElementById('pageWrap').innerHTML = mcqResultHtml(correct,total,pct);
+}
+function mcqResultHtml(correct,total,pct){
+  const s = mcqSession;
+  let msg;
+  if(pct>=90) msg = "Excellent preparation!";
+  else if(pct>=75) msg = "Very good! Revise the missed concepts.";
+  else if(pct>=50) msg = "Good attempt. More revision is recommended.";
+  else msg = "Review the key concepts and try the test again.";
+  const reviewHtml = s.items.map((q,i)=>{
+    const ua = s.answers[i];
+    const right = ua===q.correct;
+    return `<div class="reviewitem">
+      <div class="rmeta">${TOPIC_ICON[q.topic]} ${q.topic} · ${q.difficulty}</div>
+      <strong style="font-size:14.5px">${escapeHtml(q.q)}</strong>
+      <div class="ryour ${right?'right':'wrong'}">Your answer: ${ua===null?'(not answered)':escapeHtml(q.options[ua])} ${right?'✓':'✗'}</div>
+      ${!right?`<div class="ryour right">Correct answer: ${escapeHtml(q.options[q.correct])}</div>`:''}
+      <div class="small">${escapeHtml(q.explain)}</div>
+    </div>`;
+  }).join('');
+  return `
+  <div class="container" style="max-width:720px">
+    <div class="panel">
+      <div class="scorehero">
+        <div class="eyebrow">DSSCP TEST RESULT</div>
+        <div class="num">${correct} / ${total}</div>
+        <div class="msg">${msg}</div>
+      </div>
+      <div class="statrow">
+        <div><strong>${pct}%</strong><span>Percentage</span></div>
+        <div><strong style="color:var(--sage)">${correct}</strong><span>Correct</span></div>
+        <div><strong style="color:var(--coral)">${total-correct}</strong><span>Incorrect</span></div>
+        <div><strong>${pct}%</strong><span>Accuracy</span></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+        <button class="btn gold" onclick="retryMcq()">Retry Test</button>
+        <button class="btn outline" onclick="startMcq(true)">New Random Test</button>
+        <button class="btn outline" onclick="navigate('saved');setTimeout(()=>document.getElementById('savedModeWrong')?.click(),60)">Review Wrong Answers</button>
+        <button class="btn outline" onclick="navigate('questions')">Back to Questions</button>
+      </div>
+    </div>
+    <h3 style="margin-top:26px">Question-by-question review</h3>
+    ${reviewHtml}
+  </div>`;
+}
+function retryMcq(){
+  const s = mcqSession;
+  mcqSession = { items: shuffleArr(s.items), idx:0, answers:new Array(s.items.length).fill(null), topic:s.topic, diff:s.diff };
+  renderMcqRunner();
+}
+function startWrongPractice(){
+  const items = STATE.wrong.map(id=>MCQS.find(m=>m.id===id)).filter(Boolean);
+  if(!items.length) return;
+  mcqSession = { items: shuffleArr(items), idx:0, answers:new Array(items.length).fill(null), topic:'All', diff:'All' };
+  navigate('mcq');
+  setTimeout(renderMcqRunner, 30);
+}
+
+// ===================== INIT =====================
+applyTheme();
+navigate('home');
+</script>
+</body>
+</html>
