@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSSCP — Grade XII Applied Biology Prep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --bg-header: rgba(255, 255, 255, 0.95);
+            --border-color: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --primary-light: #38bdf8;
+            --primary-subtle: #f0f9ff;
+            --accent-green: #059669;
+            --accent-green-bg: #ecfdf5;
+            --accent-amber: #d97706;
+            --accent-amber-bg: #fffbeb;
+            --accent-red: #dc2626;
+            --accent-red-bg: #fef2f2;
+            --accent-purple: #7c3aed;
+            --accent-purple-bg: #f5f3ff;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html.dark {
+            --bg-main: #0b1329;
+            --bg-card: #131f37;
+            --bg-card-hover: #1e2d4a;
+            --bg-header: rgba(19, 31, 55, 0.95);
+            --border-color: #233554;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --primary-light: #7dd3fc;
+            --primary-subtle: #1e293b;
+            --accent-green: #10b981;
+            --accent-green-bg: #064e3b;
+            --accent-amber: #f59e0b;
+            --accent-amber-bg: #451a03;
+            --accent-red: #ef4444;
+            --accent-red-bg: #450a0a;
+            --accent-purple: #a78bfa;
+            --accent-purple-bg: #2e1065;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.65;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding-top: 72px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background-color: var(--bg-header);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand-text-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .brand-text-sub {
+            font-size: 0.725rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background-color: var(--primary-subtle);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-theme-toggle:hover {
+            background-color: var(--bg-card-hover);
+        }
+
+        .mobile-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #2563eb 100%);
+            border-radius: var(--radius-xl);
+            padding: 2.75rem 2rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2.15rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.025rem;
+            opacity: 0.92;
+            max-width: 820px;
+            margin-bottom: 1.75rem;
+            font-weight: 400;
+        }
+
+        .hero-quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #ffffff;
+            color: #0284c7;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .topic-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .topic-icon {
+            font-size: 2.25rem;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .topic-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .topic-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .topic-tag {
+            font-size: 0.725rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background-color: var(--primary-subtle);
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .filter-bar {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-input-group {
+            flex-grow: 1;
+            min-width: 240px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            outline: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .question-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .card-header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 0.725rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-vimp { background-color: var(--accent-red-bg); color: var(--accent-red); }
+        .badge-marks { background-color: var(--bg-main); color: var(--text-secondary); border: 1px solid var(--border-color); }
+        .badge-source { background-color: var(--primary-subtle); color: var(--primary); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.45;
+        }
+
+        .toggle-answer-btn {
+            background: var(--primary-subtle);
+            color: var(--primary);
+            border: none;
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .answer-box {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.25rem;
+            background-color: var(--bg-main);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .answer-box.show {
+            display: block;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .answer-heading {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bookmark-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: auto;
+            transition: var(--transition);
+        }
+
+        .bookmark-btn.active {
+            color: #f59e0b;
+        }
+
+        .learn-nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1.75rem;
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-btn-subtopic {
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-main);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn-subtopic.active, .nav-btn-subtopic:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .learn-content-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .learn-content-box h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid var(--primary-subtle);
+            padding-bottom: 0.75rem;
+        }
+
+        .learn-content-box h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin: 1.75rem 0 0.85rem;
+        }
+
+        .learn-content-box h4 {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 700;
+        }
+
+        .learn-content-box p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.975rem;
+            line-height: 1.7;
+        }
+
+        .learn-content-box ul, .learn-content-box ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .learn-content-box li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .callout-box {
+            background-color: var(--primary-subtle);
+            border-left: 4px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 1.25rem 0;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.925rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-subtle);
+            color: var(--primary);
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            font-weight: 700;
+        }
+
+        .comparison-table td {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .quiz-config-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .quiz-option-group {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .quiz-num-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-num-btn.selected, .quiz-num-btn:hover {
+            background-color: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .mcq-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            max-width: 780px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        .quiz-progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .option-btn {
+            text-align: left;
+            padding: 14px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: var(--primary-subtle);
+            border-color: var(--primary-light);
+        }
+
+        .option-btn.correct {
+            background-color: var(--accent-green-bg) !important;
+            border-color: var(--accent-green) !important;
+            color: var(--accent-green) !important;
+            font-weight: 700;
+        }
+
+        .option-btn.incorrect {
+            background-color: var(--accent-red-bg) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red) !important;
+        }
+
+        .option-prefix {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .result-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        .score-big { font-size: 2.5rem; font-weight: 800; line-height: 1; }
+        .score-sub { font-size: 0.8rem; opacity: 0.85; font-weight: 600; }
+
+        .flashcard-container {
+            perspective: 1000px;
+            max-width: 620px;
+            margin: 0 auto 1.5rem;
+            height: 340px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: var(--radius-xl);
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            background-color: var(--bg-card);
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background-color: var(--primary-subtle);
+            border-color: var(--primary-light);
+        }
+
+        .flashcard-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .flashcard-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .revision-card {
+            background: var(--bg-card);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .revision-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .btn-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: #ffffff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 99;
+        }
+
+        .btn-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 868px) {
+            .mobile-hamburger { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 8px;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-lg);
+                display: none;
+            }
+            .nav-menu.open { display: flex; }
+            .nav-link { width: 100%; padding: 12px; }
+            .hero-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand-container" onclick="switchTab('home')">
+            <div class="brand-logo">Z</div>
+            <div>
+                <div class="brand-text-title">DSSCP — Applied Biology</div>
+                <div class="brand-text-sub">Grade XII NEB Master Guide</div>
+            </div>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a class="nav-link active" onclick="switchTab('home')">Home</a></li>
+            <li><a class="nav-link" onclick="switchTab('learn')">Learn Theory</a></li>
+            <li><a class="nav-link" onclick="switchTab('questions')">Questions</a></li>
+            <li><a class="nav-link" onclick="switchTab('important')">Important</a></li>
+            <li><a class="nav-link" onclick="switchTab('mcq')">MCQ Test</a></li>
+            <li><a class="nav-link" onclick="switchTab('flashcards')">Flashcards</a></li>
+            <li><a class="nav-link" onclick="switchTab('differences')">Differences</a></li>
+            <li><a class="nav-link" onclick="switchTab('revision')">Quick Revision</a></li>
+            <li><a class="nav-link" onclick="switchTab('progress')">Progress</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="btn-theme-toggle" id="themeToggleBtn" title="Toggle Theme" onclick="toggleTheme()">🌙</button>
+            <button class="mobile-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="tab-home" class="tab-content active">
+            <div class="hero-banner">
+                <span class="hero-tag">Grade 12 NEB Biology • Applied Zoology</span>
+                <h1 class="hero-title">Complete 100% Comprehensive Applied Biology Guide</h1>
+                <p class="hero-subtitle">Exhaustive theoretical breakdowns, clear textbook concepts, high-yield subjective model answers, self-assessment MCQs, comparative tables, and flashcards across <strong>Vaccines & Immunology</strong>, <strong>Transgenic Animals</strong>, and <strong>Organ Transplantation</strong>.</p>
+                <div class="hero-quick-actions">
+                    <button class="btn btn-primary" onclick="switchTab('learn')">📖 Study Detailed Theory Notes</button>
+                    <button class="btn btn-outline-white" onclick="switchTab('mcq')">⚡ Practice MCQ Assessment</button>
+                    <button class="btn btn-outline-white" onclick="switchTab('questions')">📚 Subjective Question Bank</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper" style="background:#eff6ff; color:#0284c7;">📖</div>
+                    <div>
+                        <div class="stat-value" id="statQuestionsStudied">0 / 10</div>
+                        <div class="stat-label">Questions Learned</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper" style="background:#ecfdf5; color:#059669;">🎯</div>
+                    <div>
+                        <div class="stat-value" id="statTestsTaken">0</div>
+                        <div class="stat-label">MCQ Tests Taken</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper" style="background:#fffbeb; color:#d97706;">🏆</div>
+                    <div>
+                        <div class="stat-value" id="statBestScore">0%</div>
+                        <div class="stat-label">Best MCQ Score</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper" style="background:#f5f3ff; color:#7c3aed;">⭐</div>
+                    <div>
+                        <div class="stat-value" id="statBookmarks">0</div>
+                        <div class="stat-label">Bookmarked Items</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <h2 class="section-title">🧪 NEB Grade XII Applied Zoology Syllabus Overview</h2>
+            </div>
+
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <span class="topic-icon">💉</span>
+                    <h3 class="topic-card-title">1. Vaccines & Immunology</h3>
+                    <p class="topic-card-desc">Deep dive into Jenner & Pasteur breakthroughs, Antigens vs Antibodies, Innate vs Acquired Immunity, Active vs Passive Immunity, and the 4 Vaccine Types (Killed, Attenuated, Toxoids, Recombinant Hepatitis B).</p>
+                    <div class="topic-card-footer">
+                        <span class="topic-tag">High Priority</span>
+                        <button class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;" onclick="switchTab('learn', 'vaccines')">Read Theory →</button>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-icon">🐑</span>
+                    <h3 class="topic-card-title">2. Transgenic Animals</h3>
+                    <p class="topic-card-desc">Definition, Palmiter & Brinster (1982) mouse experiment (MT-1 promoter + hGH gene), Microinjection, Retroviral vectors, ES cell method, Rosie Cow (α-lactalbumin), Transgenic Fish (2× size), and Xenotransplantation pig models.</p>
+                    <div class="topic-card-footer">
+                        <span class="topic-tag">Core Module</span>
+                        <button class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;" onclick="switchTab('learn', 'transgenic')">Read Theory →</button>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-icon">🫀</span>
+                    <h3 class="topic-card-title">3. Organ Transplantation</h3>
+                    <p class="topic-card-desc">Definitions and detailed mechanics of Autograft, Isograft, Allograft, and Xenograft. Graft rejection processes (CD8+ T-cells), Cyclosporine A immunosuppression, and Corneal Grafting immunological privilege.</p>
+                    <div class="topic-card-footer">
+                        <span class="topic-tag">Must Prepare</span>
+                        <button class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;" onclick="switchTab('learn', 'transplantation')">Read Theory →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-learn" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">📚 Detailed Applied Biology Theory Notes</h2>
+            </div>
+
+            <!-- Subtopic Switcher -->
+            <div class="learn-nav-bar" id="learnSubtopicButtons">
+                <button class="nav-btn-subtopic active" onclick="showLearnTopic('vaccines', this)">💉 Vaccines & Immunity</button>
+                <button class="nav-btn-subtopic" onclick="showLearnTopic('transgenic', this)">🐑 Transgenic Animals</button>
+                <button class="nav-btn-subtopic" onclick="showLearnTopic('transplantation', this)">🫀 Organ Transplantation</button>
+                <button class="nav-btn-subtopic" onclick="showLearnTopic('all', this)">📄 View All Theory Notes</button>
+            </div>
+
+            <!-- Topic 1: Vaccines -->
+            <div id="learn-topic-vaccines" class="learn-content-box">
+                <h2>Module 1: Vaccines & Immunology (Applied Biology Unit)</h2>
+                
+                <h3>1. Fundamental Definitions & Core Concepts</h3>
+                <p><strong>Vaccine:</strong> A biological preparation containing antigenic proteins, weakened (attenuated) live pathogens, or inactivated dead microorganisms that is administered orally or injected into the body to stimulate host immune memory and induce specific antibody production.</p>
+                <p><strong>Vaccination:</strong> The administrative process of introducing live attenuated, killed, or recombinant antigenic substances into a human or animal body to induce active immune protection against infectious diseases.</p>
+                <p><strong>Immunization:</strong> The complete physiological process through which a host develops immunity and long-term resistance against a specific pathogen following natural infection or vaccine administration.</p>
+
+                <div class="callout-box">
+                    <strong>Historical Milestones in Immunology:</strong><br>
+                    • <strong>Edward Jenner (1796):</strong> Observed that milkmaids infected with cowpox were immune to smallpox. He inoculated young James Phipps with cowpox fluid and successfully protected him against smallpox, laying the foundation of modern vaccination.<br>
+                    • <strong>Louis Pasteur (July 1885):</strong> Coined the term <em>Vaccine</em> (derived from Latin <em>vacca</em> meaning cow, in honor of Jenner). Pasteur developed the rabies vaccine (first successfully tested on Joseph Meister) and the anthrax vaccine, establishing the concept of pathogenic attenuation.
+                </div>
+
+                <h3>2. Antigens vs Antibodies</h3>
+                <p><strong>Antigens (Immunogens):</strong> Foreign macromolecular substances (typically proteins, polysaccharides, or glycoproteins) that enter host tissues and trigger a specific immune response by binding to specific host antibody receptors (paratopes) via their antigenic determinant sites (epitopes).</p>
+                <p><strong>Antibodies (Immunoglobulins - Ig):</strong> Y-shaped defensive proteins synthesized by differentiated B-lymphocytes (plasma cells) in response to foreign antigen recognition. The five primary classes of human immunoglobulins are IgG, IgA, IgM, IgD, and IgE.</p>
+
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Antigen</th>
+                                <th>Antibody</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Origin</strong></td>
+                                <td>Exogenous or foreign molecules originating outside host tissues.</td>
+                                <td>Endogenous defensive proteins synthesized internally by host B-cells.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chemical Nature</strong></td>
+                                <td>Proteins, polysaccharides, lipopolysaccharides, or nucleoproteins.</td>
+                                <td>Exclusively proteins (Immunoglobulins IgG, IgA, IgM, IgD, IgE).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Binding Site</strong></td>
+                                <td>Contains one or more <strong>Epitopes</strong> (antigenic determinants).</td>
+                                <td>Contains hypervariable <strong>Paratopes</strong> at the variable region (Fab).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Primary Function</strong></td>
+                                <td>Triggers immune cell activation or causes cellular pathogenesis.</td>
+                                <td>Neutralizes pathogens, agglutinates microbes, and promotes opsonization.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3. Classification of Immunity</h3>
+                <p>Immunity represents the overall biological capability of an organism to recognize, neutralize, and destroy invading foreign pathogens or toxic substances.</p>
+
+                <h4>A. Natural (Innate / Non-Specific) Immunity</h4>
+                <p>Inborn genetic resistance present from birth. It operates via physical barriers (skin, mucous membranes), chemical barriers (stomach HCl, lysozyme in tears), cellular barriers (neutrophils, macrophages), and cytokine barriers (interferons). In newborns, maternal antibodies (IgG crossing the placenta and IgA via colostrum) provide crucial temporary innate humoral protection.</p>
+
+                <h4>B. Acquired (Adaptive / Specific) Immunity</h4>
+                <p>Immunity acquired during an individual's lifespan following contact with specific antigens. Characterized by specificity, memory, and self-nonself discrimination.</p>
+                <ul>
+                    <li><strong>Active Immunity:</strong> Produced when the host's own immune system is exposed to foreign antigens (via natural infection or vaccination) and actively manufactures its own antibodies and memory B/T lymphocytes.
+                        <ul>
+                            <li><em>Natural Active Immunity:</em> Direct recovery from an infection (e.g., lifelong immunity after smallpox or chickenpox).</li>
+                            <li><em>Artificial Active Immunity:</em> Induced through vaccines (e.g., BCG, Sabin OPV, MMR, Hepatitis B).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Passive Immunity:</strong> Developed by directly transferring pre-formed readymade antibodies into an individual. Provides immediate, short-term protection without forming memory cells.
+                        <ul>
+                            <li><em>Natural Passive Immunity:</em> Transfer of maternal IgG across placenta or maternal IgA through milk/colostrum.</li>
+                            <li><em>Artificial Passive Immunity:</em> Injection of hyperimmune serum, such as <strong>Antivenin</strong> (against snake venom), <strong>Anti-Tetanus Serum (ATS)</strong>, or <strong>Rabies Immunoglobulin (RIG)</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>4. Four Major Categories of Vaccines</h3>
+                <ol>
+                    <li><strong>Killed / Inactivated Vaccines:</strong> Formulated by killing pathogenic bacteria or viruses using heat, radiation, or chemical agents like formaldehyde (formalin) while keeping structural antigen surface proteins intact. They are safe and stable but require booster doses.
+                        <br><em>Examples:</em> Salk Injectable Polio Vaccine (IPV), Rabies Vaccine, Cholera Vaccine, Inactivated Typhoid Vaccine.
+                    </li>
+                    <li><strong>Live Attenuated Vaccines:</strong> Created by weakening (attenuating) live pathogens through repeated subculturing in abnormal laboratory media or chemical treatment. The organism remains alive and replicates slowly to produce a strong, long-lasting cellular and humoral immune response without causing full-scale disease.
+                        <br><em>Examples:</em> BCG (Bacillus Calmette–Guérin against Tuberculosis), Sabin Oral Polio Vaccine (OPV), MMR Vaccine (Measles, Mumps, Rubella), Yellow Fever Vaccine.
+                    </li>
+                    <li><strong>Toxoid Vaccines:</strong> Produced by treating bacterial exotoxins with dilute formalin to neutralize their clinical toxicity while preserving immunogenicity. They induce antitoxin antibodies.
+                        <br><em>Examples:</em> Tetanus Toxoid (TT), Diphtheria Toxoid.
+                    </li>
+                    <li><strong>Recombinant / Subunit Vaccines:</strong> Developed using recombinant DNA technology. The gene encoding a specific surface antigen is isolated, inserted into an expression vector, and expressed inside host production cells like yeast cells (<em>Saccharomyces cerevisiae</em>).
+                        <br><em>Examples:</em> Recombinant Hepatitis B Vaccine (expressing HBsAg in yeast), Human Papillomavirus (HPV) Vaccine.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Topic 2: Transgenic Animals -->
+            <div id="learn-topic-transgenic" class="learn-content-box" style="display:none;">
+                <h2>Module 2: Transgenic Animals & Biopharming</h2>
+                
+                <h3>1. Definition & Landmark Discovery</h3>
+                <p><strong>Transgenic Animals:</strong> Animals whose genome has been stably modified by the artificial integration of a foreign functional gene (transgene) originating from another individual or species using recombinant DNA techniques.</p>
+
+                <div class="callout-box">
+                    <strong>Historic Breakthrough (December 1982):</strong><br>
+                    Richard Palmiter and Ralph Brinster created the world's first transgenic "super mouse" by fusing the human growth hormone (hGH) gene with the promoter region of the mouse metallothionein-1 (MT-1) gene. The resulting transgenic mice expressed elevated growth hormone levels and grew to almost <strong>double the normal size</strong> of control mice.
+                </div>
+
+                <h3>2. Methods for Gene Transfer into Animal Embryos</h3>
+                <ul>
+                    <li><strong>DNA Microinjection Method:</strong> Direct physical injection of purified foreign DNA solution directly into the male pronucleus of a newly fertilized single-cell zygote using a micro-glass needle (0.5–1.5 µm tip) under microscopic control. The injected zygote is then surgically implanted into a pseudopregnant foster mother.</li>
+                    <li><strong>Retroviral Vector-Mediated Transfer:</strong> Recombinant retroviruses rendered replication-defective are engineered to carry the desired transgene. Early-stage embryos (blastomeres during cleavage) are infected with the viral vector, which integrates the target genetic material into host genomic DNA.</li>
+                    <li><strong>Embryonic Stem (ES) Cell Method:</strong> Target foreign genes are introduced into cultured pluripotent embryonic stem cells derived from blastocysts in vitro via electroporation or homologous recombination. Genetically transformed ES cells are screened, selected, and microinjected into recipient blastocysts to produce chimeric transgenic offspring.</li>
+                </ul>
+
+                <h3>3. Major Applications & Key Transgenic Examples</h3>
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Transgenic Organism</th>
+                                <th>Genetic Modification Made</th>
+                                <th>Primary Application & Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Rosie Cow (1997)</strong></td>
+                                <td>Human α-lactalbumin gene inserted into bovine genome.</td>
+                                <td>Produces humanized milk containing 2.4 g/L of human α-lactalbumin protein, providing a nutritionally complete alternative for human infants.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transgenic Sheep & Goats</strong></td>
+                                <td>Human genes encoding therapeutic blood proteins inserted.</td>
+                                <td><strong>Biopharming:</strong> Secretes human blood clotting Factor IX (for hemophilia) and α-1-antitrypsin (AAT, for emphysema) directly in milk.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transgenic Pigs</strong></td>
+                                <td>Disruption (knockout) of galactosyltransferase genes.</td>
+                                <td>Serves as xenograft organ donors (kidneys, heart valves) for human transplantation with minimal risk of hyperacute immune rejection.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transgenic Fish (Salmon, Carp)</strong></td>
+                                <td>Chimeric growth hormone (GH) genes inserted.</td>
+                                <td>Attains <strong>double the normal body mass</strong> (2× size) and dramatically accelerated growth rates for commercial aquaculture.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transgenic Mice</strong></td>
+                                <td>Oncogenes or viral receptors integrated into genome.</td>
+                                <td>Serves as disease models for studying human cancer, Alzheimer's disease, and testing vaccine safety (e.g., polio vaccine safety testing).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Topic 3: Organ Transplantation -->
+            <div id="learn-topic-transplantation" class="learn-content-box" style="display:none;">
+                <h2>Module 3: Organ & Tissue Transplantation</h2>
+
+                <h3>1. Definition & Classification of Grafts</h3>
+                <p><strong>Transplantation:</strong> The surgical replacement or transfer of viable cells, tissues, or entire functional organs from a donor to a recipient host, or from one anatomical location to another within the same individual, to restore damaged physiological functions.</p>
+
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Graft Category</th>
+                                <th>Donor & Recipient Relationship</th>
+                                <th>Genetic Homology</th>
+                                <th>Graft Rejection Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Autograft</strong></td>
+                                <td>Graft transferred within the <em>same individual</em> (e.g., skin graft from thigh to facial burn area, vein bypass).</td>
+                                <td>100% Identical</td>
+                                <td>Zero Rejection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Isograft (Syngeneic)</strong></td>
+                                <td>Graft transferred between genetically <em>identical twins</em> (monozygotic twins).</td>
+                                <td>100% Identical</td>
+                                <td>Zero Rejection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Allograft (Homograft)</strong></td>
+                                <td>Graft transferred between genetically non-identical members of the <em>same species</em> (e.g., human-to-human kidney/heart transplant).</td>
+                                <td>Genetically Distinct</td>
+                                <td>High Risk (T-cell CMI)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Xenograft (Heterograft)</strong></td>
+                                <td>Graft transferred between individuals belonging to <em>different species</em> (e.g., pig heart valve or liver to human).</td>
+                                <td>Species Divergent</td>
+                                <td>Hyperacute Rejection</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. Mechanism of Graft Rejection & Immunosuppression</h3>
+                <p><strong>Graft Rejection Mechanism:</strong> Driven primarily by <strong>Cell-Mediated Immunity (CMI)</strong>. The host's immune system recognizes foreign Major Histocompatibility Complex (MHC) or Human Leukocyte Antigen (HLA) markers present on donor organ cells. Cytotoxic T-lymphocytes (CD8+ T-cells) and Helper T-cells (CD4+ T-cells) infiltrate the graft, releasing cytokines, inducing vascular inflammation, thrombotic occlusion, and tissue necrosis.</p>
+
+                <p><strong>Immunosuppressive Therapy:</strong> To prevent allograft rejection, recipients are administered immunosuppressive drugs:</p>
+                <ul>
+                    <li><strong>Cyclosporine A:</strong> Lipophilic peptide extracted from the soil fungus <em>Tolypocladium inflatum</em>. It selectively inhibits calcineurin pathways, blocking interleukin-2 (IL-2) transcription and preventing T-cell activation.</li>
+                    <li>Other drugs include Tacrolimus (FK506), Corticosteroids, and Azathioprine.</li>
+                </ul>
+
+                <h3>3. Corneal Grafting (Keratoplasty) & Immunological Privilege</h3>
+                <p>Corneal transplants represent the most successful organ grafting procedure in human medicine, achieving over 90% success rates without needing aggressive immunosuppressant drugs.</p>
+
+                <div class="callout-box">
+                    <strong>Why Corneal Transplants do not undergo Graft Rejection:</strong><br>
+                    The cornea is an <strong>immunologically privileged site</strong> due to the following structural and immune features:<br>
+                    1. <strong>Avascularity:</strong> The cornea is entirely devoid of blood vessels and lymphatic vessels. Host cytotoxic T-lymphocytes (CD8+ T-cells) and antibodies cannot travel through blood circulation to infiltrate or attack the donor graft.<br>
+                    2. <strong>Blood-Aqueous Barrier:</strong> Prevents immune cell migration into the anterior chamber.<br>
+                    3. <strong>Immunosuppressive Microenvironment:</strong> Soluble factors like TGF-β in aqueous humor activate immune tolerance mechanisms.
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-questions" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">📂 Applied Zoology Subjective Question Bank</h2>
+            </div>
+
+            <div class="filter-bar">
+                <div class="search-input-group">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="questionSearchInput" class="search-input" placeholder="Search questions (e.g., cornea, Jenner, microinjection, autograft, Rosie)..." oninput="filterQuestions()">
+                </div>
+                <select id="filterTopic" class="filter-select" onchange="filterQuestions()">
+                    <option value="all">All 3 Topics</option>
+                    <option value="Vaccines">Vaccines & Immunity</option>
+                    <option value="Transgenic Animals">Transgenic Animals</option>
+                    <option value="Organ Transplantation">Organ Transplantation</option>
+                </select>
+                <select id="filterMarks" class="filter-select" onchange="filterQuestions()">
+                    <option value="all">All Marks</option>
+                    <option value="1">1 Mark</option>
+                    <option value="2">2 Marks</option>
+                    <option value="4">4 Marks</option>
+                </select>
+            </div>
+
+            <div id="questionsContainer"></div>
+        </section>
+
+        <section id="tab-important" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">🔥 High-Yield Board Exam Model Answers</h2>
+            </div>
+            <p style="margin-bottom:1.5rem; color:var(--text-secondary);">Strictly structured 1, 2, and 4-mark model answers formatted for standard NEB evaluation criteria.</p>
+            <div id="importantQuestionsContainer"></div>
+        </section>
+
+        <section id="tab-mcq" class="tab-content">
+            <div id="mcq-start-screen" class="quiz-config-card">
+                <span style="font-size:3rem;">⚡</span>
+                <h2 style="font-size:1.6rem; margin-top:0.5rem; color:var(--text-primary);">Applied Biology MCQ Self-Assessment</h2>
+                <p style="color:var(--text-secondary); margin-top:0.5rem;">Interactive multiple-choice test covering Vaccines, Transgenic Animals & Organ Transplantation.</p>
+                
+                <h4 style="margin-top:1.5rem; color:var(--text-primary);">Select Question Count:</h4>
+                <div class="quiz-option-group">
+                    <button class="quiz-num-btn selected" onclick="selectQuizLength(5, this)">5 Items</button>
+                    <button class="quiz-num-btn" onclick="selectQuizLength(10, this)">10 Items</button>
+                </div>
+
+                <button class="btn btn-primary" style="width:100%; padding:12px; font-size:1rem;" onclick="startMcqTest()">🚀 Start Assessment</button>
+            </div>
+
+            <div id="mcq-test-screen" class="mcq-card" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <span id="quizQuestionCount" style="font-weight:700; color:var(--primary);">Question 1 of 5</span>
+                    <span id="quizTopicTag" class="topic-tag">Topic</span>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div id="quizProgressBar" class="quiz-progress-fill"></div>
+                </div>
+
+                <h3 id="mcqQuestionText" style="font-size:1.15rem; color:var(--text-primary); margin-bottom:1.5rem;">Question text...</h3>
+
+                <div class="mcq-options" id="mcqOptionsContainer"></div>
+
+                <div id="mcqExplanationBox" class="answer-box" style="margin-bottom:1.5rem;">
+                    <div class="answer-heading">💡 Scientific Explanation</div>
+                    <div id="mcqExplanationText"></div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <button id="mcqNextBtn" class="btn btn-primary" style="margin-left:auto;" onclick="nextMcqQuestion()">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="mcq-result-screen" class="result-card" style="display:none;">
+                <h2>🎉 Test Completed!</h2>
+                <p style="color:var(--text-secondary);">Here is your performance summary:</p>
+
+                <div class="score-circle">
+                    <span id="resultScore" class="score-big">0 / 0</span>
+                    <span id="resultPercentage" class="score-sub">0% Score</span>
+                </div>
+
+                <p id="resultFeedback" style="font-weight:700; font-size:1.1rem; color:var(--primary); margin-bottom:1.5rem;"></p>
+
+                <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:2rem;">
+                    <button class="btn btn-primary" onclick="startMcqTest()">🔄 Retry Assessment</button>
+                    <button class="btn btn-outline-white" style="color:var(--text-primary); border-color:var(--border-color);" onclick="switchTab('questions')">📚 Question Bank</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-flashcards" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">🎴 Key Terms & Concepts Flashcards</h2>
+                <span id="flashcardCounter" style="font-weight:700; color:var(--primary);">Card 1 / 10</span>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcardElement" onclick="flipFlashcard()">
+                    <div class="flashcard-face flashcard-front">
+                        <span style="font-size:0.8rem; font-weight:700; color:var(--primary-light); text-transform:uppercase;" id="cardCategory">CATEGORY</span>
+                        <h3 id="cardFrontText" style="margin-top:1rem; font-size:1.35rem; color:var(--text-primary);">Front Term</h3>
+                        <span class="flashcard-hint">💡 Click or Tap to Flip Card</span>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <h3 id="cardBackText" style="font-size:1.1rem; color:var(--primary);">Back Answer Explanation</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-nav">
+                <button class="btn btn-primary" onclick="prevFlashcard()">← Previous</button>
+                <button class="btn btn-primary" onclick="nextFlashcard()">Next →</button>
+            </div>
+        </section>
+
+        <section id="tab-differences" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">⚖️ Comprehensive Comparison Tables</h2>
+            </div>
+            
+            <div class="learn-content-box">
+                <h3>1. Antigen vs Antibody</h3>
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Antigen</th>
+                                <th>Antibody</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Definition</strong></td>
+                                <td>Foreign entity provoking immune response</td>
+                                <td>Defensive host immunoglobulin protein</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chemical Composition</strong></td>
+                                <td>Proteins, polysaccharides, lipoproteins</td>
+                                <td>Proteins (Immunoglobulins IgG, IgA, IgM, IgD, IgE)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Active Region</strong></td>
+                                <td>Epitope (Antigenic determinant)</td>
+                                <td>Paratope (Antigen binding site)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. Active Immunity vs Passive Immunity</h3>
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Active Immunity</th>
+                                <th>Passive Immunity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Antibody Source</strong></td>
+                                <td>Manufactured internally by host immune cells</td>
+                                <td>Pre-formed readymade antibodies introduced from outside</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memory Formation</strong></td>
+                                <td>Generates memory B and T cells</td>
+                                <td>No memory cells formed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Duration</strong></td>
+                                <td>Long-lasting or life-long</td>
+                                <td>Temporary and short-lived</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Example</strong></td>
+                                <td>BCG vaccine, Sabin OPV, Natural infection</td>
+                                <td>Antivenin, Anti-Tetanus Serum (ATS), Colostrum IgA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3. Live Attenuated vs Inactivated Vaccines</h3>
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Live Attenuated Vaccine</th>
+                                <th>Inactivated / Killed Vaccine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pathogen State</strong></td>
+                                <td>Weakened live microorganism</td>
+                                <td>Killed using heat or chemical formalin</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Booster Requirements</strong></td>
+                                <td>Usually single dose provides long immunity</td>
+                                <td>Requires periodic booster doses</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Examples</strong></td>
+                                <td>BCG, Sabin OPV, MMR</td>
+                                <td>Salk IPV, Rabies, Cholera vaccine</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>4. Graft Types Comparison (Autograft vs Isograft vs Allograft vs Xenograft)</h3>
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Graft Category</th>
+                                <th>Donor & Recipient</th>
+                                <th>Genetic Match</th>
+                                <th>Rejection Severity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Autograft</strong></td>
+                                <td>Same individual</td>
+                                <td>100% Identical</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Isograft</strong></td>
+                                <td>Identical twins</td>
+                                <td>100% Identical</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Allograft</strong></td>
+                                <td>Same species, non-identical</td>
+                                <td>Genetically distinct</td>
+                                <td>High (Mediated by T-cells)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Xenograft</strong></td>
+                                <td>Different species (Pig to Human)</td>
+                                <td>Divergent species</td>
+                                <td>Hyperacute rejection</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-revision" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">⏱️ Rapid High-Yield Exam Revision Cheatsheet</h2>
+            </div>
+            
+            <div class="revision-card">
+                <div class="revision-title">💉 Vaccines & Immunology Key Points</div>
+                <p>• <strong>Edward Jenner (1796):</strong> Inoculated cowpox to prevent smallpox.<br>
+                • <strong>Louis Pasteur (1885):</strong> Coined <em>Vaccine</em> (Latin: vacca = cow) and developed rabies vaccine.<br>
+                • <strong>Recombinant Hepatitis B Vaccine:</strong> Produced by expressing HBsAg gene in <em>Saccharomyces cerevisiae</em>.<br>
+                • <strong>Toxoid Vaccines:</strong> Formalin-inactivated bacterial exotoxins (Tetanus Toxoid, Diphtheria Toxoid).</p>
+            </div>
+
+            <div class="revision-card">
+                <div class="revision-title">🐑 Transgenic Animals Key Points</div>
+                <p>• <strong>Palmiter & Brinster (1982):</strong> Created super mice using human growth hormone (hGH) and mouse metallothionein-1 (MT-1) promoter.<br>
+                • <strong>Rosie Cow (1997):</strong> Produced humanized milk with 2.4 g/L human α-lactalbumin.<br>
+                • <strong>Transgenic Fish:</strong> Salmon with growth hormone gene grow to 2× double body size.<br>
+                • <strong>Gene Transfer Methods:</strong> Pronuclear Microinjection, Retroviral Vectors, Embryonic Stem (ES) Cells.</p>
+            </div>
+
+            <div class="revision-card">
+                <div class="revision-title">🫀 Organ Transplantation Key Points</div>
+                <p>• <strong>Corneal Transplant Success:</strong> Avascularity prevents CD8+ T-cell invasion, making the cornea an <em>immunologically privileged site</em>.<br>
+                • <strong>Allograft Rejection:</strong> Driven by cell-mediated immunity (CD8+ Cytotoxic T-cells recognizing MHC/HLA markers).<br>
+                • <strong>Immunosuppressant:</strong> <strong>Cyclosporine A</strong> (from <em>Tolypocladium inflatum</em>) blocks calcineurin & IL-2 synthesis.</p>
+            </div>
+        </section>
+
+        <section id="tab-progress" class="tab-content">
+            <div class="section-heading">
+                <h2 class="section-title">📊 Analytics & Progress Tracking</h2>
+                <button class="btn btn-primary" style="background-color:var(--accent-red);" onclick="confirmResetProgress()">Reset Progress</button>
+            </div>
+
+            <div class="quiz-config-card" style="max-width:100%; text-align:left;">
+                <h3 style="margin-bottom:1rem;">Mastery Summary</h3>
+                <p><strong>Questions Marked Learned:</strong> <span id="progLearned">0</span> / 10</p>
+                <p><strong>Total MCQ Tests Completed:</strong> <span id="progTests">0</span></p>
+                <p><strong>Highest Test Score:</strong> <span id="progBest">0%</span></p>
+                <p><strong>Bookmarked Questions:</strong> <span id="progBookmarked">0</span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="customModal">
+        <div class="modal-box">
+            <h3 id="modalTitle" style="font-size:1.2rem; color:var(--text-primary); margin-bottom:0.75rem;">Modal Title</h3>
+            <p id="modalBody" style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:0.95rem;">Modal body text...</p>
+            <div style="display:flex; justify-content:center; gap:10px;" id="modalActions">
+                <button class="btn btn-primary" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>DSSCP — Grade XII Applied Zoology • Aligned with NEB Curriculum Development Centre, Nepal</p>
+    </footer>
+
+    <button class="btn-top" id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // QUESTION BANK COVERING ALL THREE SYLLABUS TOPICS
+        const QUESTIONS_DATA = [
+            {
+                id: 1,
+                topic: "Vaccines",
+                marks: 1,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Define Vaccine and Vaccination.",
+                answer: "<strong>Vaccine:</strong> A liquid preparation of live attenuated, killed, or recombinant pathogens/antigens administered to induce active immunity.<br><strong>Vaccination:</strong> The administrative process of introducing vaccines into an individual to stimulate immune antibody production.",
+                explanation: "Core definition from textbook."
+            },
+            {
+                id: 2,
+                topic: "Vaccines",
+                marks: 2,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Differentiate between Active and Passive Immunity with examples.",
+                answer: "<strong>Active Immunity:</strong> Produced when host immune B/T cells manufacture their own antibodies in response to antigen exposure (e.g., BCG vaccine, Sabin OPV, or natural recovery). Lasts long term.<br><strong>Passive Immunity:</strong> Produced by administering pre-formed readymade antibodies into the host (e.g., antivenin for snakebite, ATS). Provides immediate, temporary protection without memory cells.",
+                explanation: "Textbook differentiation."
+            },
+            {
+                id: 3,
+                topic: "Vaccines",
+                marks: 4,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Classify Vaccines into four types with suitable examples of each. [4]",
+                answer: `<strong>1. Live Attenuated Vaccines:</strong> Weakened live pathogens. E.g., BCG (Tuberculosis), Sabin OPV, MMR.<br>
+                <strong>2. Killed / Inactivated Vaccines:</strong> Pathogens inactivated by heat or formalin. E.g., Salk IPV, Rabies, Cholera vaccine.<br>
+                <strong>3. Toxoid Vaccines:</strong> Formalin-treated bacterial exotoxins. E.g., Tetanus toxoid (TT), Diphtheria toxoid.<br>
+                <strong>4. Recombinant Vaccines:</strong> Produced via genetic engineering in host cells. E.g., Recombinant Hepatitis B vaccine expressing HBsAg in yeast.`,
+                explanation: "Textbook classification."
+            },
+            {
+                id: 4,
+                topic: "Transgenic Animals",
+                marks: 4,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Define Transgenesis. Describe three methods used to introduce foreign genes into animal embryos. [1+3]",
+                answer: `<strong>Transgenesis:</strong> The technique of introducing a functional foreign gene (transgene) into an animal genome using recombinant DNA technology.<br><br>
+                <strong>Methods:</strong><br>
+                1. <em>DNA Microinjection:</em> Direct physical injection of recombinant DNA solution into the male pronucleus of a fertilized single-cell zygote using a micro-glass pipette under microscopy.<br>
+                2. <em>Retroviral Vector Transfer:</em> Replication-deficient retroviruses carrying the transgene infect early cleavage-stage blastomeres to integrate foreign DNA.<br>
+                3. <em>Embryonic Stem (ES) Cell Method:</em> Recombinant gene constructs are electroporated into cultured pluripotent stem cells, which are then microinjected into host blastocysts.`,
+                explanation: "Textbook summary of methods."
+            },
+            {
+                id: 5,
+                topic: "Transgenic Animals",
+                marks: 2,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "What is Rosie Cow? What is the special property of its milk?",
+                answer: "<strong>Rosie Cow (1997)</strong> was the first transgenic cow. Its milk contained <strong>2.4 g/L of human α-lactalbumin</strong>, making it a nutritionally more complete milk product for human infants compared to natural cow milk.",
+                explanation: "Textbook example."
+            },
+            {
+                id: 6,
+                topic: "Organ Transplantation",
+                marks: 2,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Why is Corneal Grafting highly successful in humans without heavy immunosuppressants?",
+                answer: "The cornea is an <strong>immunologically privileged site</strong> because it is completely <strong>avascular</strong> (lacks blood vessels and lymphatic vessels). Host cytotoxic CD8+ T-lymphocytes and antibodies cannot enter through blood vessels to initiate allograft rejection.",
+                explanation: "Textbook topic."
+            },
+            {
+                id: 7,
+                topic: "Organ Transplantation",
+                marks: 4,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Define Transplantation. Explain the four types of grafts based on donor-recipient relationship. [1+3]",
+                answer: `<strong>Transplantation:</strong> The surgical transfer of viable cells, tissues, or organs from a donor to a recipient host.<br><br>
+                <strong>Types of Grafts:</strong><br>
+                1. <em>Autograft:</em> Transfer within the same individual (e.g., skin graft from thigh to face). Zero rejection.<br>
+                2. <em>Isograft:</em> Transfer between genetically identical twins. Zero rejection.<br>
+                3. <em>Allograft:</em> Transfer between non-identical members of the same species (e.g., human kidney transplant). High rejection risk.<br>
+                4. <em>Xenograft:</em> Transfer between different species (e.g., pig valve to human). Causes hyperacute rejection.`,
+                explanation: "Textbook graft classification."
+            },
+            {
+                id: 8,
+                topic: "Transgenic Animals",
+                marks: 2,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Describe the landmark 1982 experiment by Palmiter and Brinster.",
+                answer: "In December 1982, Palmiter and Brinster fused the human growth hormone (hGH) gene with the promoter of mouse metallothionein-1 (MT-1) gene and microinjected it into mouse zygotes. The resulting transgenic mice grew to <strong>double the normal size</strong> of control mice.",
+                explanation: "Textbook landmark experiment."
+            },
+            {
+                id: 9,
+                topic: "Vaccines",
+                marks: 2,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "Explain the contribution of Edward Jenner and Louis Pasteur to immunology.",
+                answer: "<strong>Edward Jenner (1796):</strong> Discovered smallpox vaccination using cowpox fluid.<br><strong>Louis Pasteur (1885):</strong> Coined the term <em>Vaccine</em> (Latin: vacca = cow) and developed live attenuated rabies and anthrax vaccines.",
+                explanation: "Historical contributions."
+            },
+            {
+                id: 10,
+                topic: "Organ Transplantation",
+                marks: 2,
+                source: "NEB Textbook - Applied Biology",
+                importance: "very-important",
+                question: "What is Cyclosporine A? State its role in organ transplantation.",
+                answer: "<strong>Cyclosporine A</strong> is an immunosuppressive drug produced by the soil fungus <em>Tolypocladium inflatum</em>. It inhibits calcineurin pathways and blocks interleukin-2 (IL-2) production, thereby suppressing host T-cell activation and preventing allograft rejection.",
+                explanation: "Immunosuppressive mechanics."
+            }
+        ];
+
+        const MCQ_DATA = [
+            {
+                topic: "Vaccines",
+                question: "Who coined the term 'Vaccine' in July 1885?",
+                options: ["Edward Jenner", "Louis Pasteur", "Alexander Fleming", "Robert Koch"],
+                correct: 1,
+                explanation: "Louis Pasteur coined the term Vaccine in July 1885 derived from Latin 'vacca'."
+            },
+            {
+                topic: "Vaccines",
+                question: "Which of the following is a Toxoid vaccine?",
+                options: ["BCG Vaccine", "Sabin Polio Vaccine", "Tetanus Toxoid", "Salk Polio Vaccine"],
+                correct: 2,
+                explanation: "Tetanus Toxoid is created by formalin-inactivating bacterial exotoxin."
+            },
+            {
+                topic: "Vaccines",
+                question: "Recombinant Hepatitis B vaccine is produced using which host cells?",
+                options: ["Escherichia coli", "Saccharomyces cerevisiae (Yeast)", "Bacillus subtilis", "Penicillium"],
+                correct: 1,
+                explanation: "HBsAg is expressed in Saccharomyces cerevisiae yeast cells."
+            },
+            {
+                topic: "Transgenic Animals",
+                question: "In December 1982, the first transgenic super mice were created by fusing growth hormone gene with promoter of:",
+                options: ["Insulin gene", "Metallothionein-1 (MT-1) gene", "Lactalbumin gene", "Hemoglobin gene"],
+                correct: 1,
+                explanation: "Palmiter and Brinster fused human growth hormone with mouse MT-1 promoter."
+            },
+            {
+                topic: "Transgenic Animals",
+                question: "Transgenic Rosie Cow produces humanized milk enriched with alpha-lactalbumin at what concentration?",
+                options: ["1.0 g/L", "2.4 g/L", "5.0 g/L", "10.0 g/L"],
+                correct: 1,
+                explanation: "Rosie Cow milk contains 2.4 g/L of human alpha-lactalbumin."
+            },
+            {
+                topic: "Transgenic Animals",
+                question: "Transgenic fish containing human growth hormone genes attain what body size compared to normal fish?",
+                options: ["Half body size", "Same body size", "Double body size", "Quadruple body size"],
+                correct: 2,
+                explanation: "Transgenic fish grow to double the normal body size (2×)."
+            },
+            {
+                topic: "Organ Transplantation",
+                question: "Graft transfer between genetically identical monozygotic twins is termed:",
+                options: ["Autograft", "Isograft (Syngeneic)", "Allograft", "Xenograft"],
+                correct: 1,
+                explanation: "Isograft occurs between identical twins with zero rejection."
+            },
+            {
+                topic: "Organ Transplantation",
+                question: "Which drug extracted from Tolypocladium inflatum is used as an immunosuppressant to prevent allograft rejection?",
+                options: ["Penicillin", "Cyclosporine A", "Aspirin", "Paracetamol"],
+                correct: 1,
+                explanation: "Cyclosporine A inhibits T-cell activation by blocking calcineurin."
+            },
+            {
+                topic: "Organ Transplantation",
+                question: "Corneal transplants do not face graft rejection primarily because the cornea is:",
+                options: ["Avascular", "Highly vascularized", "Hardened bone", "Rich in lymphatic vessels"],
+                correct: 0,
+                explanation: "Avascularity prevents host immune T-cells and antibodies from invading the graft."
+            },
+            {
+                topic: "Vaccines",
+                question: "Antivenin given for snake bite treatment provides what type of immunity?",
+                options: ["Natural Active", "Natural Passive", "Artificial Passive", "Artificial Active"],
+                correct: 2,
+                explanation: "Antivenin contains pre-formed antibodies providing immediate artificial passive immunity."
+            }
+        ];
+
+        const FLASHCARDS_DATA = [
+            { category: "Vaccines", front: "What is an Attenuated Vaccine?", back: "A vaccine made from weakened live pathogens (e.g., BCG, Sabin OPV, MMR)." },
+            { category: "Vaccines", front: "Who discovered Smallpox Vaccination?", back: "Edward Jenner in 1796 using cowpox fluid from milkmaids." },
+            { category: "Vaccines", front: "Antigen vs Antibody", back: "Antigens are foreign molecules triggering immune response; Antibodies are protective immunoglobulins synthesized by B-lymphocytes." },
+            { category: "Transgenic Animals", front: "What is Transgenesis?", back: "The technique of introducing foreign genes into an animal genome using recombinant DNA technology." },
+            { category: "Transgenic Animals", front: "What was special about Rosie Cow (1997)?", back: "First transgenic cow producing milk with 2.4 g/L human alpha-lactalbumin." },
+            { category: "Transgenic Animals", front: "How big do Transgenic Fish grow?", back: "They express growth hormone genes to reach DOUBLE (2×) the body size of normal fish." },
+            { category: "Transplantation", front: "What is an Allograft?", back: "A graft between genetically non-identical members of the SAME species." },
+            { category: "Transplantation", front: "Why is Corneal Grafting successful?", back: "The cornea is avascular (lacks blood vessels), preventing host T-lymphocytes from mounting graft rejection." },
+            { category: "Transplantation", front: "What is Cyclosporine A?", back: "An immunosuppressive drug from Tolypocladium inflatum that blocks IL-2 synthesis and T-cell activation." },
+            { category: "Vaccines", front: "What is Recombinant Hepatitis B Vaccine?", back: "A subunit vaccine produced by expressing HBsAg in Saccharomyces cerevisiae yeast." }
+        ];
+
+        let state = {
+            activeTab: 'home',
+            theme: localStorage.getItem('dsscp_theme') || 'light',
+            learnedQuestions: JSON.parse(localStorage.getItem('dsscp_learned') || '[]'),
+            bookmarks: JSON.parse(localStorage.getItem('dsscp_bookmarks') || '[]'),
+            quizStats: JSON.parse(localStorage.getItem('dsscp_quiz_stats') || '{"tests":0,"best":0}'),
+            quizCurrentIndex: 0,
+            quizQuestions: [],
+            quizUserAnswers: [],
+            flashcardIndex: 0,
+            quizLength: 5
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initTheme();
+            renderQuestions();
+            renderImportantQuestions();
+            renderFlashcard();
+            updateProgressStats();
+            setupScrollListener();
+        });
+
+        function initTheme() {
+            if (state.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('themeToggleBtn').innerText = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('themeToggleBtn').innerText = '🌙';
+            }
+        }
+
+        function toggleTheme() {
+            state.theme = state.theme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('dsscp_theme', state.theme);
+            initTheme();
+        }
+
+        function switchTab(tabId, subTopic = null) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) targetTab.classList.add('active');
+
+            state.activeTab = tabId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (subTopic) {
+                showLearnTopic(subTopic);
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('open');
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            if (!container) return;
+
+            const search = document.getElementById('questionSearchInput')?.value.toLowerCase() || '';
+            const topic = document.getElementById('filterTopic')?.value || 'all';
+            const marks = document.getElementById('filterMarks')?.value || 'all';
+
+            const filtered = QUESTIONS_DATA.filter(q => {
+                const matchesSearch = q.question.toLowerCase().includes(search) || q.answer.toLowerCase().includes(search);
+                const matchesTopic = topic === 'all' || q.topic === topic;
+                const matchesMarks = marks === 'all' || q.marks.toString() === marks;
+                return matchesSearch && matchesTopic && matchesMarks;
+            });
+
+            container.innerHTML = filtered.length === 0 
+                ? `<p style="text-align:center; padding:2rem; color:var(--text-muted);">No questions match your search filters.</p>`
+                : filtered.map(q => createQuestionCardHTML(q)).join('');
+        }
+
+        function renderImportantQuestions() {
+            const container = document.getElementById('importantQuestionsContainer');
+            if (!container) return;
+            const important = QUESTIONS_DATA.filter(q => q.importance === 'very-important');
+            container.innerHTML = important.map(q => createQuestionCardHTML(q)).join('');
+        }
+
+        function createQuestionCardHTML(q) {
+            const isBookmarked = state.bookmarks.includes(q.id);
+            const isLearned = state.learnedQuestions.includes(q.id);
+
+            return `
+                <div class="question-card" id="qcard-${q.id}">
+                    <div class="card-header-meta">
+                        <span class="badge badge-vimp">🔥 HIGH PRIORITY</span>
+                        <span class="badge badge-marks">[${q.marks} MARK${q.marks > 1 ? 'S' : ''}]</span>
+                        <span class="badge badge-source">${q.source}</span>
+                        <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${q.id})" title="Bookmark Question">
+                            ${isBookmarked ? '★' : '☆'}
+                        </button>
+                    </div>
+                    <div class="question-text">${q.question}</div>
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <button class="toggle-answer-btn" onclick="toggleAnswer(${q.id})">▼ Reveal Answer & Explanation</button>
+                        <button class="toggle-answer-btn" style="background:${isLearned ? 'var(--accent-green-bg)' : 'var(--bg-main)'}; color:${isLearned ? 'var(--accent-green)' : 'var(--text-muted)'};" onclick="toggleLearned(${q.id})">
+                            ${isLearned ? '✓ Marked Learned' : 'Mark as Learned'}
+                        </button>
+                    </div>
+                    <div class="answer-box" id="ans-${q.id}">
+                        <div class="answer-heading">💡 Textbook Answer:</div>
+                        <div>${q.answer}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterQuestions() {
+            renderQuestions();
+        }
+
+        function toggleAnswer(id) {
+            const box = document.getElementById(`ans-${id}`);
+            if (box) box.classList.toggle('show');
+        }
+
+        function toggleBookmark(id) {
+            if (state.bookmarks.includes(id)) {
+                state.bookmarks = state.bookmarks.filter(bId => bId !== id);
+            } else {
+                state.bookmarks.push(id);
+            }
+            localStorage.setItem('dsscp_bookmarks', JSON.stringify(state.bookmarks));
+            renderQuestions();
+            renderImportantQuestions();
+            updateProgressStats();
+        }
+
+        function toggleLearned(id) {
+            if (state.learnedQuestions.includes(id)) {
+                state.learnedQuestions = state.learnedQuestions.filter(lId => lId !== id);
+            } else {
+                state.learnedQuestions.push(id);
+            }
+            localStorage.setItem('dsscp_learned', JSON.stringify(state.learnedQuestions));
+            renderQuestions();
+            renderImportantQuestions();
+            updateProgressStats();
+        }
+
+        function selectQuizLength(num, btn) {
+            state.quizLength = num;
+            document.querySelectorAll('.quiz-num-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function startMcqTest() {
+            document.getElementById('mcq-start-screen').style.display = 'none';
+            document.getElementById('mcq-result-screen').style.display = 'none';
+            document.getElementById('mcq-test-screen').style.display = 'block';
+
+            state.quizQuestions = [...MCQ_DATA].sort(() => 0.5 - Math.random()).slice(0, state.quizLength);
+            state.quizCurrentIndex = 0;
+            state.quizUserAnswers = [];
+
+            renderCurrentMcq();
+        }
+
+        function renderCurrentMcq() {
+            const q = state.quizQuestions[state.quizCurrentIndex];
+            document.getElementById('quizQuestionCount').innerText = `Question ${state.quizCurrentIndex + 1} of ${state.quizQuestions.length}`;
+            document.getElementById('quizTopicTag').innerText = q.topic;
+            document.getElementById('mcqQuestionText').innerText = q.question;
+
+            const progressPct = ((state.quizCurrentIndex + 1) / state.quizQuestions.length) * 100;
+            document.getElementById('quizProgressBar').style.width = `${progressPct}%`;
+
+            const optionsContainer = document.getElementById('mcqOptionsContainer');
+            optionsContainer.innerHTML = q.options.map((opt, idx) => `
+                <button class="option-btn" onclick="selectMcqOption(${idx}, this)">
+                    <span class="option-prefix">${String.fromCharCode(65 + idx)}</span>
+                    <span>${opt}</span>
+                </button>
+            `).join('');
+
+            document.getElementById('mcqExplanationBox').style.display = 'none';
+            document.getElementById('mcqNextBtn').style.display = 'none';
+        }
+
+        function selectMcqOption(idx, btn) {
+            const q = state.quizQuestions[state.quizCurrentIndex];
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(b => b.disabled = true);
+
+            state.quizUserAnswers[state.quizCurrentIndex] = idx;
+
+            if (idx === q.correct) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('incorrect');
+                allBtns[q.correct].classList.add('correct');
+            }
+
+            document.getElementById('mcqExplanationText').innerText = q.explanation;
+            document.getElementById('mcqExplanationBox').style.display = 'block';
+            document.getElementById('mcqNextBtn').style.display = 'inline-flex';
+        }
+
+        function nextMcqQuestion() {
+            state.quizCurrentIndex++;
+            if (state.quizCurrentIndex < state.quizQuestions.length) {
+                renderCurrentMcq();
+            } else {
+                showMcqResults();
+            }
+        }
+
+        function showMcqResults() {
+            document.getElementById('mcq-test-screen').style.display = 'none';
+            document.getElementById('mcq-result-screen').style.display = 'block';
+
+            let correctCount = 0;
+            state.quizQuestions.forEach((q, idx) => {
+                if (state.quizUserAnswers[idx] === q.correct) correctCount++;
+            });
+
+            const scorePct = Math.round((correctCount / state.quizQuestions.length) * 100);
+            document.getElementById('resultScore').innerText = `${correctCount} / ${state.quizQuestions.length}`;
+            document.getElementById('resultPercentage').innerText = `${scorePct}%`;
+
+            let feedback = "Review the Learn theory notes and test again!";
+            if (scorePct >= 90) feedback = "🌟 Outstanding! You have complete mastery over Applied Zoology.";
+            else if (scorePct >= 70) feedback = "Good performance! Keep reviewing specific topics.";
+
+            document.getElementById('resultFeedback').innerText = feedback;
+
+            state.quizStats.tests++;
+            if (scorePct > state.quizStats.best) state.quizStats.best = scorePct;
+            localStorage.setItem('dsscp_quiz_stats', JSON.stringify(state.quizStats));
+            updateProgressStats();
+        }
+
+        function renderFlashcard() {
+            const card = FLASHCARDS_DATA[state.flashcardIndex];
+            document.getElementById('flashcardCounter').innerText = `Card ${state.flashcardIndex + 1} / ${FLASHCARDS_DATA.length}`;
+            document.getElementById('cardCategory').innerText = card.category;
+            document.getElementById('cardFrontText').innerText = card.front;
+            document.getElementById('cardBackText').innerText = card.back;
+            document.getElementById('flashcardElement').classList.remove('flipped');
+        }
+
+        function flipFlashcard() {
+            document.getElementById('flashcardElement').classList.toggle('flipped');
+        }
+
+        function nextFlashcard() {
+            state.flashcardIndex = (state.flashcardIndex + 1) % FLASHCARDS_DATA.length;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            state.flashcardIndex = (state.flashcardIndex - 1 + FLASHCARDS_DATA.length) % FLASHCARDS_DATA.length;
+            renderFlashcard();
+        }
+
+        function showLearnTopic(topic, btnElement = null) {
+            const allTopics = ['vaccines', 'transgenic', 'transplantation'];
+            
+            if (topic === 'all') {
+                allTopics.forEach(t => {
+                    const el = document.getElementById(`learn-topic-${t}`);
+                    if (el) el.style.display = 'block';
+                });
+            } else {
+                allTopics.forEach(t => {
+                    const el = document.getElementById(`learn-topic-${t}`);
+                    if (el) el.style.display = 'none';
+                });
+                const target = document.getElementById(`learn-topic-${topic}`);
+                if (target) target.style.display = 'block';
+            }
+
+            if (btnElement) {
+                document.querySelectorAll('.nav-btn-subtopic').forEach(b => b.classList.remove('active'));
+                btnElement.classList.add('active');
+            }
+        }
+
+        function updateProgressStats() {
+            document.getElementById('statQuestionsStudied').innerText = `${state.learnedQuestions.length} / ${QUESTIONS_DATA.length}`;
+            document.getElementById('statTestsTaken').innerText = state.quizStats.tests;
+            document.getElementById('statBestScore').innerText = `${state.quizStats.best}%`;
+            document.getElementById('statBookmarks').innerText = state.bookmarks.length;
+
+            if (document.getElementById('progLearned')) {
+                document.getElementById('progLearned').innerText = state.learnedQuestions.length;
+                document.getElementById('progTests').innerText = state.quizStats.tests;
+                document.getElementById('progBest').innerText = `${state.quizStats.best}%`;
+                document.getElementById('progBookmarked').innerText = state.bookmarks.length;
+            }
+        }
+
+        function showModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = text;
+            document.getElementById('customModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.remove('show');
+        }
+
+        function confirmResetProgress() {
+            localStorage.clear();
+            state.learnedQuestions = [];
+            state.bookmarks = [];
+            state.quizStats = { tests: 0, best: 0 };
+            updateProgressStats();
+            renderQuestions();
+            showModal("Progress Reset", "All learning statistics have been cleared.");
+        }
+
+        function setupScrollListener() {
+            window.addEventListener('scroll', () => {
+                const btn = document.getElementById('backToTopBtn');
+                if (window.scrollY > 300) btn.classList.add('show');
+                else btn.classList.remove('show');
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
